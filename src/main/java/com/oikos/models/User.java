@@ -31,15 +31,14 @@ public class User {
 	
 	private int userType;
 	
-	@OneToOne
-	private List<Message> feed;
+	//private List<Message> feed;
 
 	public long getUserId() {
 		return userId;
 	}
 
 	public void setUserId(long userId) {
-		userId = userId;
+		this.userId = userId;
 	}
 
 	public String getName() {

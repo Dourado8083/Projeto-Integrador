@@ -23,6 +23,46 @@ public class Group {
 	private String groupPic;
 	
 	private String groupBio;
+
+	public long getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(long groupId) {
+		this.groupId = groupId;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
+	public long getGroupOwner() {
+		return groupOwner;
+	}
+
+	public void setGroupOwner(long groupOwner) {
+		this.groupOwner = groupOwner;
+	}
+
+	public String getGroupPic() {
+		return groupPic;
+	}
+
+	public void setGroupPic(String groupPic) {
+		this.groupPic = groupPic;
+	}
+
+	public String getGroupBio() {
+		return groupBio;
+	}
+
+	public void setGroupBio(String groupBio) {
+		this.groupBio = groupBio;
+	}
 	
 	
 }
