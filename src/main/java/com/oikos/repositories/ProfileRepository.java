@@ -1,15 +1,17 @@
 package com.oikos.repositories;
-/*package com.oikos.repositories;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.oikos.models.User;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<String, User> {
+import com.oikos.models.Profile;
+
+@Repository
+public interface ProfileRepository extends JpaRepository<Profile, Long> {
 	
- 	public List<User> findAllByNameContainingIgnorecase(String name);
- 	public List<User> findAllByEmailContainingIgnorecase(String email);
+ 	public List<Profile> findAllByProfileNameContainingIgnoreCase(String profileName);
+ 	public List<Profile> findAllByProfileEmailContainingIgnoreCase(String profileEmail);
 
 	
 	
-}*/
+}

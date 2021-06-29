@@ -20,7 +20,7 @@ public class Message {
 	private String messageContent;
 	
 	@NotNull
-	private int messageFrom;
+	private long messageFrom;
 	
 	@NotNull
 	private int messageType;
@@ -49,7 +49,7 @@ public class Message {
 		this.messageContent = messageContent;
 	}
 
-	public int getMessageFrom() {
+	public long getMessageFrom() {
 		return messageFrom;
 	}
 

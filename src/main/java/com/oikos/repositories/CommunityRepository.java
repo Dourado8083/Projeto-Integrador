@@ -1,21 +1,23 @@
-/*package com.oikos.repositories;
+package com.oikos.repositories;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 
 import com.oikos.models.Community;
 
-public interface CommunityRepository extends JpaRepository<Community, String>{
+@Repository
+public interface CommunityRepository extends JpaRepository<Community, Long>{
 
-	public List<Community> findAllByNameContainingIgnoreCase (String communityName);
+	public List<Community> findAllByCommunityNameContainingIgnoreCase (String communityName);
 
-	public Optional<Community> findById(long communityId);
+	public Optional<Community> findByCommunityId(long communityId);
 
-	public ResponseEntity<Community> findByTitulo(String communityName);
+	public ResponseEntity<Community> findByCommunityName(String communityName);
 
-	public void deleteById(long communityId);
+	public void deleteByCommunityId(long communityId);
 	
-}*/
+}
