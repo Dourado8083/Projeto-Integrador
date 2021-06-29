@@ -9,4 +9,5 @@ public interface MessageRepository extends JpaRepository<Message, String> {
 	public List<Message> findAllByContentContainingIgnoreCase(String messageContent);
 	
 	public List<Message> findAllByPlaceContainingIgnoreCase(String from);
+	
 }
