@@ -1,5 +1,5 @@
 package com.oikos.controllers;
 
-public class UserController {
+public class ProfileController {
 
 }
