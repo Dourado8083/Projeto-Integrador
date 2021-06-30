@@ -10,12 +10,10 @@ import com.oikos.models.Message;
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
 	public List<Message> findAllByMessageContentContainingIgnoreCase(String messageContent);
+
 	public List<Message> findAllByMessageFromContaining(long messageFrom);
-	
-<<<<<<< HEAD
-	public List<Message> findAllByPlaceContainingIgnoreCase(String from);
-	
+
+	//public List<Message> findAllByPlaceContainingIgnoreCase(String from);
+	// só retirar esse metodo do comentario quando seu GetMappiing for feito, se não pode causar erros.
+
 }
-=======
-}
->>>>>>> c976d4cf476c96d15fc5043c81ed8a3c3bb9e54a
