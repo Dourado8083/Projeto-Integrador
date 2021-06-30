@@ -24,9 +24,10 @@ public class MessageController {
 	@Autowired
 	private MessageRepository repository;
 
-@GetMapping("messageContent/{messageContent}")
-public Optional<Message> findByMessageContent(@PathVariable String messageContent) {
-return repository.findByMessageContentContainingIgnoreCase(messageContent);
+	@GetMapping("messageContent/{messageContent}")
+	public Optional<Message> findByMessageContent(@PathVariable String messageContent) {
+		return repository.findAllByMessageContentContainingIgnoreCase(messageContent);
+		/* alteração de RequestParam para @PathVariable */
 	}
 
 	/*
@@ -38,9 +39,9 @@ return repository.findByMessageContentContainingIgnoreCase(messageContent);
 	}
 
 	@GetMapping("/{messageId}")
-public ResponseEntity<Message> GetById(@PathVariable long messageId) {
-return repository.findById(messageId).map(mes -> ResponseEntity.ok(mes))
-.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<Message> GetById(@PathVariable long messageId) {
+		return repository.findById(messageId).map(mes -> ResponseEntity.ok(mes))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
