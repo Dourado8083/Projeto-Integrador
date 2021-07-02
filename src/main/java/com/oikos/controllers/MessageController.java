@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,39 +21,33 @@ import com.oikos.repositories.MessageRepository;
 @RequestMapping("/message")
 public class MessageController {
 	@Autowired
-	private MessageRepository messagerepository;
+	private MessageRepository messageRepository;
 
-	@GetMapping("messageContent/{messageContent}")
-	public ResponseEntity<List<Message>> GetByMessageContent(@PathVariable String messageContent) {
-		return ResponseEntity.ok(messagerepository.findAllByMessageContentContainingIgnoreCase(messageContent));
-		/* alteração de RequestParam para @PathVariable 
-		 * alteração de OPTIONAL para Response Entity
-		 */
-	}
-
-	/*
-	 * @GetMapping("/from") public ResponseEntity<Message>GetByName(@RequestBody
-	 * String from)
-	 */
-	{
-
+	@GetMapping("content/{messageContent}")
+	public ResponseEntity<List<Message>> messageGetByMessageContent(@PathVariable String messageContent) {
+		return ResponseEntity.ok(messageRepository.findAllByMessageContentContainingIgnoreCase(messageContent));
 	}
 
 	@GetMapping("/{messageId}")
-	public ResponseEntity<Message> GetById(@PathVariable long messageId) {
-		return messagerepository.findById(messageId).map(mes -> ResponseEntity.ok(mes))
+	public ResponseEntity<Message> messageGetById(@PathVariable long messageId) {
+		return messageRepository.findById(messageId).map(mes -> ResponseEntity.ok(mes))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
-	public ResponseEntity<Message> post(@RequestBody Message message) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(messagerepository.save(message));
+	public ResponseEntity<Message> messagePost(@RequestBody Message message) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(messageRepository.save(message));
 	}
 
 	@PutMapping
-	public ResponseEntity<Message> put(@RequestBody Message message) {
-		return ResponseEntity.status(HttpStatus.OK).body(messagerepository.save(message));
+	public ResponseEntity<Message> messagePut(@RequestBody Message message) {
+		return ResponseEntity.status(HttpStatus.OK).body(messageRepository.save(message));
 
+	}
+
+	@DeleteMapping("/delete/{messageId}")
+	public void delete(@PathVariable long messageId) {
+		messageRepository.deleteById(messageId);
 	}
 
 }

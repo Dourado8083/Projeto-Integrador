@@ -4,8 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import com.sun.istack.NotNull;
 
 @Entity
 public class Community {
@@ -14,14 +15,16 @@ public class Community {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long communityId;
 	
-	@NotNull
+	@NotNull(message = "Insira um nome para a comunidade!")
+	@Size(min = 5, max = 30)
 	private String communityName;
 	
-	@NotNull
+	@NotNull(message = "Insira um dono para a comunidade!")
 	private long communityOwner;
 	
 	private String communityPic;
 	
+	@Size(max = 255)
 	private String communityBio;
 
 	public long getCommunityId() {

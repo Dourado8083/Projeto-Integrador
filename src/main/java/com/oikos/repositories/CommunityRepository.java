@@ -12,7 +12,7 @@ import com.oikos.models.Community;
 @Repository
 public interface CommunityRepository extends JpaRepository<Community, Long>{
 
-	public List<Community> findAllByCommunityNameContainingIgnoreCase (String communityName);
+	public List<Community> findAllByCommunityNameContainingIgnoreCase(String communityName);
 
 	public Optional<Community> findByCommunityId(long communityId);
 
