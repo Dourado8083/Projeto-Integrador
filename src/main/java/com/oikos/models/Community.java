@@ -1,9 +1,17 @@
 package com.oikos.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,14 +27,23 @@ public class Community {
 	@Size(min = 5, max = 30)
 	private String communityName;
 	
-	@NotNull(message = "Insira um dono para a comunidade!")
-	private long communityOwner;
-	
 	private String communityPic;
 	
 	@Size(max = 255)
 	private String communityBio;
-
+	
+	@ManyToOne
+	private Profile communityOwner;
+	
+	@ManyToMany
+	@JoinTable(name = "Community_Profile",
+		joinColumns = @JoinColumn(name = "communityId"),
+		inverseJoinColumns = @JoinColumn(name = "profileId")
+	)
+	private List<Profile> communityMembers;
+	
+	//private List<Message> boards = new ArrayList<Message>
+	
 	public long getCommunityId() {
 		return communityId;
 	}
@@ -42,12 +59,13 @@ public class Community {
 	public void setCommunityName(String communityName) {
 		this.communityName = communityName;
 	}
-
-	public long getCommunityOwner() {
+	
+	
+	public Profile getCommunityOwner() {
 		return communityOwner;
 	}
 
-	public void setCommunityOwner(long communityOwner) {
+	public void setCommunityOwner(Profile communityOwner) {
 		this.communityOwner = communityOwner;
 	}
 
