@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.sun.istack.NotNull;
 
@@ -15,24 +19,37 @@ public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long messageId;
-	
+
 	@NotNull
 	private String messageContent;
-	
+
 	@NotNull
 	private long messageFrom;
-	
+
 	@NotNull
 	private int messageType;
-	
+
 	@NotNull
 	private int messageWhere;
-	
-	private String messageTitle;
-	
-	private int messageReactions;
 
+	private String messageTitle;
+
+	private int messageReactions;
 	
+	/*
+	  Relação de mensagens postadas em uma comunidade.
+	 */
+	@ManyToOne
+	@JoinColumn(name = "communityId")
+	private Community communityOn;
+	
+	/*
+	  Relação de mensagens em um feed.
+	 */
+	@ManyToOne
+	@JoinColumn(name = "profileId")
+	private Profile profileOn;
+
 	public long getMessageId() {
 		return messageId;
 	}
@@ -89,6 +106,26 @@ public class Message {
 		this.messageWhere = messageWhere;
 	}
 
+	public Community getCommunityOn() {
+		return communityOn;
+	}
+
+	public void setCommunityOn(Community communityOn) {
+		this.communityOn = communityOn;
+	}
+
+	public Profile getProfileOn() {
+		return profileOn;
+	}
+
+	public void setProfileOn(Profile profileOn) {
+		this.profileOn = profileOn;
+	}
+
+	public void setMessageFrom(long messageFrom) {
+		this.messageFrom = messageFrom;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(messageId);
@@ -105,5 +142,5 @@ public class Message {
 		Message other = (Message) obj;
 		return messageId == other.messageId;
 	}
-	
+
 }

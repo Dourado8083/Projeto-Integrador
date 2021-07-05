@@ -13,10 +13,5 @@ public class CommunityServices {
 	private CommunityRepository communityRepository;
 	@Autowired
 	private ProfileRepository profileRepository;
-	
-	public void createCommunity() {
 		
-	}
-	
-	
 }

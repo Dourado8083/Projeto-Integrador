@@ -15,35 +15,35 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Entity
 public class Community {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long communityId;
-	
+
 	@NotNull(message = "Insira um nome para a comunidade!")
 	@Size(min = 5, max = 30)
 	private String communityName;
-	
+
 	private String communityPic;
-	
+
 	@Size(max = 255)
 	private String communityBio;
-	
+
 	@ManyToOne
 	private Profile communityOwner;
-	
+
 	@ManyToMany
-	@JoinTable(name = "Community_Profile",
-		joinColumns = @JoinColumn(name = "communityId"),
-		inverseJoinColumns = @JoinColumn(name = "profileId")
-	)
+	@JoinTable(name = "Community_Profile", joinColumns = @JoinColumn(name = "communityId"), inverseJoinColumns = @JoinColumn(name = "profileId"))
 	private List<Profile> communityMembers;
-	
-	//private List<Message> boards = new ArrayList<Message>
-	
+
+	/*
+	 * Relação de mensagens postadas em uma comunidade.
+	 */
+	@OneToMany(mappedBy = "communityOn")
+	private List<Message> messages = new ArrayList<>();
+
 	public long getCommunityId() {
 		return communityId;
 	}
@@ -59,8 +59,7 @@ public class Community {
 	public void setCommunityName(String communityName) {
 		this.communityName = communityName;
 	}
-	
-	
+
 	public Profile getCommunityOwner() {
 		return communityOwner;
 	}
@@ -84,6 +83,43 @@ public class Community {
 	public void setCommunityBio(String communityBio) {
 		this.communityBio = communityBio;
 	}
-	
-	
+
+	public List<Profile> getCommunityMembers() {
+		return communityMembers;
+	}
+
+	public void setCommunityMembers(List<Profile> communityMembers) {
+		this.communityMembers = communityMembers;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (communityId ^ (communityId >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Community other = (Community) obj;
+		if (communityId != other.communityId)
+			return false;
+		return true;
+	}
+
 }
