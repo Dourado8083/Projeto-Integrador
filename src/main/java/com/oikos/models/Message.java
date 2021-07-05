@@ -7,11 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Message {
@@ -35,16 +32,16 @@ public class Message {
 	private String messageTitle;
 
 	private int messageReactions;
-	
+
 	/*
-	  Relação de mensagens postadas em uma comunidade.
+	 * Relação de mensagens postadas em uma comunidade.
 	 */
 	@ManyToOne
 	@JoinColumn(name = "communityId")
 	private Community communityOn;
-	
+
 	/*
-	  Relação de mensagens em um feed.
+	 * Relação de mensagens em um feed.
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileId")
