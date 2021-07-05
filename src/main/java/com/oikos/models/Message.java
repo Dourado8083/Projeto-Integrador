@@ -27,7 +27,7 @@ public class Message {
 	private long messageFrom;
 
 	@NotNull
-	private int messageType;
+	private Integer messageType;
 
 	@NotNull
 	private int messageWhere;
@@ -90,11 +90,11 @@ public class Message {
 		this.messageReactions = messageReactions;
 	}
 
-	public int getMessageType() {
+	public Integer getMessageType() {
 		return messageType;
 	}
 
-	public void setMessageType(int messageType) {
+	public void setMessageType(Integer messageType) {
 		this.messageType = messageType;
 	}
 
