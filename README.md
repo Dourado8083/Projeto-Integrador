@@ -3,7 +3,7 @@
                                                               AUTORES:
                                                                                 
                                                              Ana Flavia 
-                                                          Edson Eidi Hossotani
+                                                          Edson Hossotani
                                                           Eduardo Torquato    
                                                           Gustavo Dourado  
                                                               Milena
