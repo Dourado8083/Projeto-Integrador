@@ -1,12 +1,12 @@
-                                                                           🌳PROJETO OIKOS 🌳
-                                                                                 2021
-                                                                                AUTORES:
+                                                          🌳PROJETO OIKOS 🌳
+                                                                2021
+                                                              AUTORES:
                                                                                 
-                                                                             Gustavo Dourado
-                                                                             Eduardo Torquato
-                                                                             Ana Flávia
-                                                                             Edson 
-                                                                             Milena
+                                                             Ana Flavia 
+                                                               Edson
+                                                          Eduardo Torquato    
+                                                          Gustavo Dourado  
+                                                              Milena
 
 O “Projeto Oikos” se trata de uma rede social voltada à práticas sustentáveis que traz os olhares dos usuários 
 a o que as empresas, e outros usuários estão praticando em relação ao meio ambiente, conforme você realiza boas ações,
