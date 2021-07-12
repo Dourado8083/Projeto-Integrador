@@ -14,7 +14,7 @@ public class UserDetailImplementation implements UserDetails{
 	
 	private String userName;
 	private String password;
-	private List<GrantedAuthority> autoridades;
+	private List<GrantedAuthority> authorities;
 
 	
 	
@@ -28,7 +28,7 @@ public class UserDetailImplementation implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return autoridades;
+		return authorities;
 	}
 
 	@Override

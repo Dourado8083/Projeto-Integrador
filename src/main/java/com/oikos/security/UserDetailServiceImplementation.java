@@ -14,11 +14,11 @@ import com.oikos.repositories.ProfileRepository;
 public class UserDetailServiceImplementation implements UserDetailsService {
 	
 	@Autowired
-	private ProfileRepository pRepository;
+	private ProfileRepository profileRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<Profile> profile = pRepository.findByProfileName(username);
+		Optional<Profile> profile = profileRepository.findByProfileName(username);
 		profile.orElseThrow(() -> new UsernameNotFoundException(username + "not found"));
 		
 		return profile.map(UserDetailImplementation::new).get();
