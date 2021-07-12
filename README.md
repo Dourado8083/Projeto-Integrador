@@ -6,7 +6,7 @@
                                                           Edson Hossotani
                                                           Eduardo Torquato    
                                                           Gustavo Dourado  
-                                                              Milena
+                                                            Milena Teles
 
 O “Projeto Oikos” se trata de uma rede social voltada à práticas sustentáveis que traz os olhares dos usuários 
 a o que as empresas, e outros usuários estão praticando em relação ao meio ambiente, conforme você realiza boas ações,
