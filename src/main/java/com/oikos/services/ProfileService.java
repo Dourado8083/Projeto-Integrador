@@ -6,15 +6,16 @@ import java.util.Optional;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileLoginDTO;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.ProfileRepository;
 
+@Service
 public class ProfileService {
 
-	private @Autowired CommunityRepository communityRepository;
 	private @Autowired ProfileRepository profileRepository;
 
 	public Optional<Object> profileSignup(Profile profile) {

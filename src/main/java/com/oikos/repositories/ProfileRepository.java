@@ -13,10 +13,8 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 	
  	public List<Profile> findAllByProfileNameContainingIgnoreCase(String profileName);
  	public List<Profile> findAllByProfileEmailContainingIgnoreCase(String profileEmail);
-<<<<<<< HEAD
  	public Optional<Profile> findByProfileEmailIgnoreCase(String profileEmail);
-=======
->>>>>>> 495814dfec1bcd5945152d2c6f3d739c9fe62dee
+
  	public Optional<Profile> findByProfileName(String profileName);
 
 	

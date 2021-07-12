@@ -18,10 +18,15 @@ public class UserDetailServiceImplementation implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<Profile> profile = profileRepository.findByProfileName(username);
-		profile.orElseThrow(() -> new UsernameNotFoundException(username + "not found"));
 		
-		return profile.map(UserDetailImplementation::new).get();
+		Optional<Profile> profile = profileRepository.findByProfileEmailIgnoreCase(username);
+		
+		if(profile.isPresent()) {
+			return new UserDetailImplementation(profile.get());
+		}
+		else {
+			throw new UsernameNotFoundException(username + " não existe!");
+		}
+		
 	}
-
 }

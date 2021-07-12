@@ -1,4 +1,5 @@
 package com.oikos.security;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -11,30 +12,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailServiceImplementation userDetailService;
+	private UserDetailServiceImplementation userDetailsServiceImplement;
 	
-	
-	@Bean
+	@Override
+ 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+ 		auth.inMemoryAuthentication().withUser("Cyberpatinho").password(passwordEncoder().encode("quackquack")).authorities("ROLE_ADMIN");
+ 		auth.userDetailsService(userDetailsServiceImplement);
+ 	}
+
+	@Bean 
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).authorities("ROLE_ADMIN");
-		auth.userDetailsService(userDetailService);
-	}
 	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception{
+	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers(HttpMethod.POST, "/user/login").permitAll()
-		.antMatchers(HttpMethod.POST, "/user/signup").permitAll()
-		.anyRequest().authenticated().and().httpBasic()
+		//.antMatchers("/**").permitAll()
+		.antMatchers(HttpMethod.POST, "/profile/signup").permitAll()
+		.antMatchers(HttpMethod.PUT, "/profile/credentials").permitAll()
+		.anyRequest().authenticated()
+		.and().httpBasic()
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and().cors()
 		.and().csrf().disable();
-	
-}
+	}
+
 }
