@@ -12,18 +12,17 @@ public class UserDetailImplementation implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String userName;
-	private String password;
+	private String profileEmail;
+	private String profilePassword;
 	private List<GrantedAuthority> authorities;
 
 	
 	
 	public UserDetailImplementation(Profile profile) {
 		super();
-		this.userName = profile.getProfileName();
-		this.password = profile.getProfilePassword();
+		this.profileEmail = profile.getProfileEmail();
+		this.profilePassword = profile.getProfilePassword();
 	}
-	public UserDetailImplementation() {}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -34,13 +33,13 @@ public class UserDetailImplementation implements UserDetails{
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return userName;
+		return profilePassword;
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return password;
+		return profileEmail;
 	}
 
 	@Override

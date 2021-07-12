@@ -17,15 +17,15 @@ public class UserDetailServiceImplementation implements UserDetailsService {
 	private ProfileRepository profileRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
-		Optional<Profile> profile = profileRepository.findByProfileEmailIgnoreCase(username);
+		Optional<Profile> profile = profileRepository.findByProfileEmailIgnoreCase(email);
 		
 		if(profile.isPresent()) {
 			return new UserDetailImplementation(profile.get());
 		}
 		else {
-			throw new UsernameNotFoundException(username + " não existe!");
+			throw new UsernameNotFoundException(email + " não cadastrado!");
 		}
 		
 	}
