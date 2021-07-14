@@ -75,7 +75,7 @@ public class ProfileController {
 	}
 	
 	@PostMapping("/signup")
-	public ResponseEntity<Object> cadastrarUsuario(@RequestBody Profile profile) {
+	public ResponseEntity<Object> cadastrarUsuario(@Valid @RequestBody Profile profile) {
 
 		Optional<Object> newProfile = profileService.profileSignup(profile);
 		if (newProfile.isEmpty()) {
