@@ -77,6 +77,7 @@ public class ProfileController {
 			return ResponseEntity.status(201).body("Comunidade criada!");
 		}).orElse(ResponseEntity.status(400).body("Erro na criação!"));
 	}
+	
 
 }
 

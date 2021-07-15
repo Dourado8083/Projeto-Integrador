@@ -42,7 +42,7 @@ public class Profile {
 	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
-	@JsonIgnoreProperties("memberOf")
+	@JsonIgnoreProperties({"communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages"})
 	private List<Community> memberOf = new ArrayList<>();
 
 	@OneToMany(mappedBy = "profileOn")

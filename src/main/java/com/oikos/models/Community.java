@@ -40,9 +40,9 @@ public class Community {
 	private Profile communityOwner;
 
 	@ManyToMany
-	@JsonIgnoreProperties({"profileEmail", "profilePassword", "profileBio", "profileType"})
+	@JsonIgnoreProperties({"profileId", "profileEmail", "profilePassword", "profileBio", "profileType"})
 	@JoinTable(name = "Community_Profile", joinColumns = @JoinColumn(name = "communityId"), inverseJoinColumns = @JoinColumn(name = "profileId"))
-	private List<Profile> communityMembers;
+	private List<Profile> communityMembers = new ArrayList<>();
 
 	/*
 	 * Relação de mensagens postadas em uma comunidade.

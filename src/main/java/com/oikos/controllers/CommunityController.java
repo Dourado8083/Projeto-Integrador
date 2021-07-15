@@ -5,19 +5,19 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oikos.models.Community;
+import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.repositories.CommunityRepository;
+import com.oikos.services.CommunityService;
 
 @RestController
 @RequestMapping("/community")
@@ -25,6 +25,9 @@ public class CommunityController {
 
 	@Autowired
 	private CommunityRepository communityRepository;
+	
+	@Autowired
+	private CommunityService communityService;
 
 	@GetMapping("/all")
 	public List<Community> communityGetAll() {
@@ -42,19 +45,17 @@ public class CommunityController {
 		return communityRepository.findAllByCommunityNameContainingIgnoreCase(communityName);
 	}
 
-	@PostMapping
-	public ResponseEntity<Community> communityPost(@Valid @RequestBody Community community) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(communityRepository.save(community));
-	}
-
-	@PutMapping
-	public ResponseEntity<Community> communityPut(@RequestBody Community community) {
-		return ResponseEntity.status(HttpStatus.OK).body(communityRepository.save(community));
-	}
 
 	@DeleteMapping("/delete/{communityid}")
 	public void communityDelete(@PathVariable long communityId) {
 		communityRepository.deleteById(communityId);
 	}
 
+	@PutMapping("/join-community")
+	public ResponseEntity<?> joinCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto){
+		return communityService.joinCommunity(profileCommunityDto).map(community -> {
+			return ResponseEntity.status(200).body("Você agora é membro da comunidade " + profileCommunityDto.getCommunityName() + "!");
+		}).orElse(ResponseEntity.status(400).body("Operação inválida!"));
+	}
+	
 }

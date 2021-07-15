@@ -20,7 +20,7 @@ public class ProfileService {
 
 	@Autowired
 	private ProfileRepository profileRepository;
-	
+
 	@Autowired
 	private CommunityRepository communityRepository;
 
@@ -59,18 +59,30 @@ public class ProfileService {
 	}
 
 	public Optional<Object> createCommunity(ProfileCommunityDTO profileCommunityDto) {
-		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(communityAlreadyExists -> {
-			return Optional.empty();
-		}).orElseGet(() -> {
-			Optional<Profile> communityOwner = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
-			Community communityToCreate = new Community();
-			communityToCreate.setCommunityOwner(communityOwner.get());
-			communityToCreate.setCommunityNumberOfMembers(1);
-			communityToCreate.setCommunityName(profileCommunityDto.getCommunityName());
-			communityToCreate.setCommunityBio(profileCommunityDto.getCommunityBio());
-			communityToCreate.setCommunityPic(profileCommunityDto.getCommunityPic());
-			return Optional.ofNullable(communityRepository.save(communityToCreate));
-		});
+		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName())
+				.map(communityAlreadyExists -> {
+					return Optional.empty();
+				}).orElseGet(() -> {
+					Optional<Profile> communityOwner = profileRepository
+							.findByProfileEmail(profileCommunityDto.getProfileEmail());
+
+					if (communityOwner.isEmpty()) {
+						return Optional.empty();
+					}
+
+					Community communityToCreate = new Community();
+					communityToCreate.setCommunityOwner(communityOwner.get());
+					communityToCreate.setCommunityNumberOfMembers(1);
+					communityToCreate.setCommunityName(profileCommunityDto.getCommunityName());
+					communityToCreate.setCommunityBio(profileCommunityDto.getCommunityBio());
+					communityToCreate.setCommunityPic(profileCommunityDto.getCommunityPic());
+					
+					communityOwner.get().getMemberOf().add(communityToCreate);
+					communityToCreate.getCommunityMembers().add(communityOwner.get());
+					profileRepository.save(communityOwner.get());
+					
+					return Optional.ofNullable(communityRepository.save(communityToCreate));
+				});
 	}
 
 }
