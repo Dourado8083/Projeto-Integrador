@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Community {
 
@@ -26,24 +28,34 @@ public class Community {
 	@Size(min = 5, max = 30)
 	private String communityName;
 
+	private long communityNumberOfMembers;
+	
 	private String communityPic;
 
 	@Size(max = 255)
 	private String communityBio;
 
 	@ManyToOne
+	@JsonIgnoreProperties({"profileId", "profileEmail", "profilePassword", "profileBio", "profileType"})
 	private Profile communityOwner;
 
 	@ManyToMany
+	@JsonIgnoreProperties({"profileEmail", "profilePassword", "profileBio", "profileType"})
 	@JoinTable(name = "Community_Profile", joinColumns = @JoinColumn(name = "communityId"), inverseJoinColumns = @JoinColumn(name = "profileId"))
 	private List<Profile> communityMembers;
 
 	/*
 	 * Relação de mensagens postadas em uma comunidade.
 	 */
+
 	@OneToMany(mappedBy = "communityOn")
+	@JsonIgnoreProperties("messages")
 	private List<Message> messages = new ArrayList<>();
 
+	public Community() {
+		
+	}
+	
 	public long getCommunityId() {
 		return communityId;
 	}
@@ -83,6 +95,14 @@ public class Community {
 	public void setCommunityBio(String communityBio) {
 		this.communityBio = communityBio;
 	}
+	
+	public long getCommunityNumberOfMembers() {
+		return communityNumberOfMembers;
+	}
+
+	public void setCommunityNumberOfMembers(long communityNumberOfMembers) {
+		this.communityNumberOfMembers = communityNumberOfMembers;
+	}
 
 	public List<Profile> getCommunityMembers() {
 		return communityMembers;
@@ -121,5 +141,6 @@ public class Community {
 			return false;
 		return true;
 	}
+
 
 }

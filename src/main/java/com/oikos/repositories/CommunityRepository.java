@@ -16,8 +16,8 @@ public interface CommunityRepository extends JpaRepository<Community, Long>{
 
 	public Optional<Community> findByCommunityId(long communityId);
 
-	public ResponseEntity<Community> findByCommunityName(String communityName);
-
+	public Optional<Community> findByCommunityName(String communityName);
+	
 	public void deleteByCommunityId(long communityId);
 	
 }

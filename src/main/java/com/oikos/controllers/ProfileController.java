@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oikos.models.Profile;
+import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.models.dtos.ProfileLoginDTO;
 import com.oikos.repositories.ProfileRepository;
 import com.oikos.services.ProfileService;
@@ -39,33 +39,11 @@ public class ProfileController {
 		return ResponseEntity.ok(profileRepository.findAll());
 	}
 	
-	@GetMapping("/{profileId}")
-	public ResponseEntity<Profile> GetById(@PathVariable long profileId){
-		return profileRepository.findById(profileId).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
-	}
 	
 	@GetMapping("/name/{profileName}")
 	public ResponseEntity<List<Profile>> GetByName(@PathVariable String profileName)
 	{
 		return ResponseEntity.ok(profileRepository.findAllByProfileNameContainingIgnoreCase(profileName));
-	}
-	
-	@GetMapping("/email/{profileEmail}")
-	public ResponseEntity<List<Profile>> GetByEmail(@PathVariable String profileEmail)
-	{
-		return ResponseEntity.ok(profileRepository.findAllByProfileEmailContainingIgnoreCase(profileEmail));
-	}
-
-	@PostMapping
-	public ResponseEntity<Profile> post (@RequestBody Profile profile)
-	{
-		return ResponseEntity.status(HttpStatus.CREATED).body(profileRepository.save(profile));
-	}
-	
-	@PutMapping
-	public ResponseEntity<Profile> put (@RequestBody Profile profile)
-	{
-		return ResponseEntity.status(HttpStatus.OK).body(profileRepository.save(profile));
 	}
 	
 	@DeleteMapping("/{id}")
@@ -91,6 +69,13 @@ public class ProfileController {
 		return profileService.getCredentials(profileLoginDto)
 				.map(profile -> ResponseEntity.ok(profile))
 				.orElse(ResponseEntity.badRequest().build());
+	}
+	
+	@PostMapping("/create-community")
+	public ResponseEntity<?> createCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
+		return profileService.createCommunity(profileCommunityDto).map(newCommunity -> {
+			return ResponseEntity.status(201).body("Comunidade criada!");
+		}).orElse(ResponseEntity.status(400).body("Erro na criação!"));
 	}
 
 }

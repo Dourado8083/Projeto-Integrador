@@ -10,13 +10,15 @@ import com.oikos.models.Profile;
 
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
-	
- 	public List<Profile> findAllByProfileNameContainingIgnoreCase(String profileName);
- 	public List<Profile> findAllByProfileEmailContainingIgnoreCase(String profileEmail);
- 	public Optional<Profile> findByProfileEmailIgnoreCase(String profileEmail);
 
- 	public Optional<Profile> findByProfileName(String profileName);
+	public List<Profile> findAllByProfileNameContainingIgnoreCase(String profileName);
 
+	public List<Profile> findAllByProfileEmailContainingIgnoreCase(String profileEmail);
+
+	public Optional<Profile> findByProfileEmailIgnoreCase(String profileEmail);
 	
-	
+	public Optional<Profile> findByProfileEmail(String profileEmail);
+
+	public Optional<Profile> findByProfileName(String profileName);
+
 }

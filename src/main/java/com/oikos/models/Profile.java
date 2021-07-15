@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
+@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "feed" })
 public class Profile {
 
 	@Id
@@ -36,17 +37,18 @@ public class Profile {
 
 	private int profileType;
 
-	/**
 	@OneToMany(mappedBy = "communityOwner")
-	private List<Community> communitiesOwned = new ArrayList<Community>();
+	@JsonIgnoreProperties("communitiesOwned")
+	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
-	private List<Community> memberOf = new ArrayList<Community>();
+	@JsonIgnoreProperties("memberOf")
+	private List<Community> memberOf = new ArrayList<>();
 
 	@OneToMany(mappedBy = "profileOn")
+	@JsonIgnoreProperties("feed")
 	private List<Message> feed = new ArrayList<>();
-	**/
-	
+
 	public long getProfileId() {
 		return profileId;
 	}
@@ -95,7 +97,6 @@ public class Profile {
 		this.profileType = profileType;
 	}
 
-	/**
 	public List<Community> getCommunitiesOwned() {
 		return communitiesOwned;
 	}
@@ -118,7 +119,7 @@ public class Profile {
 
 	public void setFeed(List<Message> feed) {
 		this.feed = feed;
-	}**/
+	}
 
 	@Override
 	public int hashCode() {
