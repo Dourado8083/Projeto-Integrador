@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -36,13 +34,15 @@ public class Profile {
 	private String profileBio;
 
 	private int profileType;
-
+	
+	private int numberOfFollowers;
+	
 	@OneToMany(mappedBy = "communityOwner")
 	@JsonIgnoreProperties("communitiesOwned")
 	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
-	@JsonIgnoreProperties({"communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages"})
+	@JsonIgnoreProperties({"communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages", "numberOfFollowers"})
 	private List<Community> memberOf = new ArrayList<>();
 
 	@OneToMany(mappedBy = "profileOn")
@@ -97,6 +97,14 @@ public class Profile {
 		this.profileType = profileType;
 	}
 
+	public int getNumberOfFollowers() {
+		return numberOfFollowers;
+	}
+
+	public void setNumberOfFollowers(int numberOfFollowers) {
+		this.numberOfFollowers = numberOfFollowers;
+	}
+
 	public List<Community> getCommunitiesOwned() {
 		return communitiesOwned;
 	}
@@ -137,5 +145,6 @@ public class Profile {
 		Profile other = (Profile) obj;
 		return profileId == other.profileId;
 	}
+
 
 }

@@ -25,7 +25,7 @@ public class CommunityController {
 
 	@Autowired
 	private CommunityRepository communityRepository;
-	
+
 	@Autowired
 	private CommunityService communityService;
 
@@ -45,17 +45,32 @@ public class CommunityController {
 		return communityRepository.findAllByCommunityNameContainingIgnoreCase(communityName);
 	}
 
-
 	@DeleteMapping("/delete/{communityid}")
 	public void communityDelete(@PathVariable long communityId) {
 		communityRepository.deleteById(communityId);
 	}
 
 	@PutMapping("/join-community")
-	public ResponseEntity<?> joinCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto){
+	public ResponseEntity<?> joinCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return communityService.joinCommunity(profileCommunityDto).map(community -> {
-			return ResponseEntity.status(200).body("Você agora é membro da comunidade " + profileCommunityDto.getCommunityName() + "!");
-		}).orElse(ResponseEntity.status(400).body("Operação inválida!"));
+			return ResponseEntity.status(200)
+					.body("Você agora é membro da comunidade " + profileCommunityDto.getCommunityName() + "!");
+		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
 	}
-	
+
+	@PutMapping("/leave-community")
+	public ResponseEntity<?> leaveCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
+		return communityService.leaveCommunity(profileCommunityDto).map(community -> {
+			return ResponseEntity.status(200).body(
+					"Você saiu da comunidade" + profileCommunityDto.getCommunityName() + ". Sentiremos sua falta!");
+		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+	}
+
+	@PutMapping("/edit-bio")
+	public ResponseEntity<?> editBio(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
+		return communityService.editBio(profileCommunityDto).map(community -> {
+			return ResponseEntity.status(200).body("A descrição foi alteradas com sucesso!");
+		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+	}
+
 }

@@ -58,6 +58,14 @@ public class ProfileService {
 
 	}
 
+	/**
+	 * Método para criar uma comunidade.
+	 * 
+	 * @param ProfileCommunityDTO
+	 * @return Um Optional contendo a comunidade criada ou vázio para ser tratado
+	 *         como erro.
+	 * @author Edson (Cyberpatinho)
+	 */
 	public Optional<Object> createCommunity(ProfileCommunityDTO profileCommunityDto) {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName())
 				.map(communityAlreadyExists -> {
@@ -76,13 +84,17 @@ public class ProfileService {
 					communityToCreate.setCommunityName(profileCommunityDto.getCommunityName());
 					communityToCreate.setCommunityBio(profileCommunityDto.getCommunityBio());
 					communityToCreate.setCommunityPic(profileCommunityDto.getCommunityPic());
-					
+
 					communityOwner.get().getMemberOf().add(communityToCreate);
 					communityToCreate.getCommunityMembers().add(communityOwner.get());
 					profileRepository.save(communityOwner.get());
-					
+
 					return Optional.ofNullable(communityRepository.save(communityToCreate));
 				});
+	}
+
+	public Optional<Object> follow() {
+		return Optional.empty();
 	}
 
 }

@@ -67,7 +67,7 @@ public class Message {
 		return messageFrom;
 	}
 
-	public void setMessageFrom(int messageFrom) {
+	public void setMessageFrom(long messageFrom) {
 		this.messageFrom = messageFrom;
 	}
 
@@ -119,9 +119,6 @@ public class Message {
 		this.profileOn = profileOn;
 	}
 
-	public void setMessageFrom(long messageFrom) {
-		this.messageFrom = messageFrom;
-	}
 
 	@Override
 	public int hashCode() {
