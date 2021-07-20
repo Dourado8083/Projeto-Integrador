@@ -73,4 +73,10 @@ public class CommunityController {
 		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
 	}
 
+	@PutMapping("/delete-community")
+	public ResponseEntity<?> deleteCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
+		return communityService.deleteCommunity(profileCommunityDto).map(community -> {
+			return ResponseEntity.status(200).body("Comunidade deletada com sucesso!");
+		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+	}
 }

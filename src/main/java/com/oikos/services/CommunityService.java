@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oikos.models.Community;
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.repositories.CommunityRepository;
@@ -99,7 +100,7 @@ public class CommunityService {
 	}
 
 	/**
-	 * Método para editar a Bio de uma comunidade caso o usuário seja dono dela.
+	 * Método para editar a bio de uma comunidade caso o usuário seja dono dela.
 	 * 
 	 * @param ProfileCommunityDTO
 	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
@@ -120,5 +121,34 @@ public class CommunityService {
 			return Optional.ofNullable(communityRepository.save(community));
 		}).orElse(Optional.empty());
 	}
+	
+	public Optional<?> deleteCommunity(ProfileCommunityDTO profileCommunityDto) {
+		Optional<Community> comunidadeQueEstouProcurando = communityRepository.findByCommunityName(profileCommunityDto.getCommunityName());
+		return comunidadeQueEstouProcurando.map(community -> {
+		
+			//só roda se tiver encontrado uma comunidade
+			
+			Optional<Profile> usuarioQueEstouProcurando = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
+			
+			//Retorna um erro se o usuário não existe
+			if(usuarioQueEstouProcurando.isEmpty()) {
+				return Optional.empty();
+			}
+			
+			//Retorna um erro se o usuário não é o dono da comunidade
+			if(usuarioQueEstouProcurando.get().equals(community.getCommunityOwner()) == false) {
+				return Optional.empty();
+			}
+			
+			communityRepository.deleteById(community.getCommunityId());
+	
+			//Retorna uma comunidade só para diferenciar dos retornos nulos que são erros
+			return Optional.ofNullable(new Community());
+			
+		}).orElse(Optional.empty());
+	}
 
+	
+
+	
 }

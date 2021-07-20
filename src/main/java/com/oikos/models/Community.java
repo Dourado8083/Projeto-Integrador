@@ -26,7 +26,7 @@ public class Community {
 
 	@NotNull(message = "Insira um nome para a comunidade!")
 	@Size(min = 5, max = 30)
-	private String communityName;
+	private String communityName; 
 
 	private long communityNumberOfMembers;
 	
@@ -144,3 +144,6 @@ public class Community {
 
 
 }
+
+
+
