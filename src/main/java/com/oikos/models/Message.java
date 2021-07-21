@@ -33,6 +33,10 @@ public class Message {
 
 	private int messageReactions;
 
+	public Message() {
+
+	}
+
 	/*
 	 * Relação de mensagens postadas em uma comunidade.
 	 */
@@ -118,7 +122,6 @@ public class Message {
 	public void setProfileOn(Profile profileOn) {
 		this.profileOn = profileOn;
 	}
-
 
 	@Override
 	public int hashCode() {

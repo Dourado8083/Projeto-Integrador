@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.oikos.models.Community;
+import com.oikos.models.Message;
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileCommunityDTO;
+import com.oikos.models.dtos.ProfileMessageCommunityDTO;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.ProfileRepository;
 
@@ -111,8 +113,9 @@ public class CommunityService {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
 
 			Optional<Profile> profile = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
-			
-			if (profile.isEmpty() || !community.getCommunityOwner().getProfileEmail().equals(profile.get().getProfileEmail())) {
+
+			if (profile.isEmpty()
+					|| !community.getCommunityOwner().getProfileEmail().equals(profile.get().getProfileEmail())) {
 				return Optional.empty();
 			}
 
@@ -121,34 +124,60 @@ public class CommunityService {
 			return Optional.ofNullable(communityRepository.save(community));
 		}).orElse(Optional.empty());
 	}
-	
+
 	public Optional<?> deleteCommunity(ProfileCommunityDTO profileCommunityDto) {
-		Optional<Community> comunidadeQueEstouProcurando = communityRepository.findByCommunityName(profileCommunityDto.getCommunityName());
+		Optional<Community> comunidadeQueEstouProcurando = communityRepository
+				.findByCommunityName(profileCommunityDto.getCommunityName());
 		return comunidadeQueEstouProcurando.map(community -> {
-		
-			//só roda se tiver encontrado uma comunidade
-			
-			Optional<Profile> usuarioQueEstouProcurando = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
-			
-			//Retorna um erro se o usuário não existe
-			if(usuarioQueEstouProcurando.isEmpty()) {
+
+			// só roda se tiver encontrado uma comunidade
+
+			Optional<Profile> usuarioQueEstouProcurando = profileRepository
+					.findByProfileEmail(profileCommunityDto.getProfileEmail());
+
+			// Retorna um erro se o usuário não existe
+			if (usuarioQueEstouProcurando.isEmpty()) {
 				return Optional.empty();
 			}
-			
-			//Retorna um erro se o usuário não é o dono da comunidade
-			if(usuarioQueEstouProcurando.get().equals(community.getCommunityOwner()) == false) {
+
+			// Retorna um erro se o usuário não é o dono da comunidade
+			if (usuarioQueEstouProcurando.get().equals(community.getCommunityOwner()) == false) {
 				return Optional.empty();
 			}
-			
+
 			communityRepository.deleteById(community.getCommunityId());
-	
-			//Retorna uma comunidade só para diferenciar dos retornos nulos que são erros
+
+			// Retorna uma comunidade só para diferenciar dos retornos nulos que são erros
 			return Optional.ofNullable(new Community());
-			
+
 		}).orElse(Optional.empty());
 	}
 
-	
+	/**
+	 * Método para postar uma mensagem na comunidade.
+	 * 
+	 * @param profileMessageCommunityDTO
+	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
+	 *         ser tratado como erro.
+	 * @author Gustavo Dourado
+	 */
 
-	
+	public Optional<?> postMessageOnCommunity(ProfileMessageCommunityDTO profileMessageCommunityDto) {
+		Optional<Profile> perfilExistente = profileRepository
+				.findByProfileEmail(profileMessageCommunityDto.getProfileEmail());
+		return perfilExistente.map(profile -> {
+			Optional<Community> comunidadeExistente = communityRepository
+					.findByCommunityName(profileMessageCommunityDto.getCommunityName());
+			if (comunidadeExistente.isEmpty()) {
+				return Optional.empty();
+			}
+			Message message = new Message();
+
+			message.setMessageContent(profileMessageCommunityDto.getMessageContent());
+			message.setMessageTitle(profileMessageCommunityDto.getMessageTitle());
+			return Optional.empty();
+		}).orElse(Optional.empty());
+
+	}
+
 }

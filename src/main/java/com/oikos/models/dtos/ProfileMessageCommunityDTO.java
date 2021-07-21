@@ -1,0 +1,41 @@
+package com.oikos.models.dtos;
+
+public class ProfileMessageCommunityDTO {
+	private String profileEmail;
+	private String messageTitle;
+	private String messageContent;
+	private String communityName;
+
+	public String getProfileEmail() {
+		return profileEmail;
+	}
+
+	public void setProfileEmail(String profileEmail) {
+		this.profileEmail = profileEmail;
+	}
+
+	public String getMessageTitle() {
+		return messageTitle;
+	}
+
+	public void setMessageTitle(String messageTitle) {
+		this.messageTitle = messageTitle;
+	}
+
+	public String getMessageContent() {
+		return messageContent;
+	}
+
+	public void setMessageContent(String messageContent) {
+		this.messageContent = messageContent;
+	}
+
+	public String getCommunityName() {
+		return communityName;
+	}
+
+	public void setCommunityName(String communityName) {
+		this.communityName = communityName;
+	}
+
+}
