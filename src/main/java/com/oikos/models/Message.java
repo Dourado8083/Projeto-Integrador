@@ -15,28 +15,17 @@ public class Message {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long messageId;
+	private Long messageId;
 
+	@NotNull
+	private String messageTitle;
+	
 	@NotNull
 	private String messageContent;
-
-	@NotNull
-	private long messageFrom;
-
-	@NotNull
+	
 	private Integer messageType;
 
-	@NotNull
-	private int messageWhere;
-
-	private String messageTitle;
-
 	private int messageReactions;
-
-	public Message() {
-
-	}
-
 	/*
 	 * Relação de mensagens postadas em uma comunidade.
 	 */
@@ -45,11 +34,20 @@ public class Message {
 	private Community communityOn;
 
 	/*
+	 * Relação de quem enviou a mensagem.
+	 */
+	private Profile profileFrom;
+	
+	/*
 	 * Relação de mensagens em um feed.
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileId")
 	private Profile profileOn;
+	
+	public Message() {
+
+	}
 
 	public long getMessageId() {
 		return messageId;
@@ -65,14 +63,6 @@ public class Message {
 
 	public void setMessageContent(String messageContent) {
 		this.messageContent = messageContent;
-	}
-
-	public long getMessageFrom() {
-		return messageFrom;
-	}
-
-	public void setMessageFrom(long messageFrom) {
-		this.messageFrom = messageFrom;
 	}
 
 	public String getMessageTitle() {
@@ -97,14 +87,6 @@ public class Message {
 
 	public void setMessageType(Integer messageType) {
 		this.messageType = messageType;
-	}
-
-	public int getMessageWhere() {
-		return messageWhere;
-	}
-
-	public void setMessageWhere(int messageWhere) {
-		this.messageWhere = messageWhere;
 	}
 
 	public Community getCommunityOn() {

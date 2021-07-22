@@ -20,7 +20,7 @@ public class Profile {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long profileId;
+	private Long profileId;
 
 	@NotNull
 	private String profileName;
