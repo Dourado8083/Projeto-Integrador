@@ -9,7 +9,7 @@ import com.oikos.models.Community;
 import com.oikos.models.Message;
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileCommunityDTO;
-import com.oikos.models.dtos.ProfileMessageCommunityDTO;
+import com.oikos.models.dtos.MessageDTO;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.ProfileRepository;
 
@@ -161,20 +161,18 @@ public class CommunityService {
 	 *         ser tratado como erro.
 	 * @author Gustavo Dourado
 	 */
-
-	public Optional<?> postMessageOnCommunity(ProfileMessageCommunityDTO profileMessageCommunityDto) {
-		Optional<Profile> perfilExistente = profileRepository
-				.findByProfileEmail(profileMessageCommunityDto.getProfileEmail());
-		return perfilExistente.map(profile -> {
-			Optional<Community> comunidadeExistente = communityRepository
-					.findByCommunityName(profileMessageCommunityDto.getCommunityName());
-			if (comunidadeExistente.isEmpty()) {
+	public Optional<?> postMessageOnCommunity(MessageDTO messageDto) {
+		return profileRepository.findByProfileEmail(messageDto.getProfileEmail()).map(profile -> {
+			Optional<Community> community = communityRepository
+					.findByCommunityName(messageDto.getCommunityName());
+			if (community.isEmpty()) {
 				return Optional.empty();
 			}
+
 			Message message = new Message();
 
-			message.setMessageContent(profileMessageCommunityDto.getMessageContent());
-			message.setMessageTitle(profileMessageCommunityDto.getMessageTitle());
+			message.setMessageContent(messageDto.getMessageContent());
+			message.setMessageTitle(messageDto.getMessageTitle());
 			return Optional.empty();
 		}).orElse(Optional.empty());
 

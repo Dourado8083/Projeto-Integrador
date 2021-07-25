@@ -30,19 +30,21 @@ public class Message {
 	 * Relação de mensagens postadas em uma comunidade.
 	 */
 	@ManyToOne
-	@JoinColumn(name = "communityId")
+	@JoinColumn(name = "communityOnId")
 	private Community communityOn;
 
 	/*
 	 * Relação de quem enviou a mensagem.
 	 */
+	@ManyToOne
+	@JoinColumn(name = "profileFromId")
 	private Profile profileFrom;
 	
 	/*
 	 * Relação de mensagens em um feed.
 	 */
 	@ManyToOne
-	@JoinColumn(name = "profileId")
+	@JoinColumn(name = "profileOnId")
 	private Profile profileOn;
 	
 	public Message() {
