@@ -1,0 +1,15 @@
+.grad {
+    background-image: linear-gradient(to right,#3DBCBB, #65DAB8);
+  }
+
+.text-black{
+    color: black;
+}
+
+.size{
+    font-size: 20pt;
+}
+
+.size-icon{
+    font-size: 16pt;
+}
