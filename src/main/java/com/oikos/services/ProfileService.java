@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.oikos.models.Community;
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileCommunityDTO;
+import com.oikos.models.dtos.ProfileDTO;
 import com.oikos.models.dtos.ProfileLoginDTO;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.ProfileRepository;
@@ -92,6 +93,31 @@ public class ProfileService {
 					return Optional.ofNullable(communityRepository.save(communityToCreate));
 				});
 	}
+	
+	/**
+	 * Método para editar a foto de um perfil caso o usuário seja dono dele.
+	 * 
+	 * @param ProfileDTO
+	 * @return Um Optional contendo o perfil alterado pelo usuário ou vázio para
+	 *         ser tratado como erro.
+	 * @author Ana Flavia (afc-me)
+	 */
+	
+	public Optional<?> changePicture (ProfileDTO profiledto){
+		return profileRepository.findByProfileEmail(profiledto.getProfileEmail()).map(profiles ->{
+			
+			Optional<Profile> profile = profileRepository.findByProfileEmail(profiledto.getProfileEmail());
+			
+			if(profile.isEmpty()) {
+				return Optional.empty();
+			}
+			
+			profiles.setProfilePic(profiledto.getProfilePic());
+			
+			return Optional.ofNullable(profileRepository.save(profiles));
+		}).orElse(Optional.empty());
+	}
+	
 
 	public Optional<Object> follow() {
 		return Optional.empty();

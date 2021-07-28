@@ -177,5 +177,30 @@ public class CommunityService {
 		}).orElse(Optional.empty());
 
 	}
+	
+	/**
+	 * Método para editar a foto de uma comunidade caso o usuário seja dono dela.
+	 * 
+	 * @param ProfileCommunityDTO
+	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
+	 *         ser tratado como erro.
+	 * @author Ana Flavia (afc-me)
+	 */
+	public Optional<?> changePicture (ProfileCommunityDTO profileCommunityDto){
+		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
+		
+			Optional<Profile> profile = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
+
+			if (profile.isEmpty()
+					|| !community.getCommunityOwner().getProfileEmail().equals(profile.get().getProfileEmail())) {
+				return Optional.empty();
+			}
+
+			community.setCommunityPic(profileCommunityDto.getCommunityPic());
+
+			return Optional.ofNullable(communityRepository.save(community));
+		}).orElse(Optional.empty());
+		
+	}
 
 }

@@ -32,6 +32,8 @@ public class Profile {
 	private String profilePassword;
 
 	private String profileBio;
+	
+	private String profilePic;
 
 	private int profileType;
 	
@@ -91,6 +93,15 @@ public class Profile {
 
 	public void setProfileBio(String profileBio) {
 		this.profileBio = profileBio;
+	}
+	
+
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
 	}
 
 	public int getProfileType() {
