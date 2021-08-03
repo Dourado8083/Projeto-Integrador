@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -57,9 +58,9 @@ public class ProfileController {
 
 		Optional<Object> newProfile = profileService.profileSignup(profile);
 		if (newProfile.isEmpty()) {
-			return ResponseEntity.status(200).body("Usuário existente!");
+			return ResponseEntity.status(400).build();
 		} else {
-			return ResponseEntity.status(201).body("Usuário criado!");
+			return ResponseEntity.status(201).build();
 		}
 
 	}
@@ -71,11 +72,17 @@ public class ProfileController {
 				.orElse(ResponseEntity.badRequest().build());
 	}
 	
+	@PostMapping("/signin")
+	public ResponseEntity<ProfileLoginDTO> signIn(@RequestBody Optional<ProfileLoginDTO> user) {
+		return profileService.signIn(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
 	@PostMapping("/create-community")
 	public ResponseEntity<?> createCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return profileService.createCommunity(profileCommunityDto).map(newCommunity -> {
-			return ResponseEntity.status(201).body("Comunidade criada!");
-		}).orElse(ResponseEntity.status(400).body("Erro na criação!"));
+			return ResponseEntity.status(201).build();
+		}).orElse(ResponseEntity.status(400).build());
 	}
 	
 

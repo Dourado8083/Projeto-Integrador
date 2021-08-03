@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Profile } from '../model/profile';
-import { profileLoginDTO } from '../model/profileLogin';
+import { Profile } from '../model/Profile';
+
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -21,35 +21,29 @@ export class CadastrarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
-  confirmSenha(event: any)
-  {
+  confirmSenha(event: any) {
     this.confirmarSenha = event.target.value
   }
 
-  tipoUser(event: any)
-  {
+  tipoUser(event: any) {
     this.tipo = event.target.value
   }
 
   cadastrar() {
-    console.log(this.profile.profilePassword)
-    console.log(this.confirmarSenha)
-    if(this.profile.profilePassword != this.confirmarSenha)
-   {
-    alert("As senhas estão diferentes")
-   }
-   else
-   {
-     this.authService.cadastrar(this.profile).subscribe((resp: Profile)=>{
-       this.profile = resp
-       this.router.navigate(['/entrar'])
-       alert('Usuario cadastrado.')
-     })
-   }
-  
+    if (this.profile.profilePassword != this.confirmarSenha) {
+      alert("As senhas estão diferentes")
+    }
+    else {
+      this.authService.cadastrar(this.profile).subscribe((resp: Profile) => {
+        this.profile = resp
+        this.router.navigate(['/entrar'])
+        alert('Usuario cadastrado.')
+      })
+    }
+
   }
 
 

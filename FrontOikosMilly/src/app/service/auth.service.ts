@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Profile } from '../model/profile';
-import { profileLoginDTO } from '../model/profileLogin';
+import { Profile } from '../model/Profile';
+import { ProfileLoginDTO } from '../model/ProfileLoginDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  entrar(profileLogin: profileLoginDTO): Observable<profileLoginDTO> {
-    return this.http.post<profileLoginDTO>('http://localhost:8080/profile/credentials', profileLogin)
+  signIn(profileLogin: ProfileLoginDTO): Observable<ProfileLoginDTO> {
+    return this.http.post<ProfileLoginDTO>('http://localhost:8080/profile/signin', profileLogin)
   }
 
   cadastrar(profile: Profile): Observable<Profile> {

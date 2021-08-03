@@ -59,6 +59,32 @@ public class ProfileService {
 
 	}
 
+	
+	public Optional<ProfileLoginDTO> signIn(Optional<ProfileLoginDTO> user) {
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Optional<Profile> usuario = profileRepository.findByProfileEmail(user.get().getProfileEmail());
+
+		if (usuario.isPresent()) {
+			if (encoder.matches(user.get().getProfilePassword(), usuario.get().getProfilePassword())) {
+
+				String auth = user.get().getProfileEmail() + ":" + user.get().getProfilePassword();
+				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+				String authHeader = "Basic " + new String(encodedAuth);
+
+				user.get().setProfileToken(authHeader);			
+				user.get().setProfileId(usuario.get().getProfileId());
+				user.get().setProfileName(usuario.get().getProfileName());
+				user.get().setProfilePic(usuario.get().getProfilePic());
+				
+				return user;
+
+			}
+		}
+		return Optional.empty();
+	}
+	
+	
 	/**
 	 * Método para criar uma comunidade.
 	 * 

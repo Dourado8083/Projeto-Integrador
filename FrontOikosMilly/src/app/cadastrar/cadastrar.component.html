@@ -1,39 +1,34 @@
 <h1>Cadastrar</h1>
 <form>
-    <div class="mb-3">
-        <label for="nome" class="form-label">Nome</label>
-        <input [(ngModel)]="profile.profileName" type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="Seu nome">
-        <div id="emailHelp" class="form-text"></div>
+    <div class="form-group mt-3">
+        <label for="name">Nome</label>
+        <input [(ngModel)]="profile.profileName" class="form-control" type="text" name="name" id="name"
+            placeholder="Seu nome">
     </div>
 
-    <div class="mb-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input [(ngModel)]="profile.profileEmail" type="email" class="form-control" id="email" placeholder="Seu E-mail">
+    <div class="form-group mt-3">
+        <label for="email">E-mail</label>
+        <input [(ngModel)]="profile.profileEmail" class="form-control" type="text" name="email" id="email"
+            placeholder="Seu e-mail">
     </div>
 
-    <div class="mb-3">
-        <label for="foto" class="form-label">Link da foto</label>
-        <input [(ngModel)]="profile.profilePic" type="text" class="form-control" id="foto" placeholder="Link da sua foto">
+    <div class="form-group mt-3">
+        <label for="pic">Link da Foto</label>
+        <input [(ngModel)]="profile.profilePic" class="form-control" type="text" name="pic" id="pic"
+            placeholder="Link da sua foto">
     </div>
+
 
     <div class="mb-3">
         <label for="senha" class="form-label">Senha</label>
         <input (input)="confirmSenha($event)" type="password" class="form-control" id="senha" placeholder="Sua senha">
     </div>
 
-    <div class="mb-3">
-        <label for="confirmSenha" class="form-label">Confirme sua senha</label>
-        <input [(ngModel)]="profile.profilePassword" type="password" class="form-control" id="confirmSenha" placeholder="Confirme sua senha">
-    </div>
 
-    <div class="mb-3">
-        <label for="tipo" class="form-label">Tipo de usuario</label>
-        <select id="tipo" class="form-select" (change)='tipoUser($event)'>
-            <option>Selecione um tipo de usuario</option>
-            <option value="normal">Normal</option>
-            <option value="administrador">Administrador</option>
-        </select>
-    
+    <div class="form-group mt-3">
+        <label for="confirmPassword">Senha</label>
+        <input [(ngModel)]="profile.profilePassword" class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+            placeholder="Confirme sua senha">
     </div>
 
     <button type="submit" class="btn btn-danger" routerLink="/entrar">Cancelar</button>

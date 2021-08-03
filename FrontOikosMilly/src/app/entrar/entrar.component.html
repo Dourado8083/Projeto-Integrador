@@ -1,18 +1,24 @@
 <h1>Entrar</h1>
 <form>
-    <div class="mb-3">
-      <label for="usuario" class="form-label">Usuario</label>
-      <input type="text" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Seu usuario">
-      <div id="emailHelp" class="form-text"></div>
-    </div>
+  <h1 class="text-center mb-3 my-text">Entrar</h1>
 
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Senha</label>
-      <input type="password" class="form-control" id="senha" placeholder="Sua senha">
-    </div>
+  <div class="form-group mt-3">
+      <label for="user">E-mail</label>
+      <input [(ngModel)]="profileLoginDto.profileEmail" class="form-control" type="text" name="user" id="user" placerholder="Seu e-mail">
+  </div>
 
-    <button type="submit" class="btn btn-primary">Entrar</button>
+  <div class="form-group mt-3">
+      <label for="password">Senha</label>
+      <input [(ngModel)]="profileLoginDto.profilePassword" class="form-control" type="password" name="password" id="password" placerholder="Sua senha">
+  </div>
 
-    <hr>
-    <p class="text-center">Não tem uma conta? <a routerLink="/cadastrar">Cadastre-se</a></p>
+  <div class="d-flex justify-content-center mt-4">
+      <button (click)="signIn()" type="submit" class="btn btn-success">Entrar</button>
+  </div>
+
+  <hr class="mt-5 mb-5">
+
+  <p class="text-center my-text">
+      Não tem uma conta? <a routerLink="/cadastrar">Cadastre-se</a>
+  </p>
   </form>

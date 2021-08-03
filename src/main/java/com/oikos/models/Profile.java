@@ -20,7 +20,7 @@ public class Profile {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long profileId;
+	private long profileId;
 
 	@NotNull
 	private String profileName;
@@ -35,7 +35,7 @@ public class Profile {
 	
 	private String profilePic;
 
-	private int pr	ofileType;
+	private int profileType;
 	
 	private int numberOfFollowers;
 	
