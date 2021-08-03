@@ -64,7 +64,7 @@ public class ProfileController {
 
 	}
 	
-	@PutMapping("/credentials")
+	@PostMapping("/credentials")
 	public ResponseEntity<?> getCredentials(@Valid @RequestBody ProfileLoginDTO profileLoginDto) {
 		return profileService.getCredentials(profileLoginDto)
 				.map(profile -> ResponseEntity.ok(profile))

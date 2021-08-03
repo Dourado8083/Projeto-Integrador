@@ -1,0 +1,78 @@
+.espacamento
+{
+    padding: 50px;
+}
+
+.bg-grad{
+    background-color:rgb(221, 236, 243);
+    height: 1000px;
+    width: 100%;
+}
+
+.col-sep{
+    grid-column-gap: 30px;
+}
+
+.newpost
+{
+    height: 300px;
+    background-color: rgb(252, 252, 252);
+}
+.post
+{
+    height: 750px;
+    background-color: rgb(252, 252, 252);
+}
+
+.top
+{
+    margin-top: 40px;
+}
+
+.debug
+{
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.border-red
+{
+    border-radius: 10px;
+}
+
+.status 
+{
+    width: 100%;
+    height: 100px;
+}
+
+.profile-pic 
+{
+    height: 70px;
+    width: 70px;
+}
+
+.profile-name
+{
+    font-size: 20px;
+}
+
+.icon
+{
+    font-size: 30px;
+}
+
+.fa-heart:hover
+{
+    color: darkred;
+}
+
+.fa-comment:hover
+{
+    color:cornflowerblue ;
+}
+.fa-share-alt:hover
+{
+    color:darkblue ;
+}

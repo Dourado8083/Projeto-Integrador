@@ -35,7 +35,7 @@ public class Profile {
 	
 	private String profilePic;
 
-	private int profileType;
+	private int pr	ofileType;
 	
 	private int numberOfFollowers;
 	
