@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profile } from '../model/Profile';
-import { ProfileLoginDTO } from '../model/ProfileLoginDTO';
+import { ProfileLoginDTO } from '../model/profileLoginDTO';
 
 @Injectable({
   providedIn: 'root'
