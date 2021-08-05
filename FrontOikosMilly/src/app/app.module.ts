@@ -12,7 +12,6 @@ import { ContactComponent } from './contact/contact.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { FormsModule } from '@angular/forms';
-import { TemaComponent } from './tema/tema.component';
 import { CommunityComponent } from './community/community.component';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { CommunityComponent } from './community/community.component';
     ContactComponent,
     EntrarComponent,
     CadastrarComponent,
-    TemaComponent,
     CommunityComponent
   ],
   imports: [
