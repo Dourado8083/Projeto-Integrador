@@ -23,6 +23,11 @@ public class MessageController {
 	@Autowired
 	private MessageRepository messageRepository;
 
+	@GetMapping("/all")
+	public List<Message> messageGetAll() {
+		return messageRepository.findAll();
+	}
+	
 	@GetMapping("content/{messageContent}")
 	public ResponseEntity<List<Message>> messageGetByMessageContent(@PathVariable String messageContent) {
 		return ResponseEntity.ok(messageRepository.findAllByMessageContentContainingIgnoreCase(messageContent));
@@ -34,7 +39,7 @@ public class MessageController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
+	@PostMapping("/post")
 	public ResponseEntity<Message> messagePost(@RequestBody Message message) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(messageRepository.save(message));
 	}

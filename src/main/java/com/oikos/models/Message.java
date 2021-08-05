@@ -10,12 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({ "communityOn", "profileOn", "profileFrom" })
 public class Message {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long messageId;
+	private long messageId;
 
 	@NotNull
 	private String messageTitle;
@@ -23,9 +26,8 @@ public class Message {
 	@NotNull
 	private String messageContent;
 	
-	private Integer messageType;
+	private int messageType;
 
-	private int messageReactions;
 	/*
 	 * Relação de mensagens postadas em uma comunidade.
 	 */
@@ -73,14 +75,6 @@ public class Message {
 
 	public void setMessageTitle(String messageTitle) {
 		this.messageTitle = messageTitle;
-	}
-
-	public int getMessageReactions() {
-		return messageReactions;
-	}
-
-	public void setMessageReactions(int messageReactions) {
-		this.messageReactions = messageReactions;
 	}
 
 	public Integer getMessageType() {
