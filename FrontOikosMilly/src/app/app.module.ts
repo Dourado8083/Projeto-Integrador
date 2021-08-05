@@ -12,6 +12,8 @@ import { ContactComponent } from './contact/contact.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { FormsModule } from '@angular/forms';
+import { MessageComponent } from './message/message.component';
+import { CommunityComponent } from './community/community.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     AboutUsComponent,
     ContactComponent,
     EntrarComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    MessageComponent,
+    CommunityComponent
   ],
   imports: [
     BrowserModule,
