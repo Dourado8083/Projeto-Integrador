@@ -1,4 +1,4 @@
-import { Message } from "./message";
+import { Message } from "./Message";
 import { Profile } from "./Profile"
 
 export class Community{

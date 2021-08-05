@@ -20,7 +20,7 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long messageId;
 
-	@NotNull
+	
 	private String messageTitle;
 	
 	@NotNull

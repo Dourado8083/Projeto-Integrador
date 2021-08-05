@@ -13,6 +13,7 @@ import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { FormsModule } from '@angular/forms';
 import { CommunityComponent } from './community/community.component';
+import { MenssageContentComponent } from './menssage-content/menssage-content.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CommunityComponent } from './community/community.component';
     ContactComponent,
     EntrarComponent,
     CadastrarComponent,
-    CommunityComponent
+    CommunityComponent,
+    MenssageContentComponent
   ],
   imports: [
     BrowserModule,
