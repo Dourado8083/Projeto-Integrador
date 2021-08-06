@@ -3,6 +3,7 @@ import { Profile } from "./Profile"
 
 export class Community{
 
+    public communityId: number;
     public communityName: string;
     public communityNumberOfMembers:number;
     public communityPic: string;

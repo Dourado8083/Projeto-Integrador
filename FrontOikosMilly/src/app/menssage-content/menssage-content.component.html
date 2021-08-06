@@ -48,9 +48,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let tema of messageList">
-                    <th>id</th>
-                    <td>mensagem desc.</td>
+                  <tr *ngFor="let mess of messageList">
+                    <th>{{mess.messageId}}</th>
+                    <td>{{mess.messageContent}}</td>
                     <td class="d-flex justify-content-end">
                     <button class="btn btn-info mr-3" >Editar</button>
                     <button class="btn btn-danger">Excluir</button>
