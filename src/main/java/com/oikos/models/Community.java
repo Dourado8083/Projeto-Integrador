@@ -22,7 +22,7 @@ public class Community {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long communityId;
+	private long communityId;
 
 	@NotNull(message = "Insira um nome para a comunidade!")
 	@Size(min = 5, max = 30)
