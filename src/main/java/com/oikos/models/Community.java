@@ -32,7 +32,6 @@ public class Community {
 	
 	private String communityPic;
 
-	@Size(max = 255)
 	private String communityBio;
 
 	@ManyToOne

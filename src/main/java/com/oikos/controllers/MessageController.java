@@ -46,7 +46,7 @@ public class MessageController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(messageRepository.save(message));
 	}
 
-	@PutMapping
+	@PutMapping("/edit")
 	public ResponseEntity<Message> messagePut(@RequestBody Message message) {
 		return ResponseEntity.status(HttpStatus.OK).body(messageRepository.save(message));
 

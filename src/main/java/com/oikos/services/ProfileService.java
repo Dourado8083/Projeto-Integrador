@@ -91,7 +91,6 @@ public class ProfileService {
 	 * @param ProfileCommunityDTO
 	 * @return Um Optional contendo a comunidade criada ou vázio para ser tratado
 	 *         como erro.
-	 * @author Edson (Cyberpatinho)
 	 */
 	public Optional<Object> createCommunity(ProfileCommunityDTO profileCommunityDto) {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName())
@@ -99,7 +98,7 @@ public class ProfileService {
 					return Optional.empty();
 				}).orElseGet(() -> {
 					Optional<Profile> communityOwner = profileRepository
-							.findByProfileEmail(profileCommunityDto.getProfileEmail());
+							.findById(profileCommunityDto.getProfileId());
 
 					if (communityOwner.isEmpty()) {
 						return Optional.empty();
@@ -126,7 +125,6 @@ public class ProfileService {
 	 * @param ProfileDTO
 	 * @return Um Optional contendo o perfil alterado pelo usuário ou vázio para
 	 *         ser tratado como erro.
-	 * @author Ana Flavia (afc-me)
 	 */
 	
 	public Optional<?> changePicture (ProfileDTO profiledto){

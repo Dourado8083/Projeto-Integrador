@@ -27,7 +27,6 @@ public class CommunityService {
 	 * @param ProfileCommunityDTO
 	 * @return Um Optional contendo a comunidade a qual o usuário de juntou ou vázio
 	 *         para ser tratado como erro.
-	 * @author Edson (Cyberpatinho)
 	 */
 	public Optional<?> joinCommunity(ProfileCommunityDTO profileCommunityDto) {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
@@ -57,7 +56,6 @@ public class CommunityService {
 	 * @param ProfileCommunityDTO
 	 * @return Um Optional contendo a comunidade da qual o usuário saiu ou vázio
 	 *         para ser tratado como erro.
-	 * @author Edson (Cyberpatinho)
 	 */
 	public Optional<?> leaveCommunity(ProfileCommunityDTO profileCommunityDto) {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
@@ -107,7 +105,6 @@ public class CommunityService {
 	 * @param ProfileCommunityDTO
 	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
 	 *         ser tratado como erro.
-	 * @author Edson (Cyberpatinho)
 	 */
 	public Optional<?> editBio(ProfileCommunityDTO profileCommunityDto) {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
@@ -159,7 +156,6 @@ public class CommunityService {
 	 * @param profileMessageCommunityDTO
 	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
 	 *         ser tratado como erro.
-	 * @author Gustavo Dourado
 	 */
 	public Optional<?> postMessageOnCommunity(MessageDTO messageDto) {
 		return profileRepository.findByProfileEmail(messageDto.getProfileEmail()).map(profile -> {
@@ -184,7 +180,6 @@ public class CommunityService {
 	 * @param ProfileCommunityDTO
 	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
 	 *         ser tratado como erro.
-	 * @author Ana Flavia (afc-me)
 	 */
 	public Optional<?> changePicture (ProfileCommunityDTO profileCommunityDto){
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {

@@ -1,0 +1,36 @@
+/* html
+{
+    background-color:rgb(216, 236, 245);
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+.mr-3{
+    margin-right: 3pt;
+}
+
+.oikos-border {
+    border-radius: 10px;
+}
+
+.debug {
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-54 {
+    font-size: 54px;
+}
+
+.fs-108 {
+    font-size: 108px;
+}
+
+.fs-204 {
+    font-size: 204px;
+}

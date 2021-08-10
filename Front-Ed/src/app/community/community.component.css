@@ -1,0 +1,17 @@
+.bg-grad{
+    background-color:rgb(221, 236, 243);
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.communityPic {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+}
+
+.create {
+
+}
