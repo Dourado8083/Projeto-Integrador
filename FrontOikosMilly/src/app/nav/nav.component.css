@@ -1,0 +1,44 @@
+.bg-blue
+{
+    background-color: rgb(0, 46, 87);
+}
+
+.f-30
+{
+    font-size: 30pt;
+}
+
+.f-20
+{
+    font-size: 20pt;
+}
+
+.f-25
+{
+    font-size: 25pt;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+.fa-home:hover
+{
+    color:rgb(132, 198, 255);
+}
+
+.fa-users:hover
+{
+    color:rgb(132, 198, 255);
+}
+
+.fa-comments:hover
+{
+    color:rgb(132, 198, 255);
+}
+
+.fa-sign-out-alt:hover
+{
+    color:rgb(132, 198, 255);
+}
