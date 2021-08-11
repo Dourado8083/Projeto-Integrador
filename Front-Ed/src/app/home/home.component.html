@@ -1,110 +1,83 @@
-<div class="container-fluid bg-grad">
-    <div class="row d-flex justify-content-center ml col-sep">
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
 
-        <div class="col-md-2 newpost top border-red">
-
-            <h4 class="p-2"><i>Criar publicação</i></h4>
-
-            <div class="form-floating my-2">
-                <textarea class="form-control status " placeholder="Leave a comment here"
-                    id="floatingTextarea"></textarea>
-                <label for="floatingTextarea">Nova publicação</label>
+        <!-- Perfil do Usuário -->
+        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mt-3 fw-bold" style="max-height:420px">
+            <div class=" d-flex justify-content-center m-3">
+                <img src="https://i.pinimg.com/736x/e2/3b/49/e23b4984602d769e8f836205b7a33607.jpg" alt=""
+                    class="img-fluid rounded-circle img-thumbnail" style="width: 130px; height: 130px;">
             </div>
-
-            <div class="d-flex align-items-center my-2">
-                <i class="fas fa-photo-video icon mx-3 "></i>
-                <p class="m-0">foto/video</p>   
-            </div>
-            <hr class="m-1 mb-3">
-            <button type="button" class="btn btn-success mr-3">Mostrar</button>
-            <button type="button" class="btn btn-primary">Publicar</button> 
-
-
-        </div>
-
-        <div class="col-md-6 post top justify-content-center align-items-center border-red">
-
-            <div class="profile d-flex justify-content-start align-items-center">
-                <img src="https://i.pinimg.com/564x/cb/27/96/cb279603d7a95988b29ceb73add714d6.jpg"
-                    class="profile-pic img-fluid m-3 rounded-circle">
-
-                <p class="profile-name m-0 fw-bold">Naruto Uzumaki</p>
-            </div>
-
+            <h4 class="text-center fw-bold mb-0">Ana Flavia</h4>
+            <p class="text-center lead fs-user mb-2">@usuario</p>
+            <hr class="ms-5 me-5">
+            <p class="text-center lead fs-follow mb-2">20 Seguindo · 30 Seguidores</p>
+            <hr class="ms-5 me-5">
             <div>
-                <p class="message mx-3">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi
-                    delectus
-                    recusandae
-                    beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque
-                    error
-                    illo.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
-                    recusandae
-                    beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque
-                    error
-                    illo.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
-                    recusandae
-                    beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque
-                    error
-                    illo.
-                </p>
-                <hr>
-                <div class="d-flex justify-content-end align-items-center">
-                    <i class="fas fa-heart icon mx-3"></i>
-                    <i class="fas fa-comment icon mx-3"></i>
-                    <i class="fas fa-share-alt icon mx-3 me-4"></i>
-                </div>
-                <hr>
+                <p class="fs-user text-center mb-2">Comunidades</p>
+                <p class="text-center lead fs-follow mb-1">Comunidade 1</p>
+                <p class="text-center lead fs-follow mb-1">Comunidade 2</p>
+
             </div>
-
-            <div class="profile d-flex justify-content-start align-items-center">
-                <img src="https://64.media.tumblr.com/9ca7aaa8c390bec4f80a9a828254f2fc/ea6cf3380b01d0da-30/s1280x1920/722026e7a5f861b551b6a039316fd5f5d43e40e7.jpg"
-                    class="profile-pic img-fluid m-3 rounded-circle">
-
-                <p class="profile-name m-0 fw-bold">Sasha Braus</p>
-            </div>
-
-            <div>
-                <p class="message mx-3">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi
-                    delectus
-                    recusandae
-                    beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque
-                    error
-                    illo.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
-                    recusandae
-                    beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque
-                    error
-                    illo.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
-                    recusandae
-                    beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque
-                    error
-                    illo.
-                </p>
-                <hr>
-                <div class="d-flex justify-content-end align-items-center">
-                    <i class="fas fa-heart icon mx-3"></i>
-                    <i class="fas fa-comment icon mx-3"></i>
-                    <i class="fas fa-share-alt icon mx-3 me-4"></i>
-                </div>
-                <hr>
-            </div>
-
         </div>
 
-        <div class="col-md-2 post top border-red">
-            <button class="btn btn-info" routerLink='/menssage-content'>Nova mensagem</button>
-            <button class="btn btn-info" routerLink='/community'>Comunidade</button>
+        <!-- Feed -->
+        <div class="col-md-8 bg-light me-0 mt-3 rounded-p">
+            <div class="row d-flex justify-content-center">
 
-    
+                <!-- Feed Principal -->
+                <div class="col-md-8  me-3 mt-3">
+                    <!-- Postar -->
+                    <div class="mb-3 mt-1 bg-sla p-3 rounded-p">
+                        <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
+                            pensamentos:</label>
+                        <textarea [(ngModel)]="message.messageContent" type="text" class="form-control" id="descricao"
+                            placeholder="Digite a mensagem">
 
+
+                        ngModel='' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <button class="btn btn-success mb-2 mt-2" (click)='send()'>POSTAR</button>
+                    </div>
+
+
+                    <!-- Posts -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <img src="https://i.pinimg.com/736x/e2/3b/49/e23b4984602d769e8f836205b7a33607.jpg" alt=""
+                                class="img-fluid rounded-circle" style="width: 30px; height: 30px;"> @usuario<small
+                                class="text-muted ms-2">15h34 · 10/08/2021</small>
+                        </div>
+                        <div class="card-body ">
+                            <h5 class="card-title fw-bold mb-0">Titulo </h5>
+                            <p class="card-text mt-2">{{message.messageContent}}</p>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3" *ngFor="let item of messageList ">
+                        <div class="card-header">
+                            <img src="https://i.pinimg.com/474x/44/b8/ee/44b8ee9049da6c7812166e2957fae37b.jpg" alt=""
+                                class="img-fluid rounded-circle" style="width: 30px; height: 30px;"> @usuario<small
+                                class="text-muted ms-2">15h34 · 10/08/2021</small>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
+                            <p class="card-text mt-2">{{item.messageContent}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Barra Lateral -->
+                <div class="col-md-3 mt-3">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success mt-2 mb-3" type="submit">Search</button>
+                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/1946/1946429.png" alt=""
+                            style="height: 30px; width: 30px;"> Perfil</a>
+                    <button routerLink='/community' class="nav-link btn btn-light"><img
+                            src="https://image.flaticon.com/icons/png/512/4350/4350908.png" alt=""
+                            style="height: 30px; width: 30px;"> Comunidades</button>
+                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/561/561127.png" alt=""
+                            style="height: 30px; width: 30px;"> Mensagens</a>
+                </div>
+            </div>
         </div>
-
-
-
     </div>
 </div>
