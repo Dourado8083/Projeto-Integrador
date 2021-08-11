@@ -1,0 +1,75 @@
+.pic {
+    height: 250px;
+    width: 250px;
+    border-radius: 5px;
+    border-width: 4px;
+    border-style: double;
+    border-color: #0fbe8c;
+}
+
+.espacamento
+{
+    padding: 50px;
+}
+
+.bg-grad{
+    background-color:rgb(221, 236, 243);
+    height: 1000px;
+    width: 100%;
+}
+
+.col-sep{
+    grid-column-gap: 30px;
+}
+
+.info
+{
+    height: 100%;
+    background-color: rgb(252, 252, 252);
+}
+
+.info p {
+    width: 250px;
+}
+
+.post
+{
+    height: 750px;
+    background-color: rgb(252, 252, 252);
+}
+
+
+.debug
+{
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.border-rad
+{
+    border-radius: 10px;
+}
+
+.status 
+{
+    width: 100%;
+    height: 100px;
+}
+
+.profile-pic 
+{
+    height: 70px;
+    width: 70px;
+}
+
+.profile-name
+{
+    font-size: 20px;
+}
+
+.icon
+{
+    font-size: 30px;
+}
+

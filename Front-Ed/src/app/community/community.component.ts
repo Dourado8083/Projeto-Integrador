@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Community } from '../model/community';
 import { Profile } from '../model/Profile';
 import { ProfileCommunityDTO } from '../model/ProfileCommunityDTO';
 import { CommunityService } from '../service/community.service';
+import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-community',
@@ -13,6 +15,7 @@ import { CommunityService } from '../service/community.service';
 export class CommunityComponent implements OnInit {
 
   profile: Profile = new Profile();
+  profileId: number = environment.id;
 
   profileCommunityDto: ProfileCommunityDTO = new ProfileCommunityDTO();
 
@@ -20,28 +23,61 @@ export class CommunityComponent implements OnInit {
   communityList: Community[];
 
   constructor(
-    private communityService: CommunityService
+    private router: Router,
+    private communityService: CommunityService,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit() {
-    this.getAllCommunity();
+
+    window.scroll(0, 0);
+
+    this.getAllCommunities();
   }
 
-  getAllCommunity() {
+  getAllCommunities() {
     this.communityService.getAll().subscribe((resp: Community[]) => {
-      this.communityList = resp; 
+      this.communityList = resp;
     });
   }
- 
+
   createCommunity() {
-    
+
     this.profileCommunityDto.profileId = environment.id;
     this.profileCommunityDto.profileEmail = environment.email;
 
     this.communityService.createCommunity(this.profileCommunityDto).subscribe(() => {
       alert("Comunidade criada com sucesso!");
-      this.getAllCommunity();
+      this.getAllCommunities();
     })
   }
+
+  getCommunityById(communityId: number) {
+    this.communityService.getCommunityById(communityId).subscribe((resp: Community) => {
+      this.community = resp;
+    });
+  }
+
+  getProfileById() {
+    this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
+      this.profile = resp;
+    });
+  }
+
+  isMember(community: Community): boolean {
+
+    for (let i = 0; i < community.communityMembers.length; i++) {
+      if (community.communityMembers[i].profileId == environment.id) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  getMemberType(communityId: number) {
+
+  }
+
 
 }

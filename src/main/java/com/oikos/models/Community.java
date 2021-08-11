@@ -35,7 +35,7 @@ public class Community {
 	private String communityBio;
 
 	@ManyToOne
-	@JsonIgnoreProperties({"profileId", "profileEmail", "profilePassword", "profileBio", "profileType"})
+	@JsonIgnoreProperties({"profilePassword", "profileBio", "profileType"})
 	private Profile communityOwner;
 
 	@ManyToMany

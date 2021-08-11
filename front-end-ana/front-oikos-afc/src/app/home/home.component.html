@@ -1,67 +1,78 @@
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center">
-
-        <!-- Perfil do Usuário -->
-        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mt-3 fw-bold" style="max-height:420px" >
-            <div class=" d-flex justify-content-center m-3">
-                <img src="https://i.pinimg.com/736x/e2/3b/49/e23b4984602d769e8f836205b7a33607.jpg" alt="" class="img-fluid rounded-circle img-thumbnail" style="width: 130px; height: 130px;">
-            </div>
-            <h4 class="text-center fw-bold mb-0">Ana Flavia</h4>
-            <p class="text-center lead fs-user mb-2">@usuario</p>
-            <hr class="ms-5 me-5">
-            <p class="text-center lead fs-follow mb-2">20 Seguindo · 30 Seguidores</p>
-            <hr class="ms-5 me-5">
-            <div>
-                <p class="fs-user text-center mb-2">Comunidades</p>
-                <p class="text-center lead fs-follow mb-1">Comunidade 1</p>
-                <p class="text-center lead fs-follow mb-1">Comunidade 2</p>
-
-            </div>
+    <div class="row main">
+ 
+        <div class="controller col-sm-2 debug">
+            <p>
+                <em>
+                    <b>O que você está pensando?</b>
+                </em>
+            </p>
+            <textarea class="status"></textarea>
+            <i class="icon far fa-paper-plane" style="margin: 0;"></i>
         </div>
-
-        <!-- Feed -->
-        <div class="col-md-8 bg-light me-0 mt-3 rounded-p">
-            <div class="row d-flex justify-content-center">
-
-                <!-- Feed Principal -->
-                <div class="col-md-8  me-3 mt-3">
-                    <!-- Postar -->
-                    <div class="mb-3 mt-1 bg-sla p-3 rounded-p">
-                        <label for="exampleFormControlTextarea1" class="form-label">O que está pensando?</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-
-                      <!-- Posts -->
-                      <div class="card mb-3">
-                        <div class="card-header">
-                          <img src="https://i.pinimg.com/736x/e2/3b/49/e23b4984602d769e8f836205b7a33607.jpg" alt="" class="img-fluid rounded-circle" style="width: 30px; height: 30px;"> @usuario<small class="text-muted ms-2">15h34 · 10/08/2021</small> 
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-0">Titulo </h5>
-                            <p class="card-text mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima non modi obcaecati qui harum, commodi consequatur quos assumenda deserunt dignissimos sint neque culpa vitae libero delectus sapiente officia hic praesentium.</p>
-                        </div>
-                      </div>
-
-                      <div class="card mb-3">
-                        <div class="card-header">
-                          <img src="https://i.pinimg.com/474x/44/b8/ee/44b8ee9049da6c7812166e2957fae37b.jpg" alt="" class="img-fluid rounded-circle" style="width: 30px; height: 30px;"> @usuario<small class="text-muted ms-2">15h34 · 10/08/2021</small> 
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-0">Titulo </h5>
-                            <p class="card-text mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima non modi obcaecati qui harum, commodi consequatur quos assumenda deserunt dignissimos sint neque culpa vitae libero delectus sapiente officia hic praesentium.</p>
-                        </div>
-                      </div>
-                </div>
-
-                <!--Barra Lateral -->
-                <div class="col-md-3 mt-3">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success mt-2 mb-3" type="submit">Search</button>
-                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/1946/1946429.png" alt="" style="height: 30px; width: 30px;">  Perfil</a>
-                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/4350/4350908.png" alt="" style="height: 30px; width: 30px;">  Comunidades</a>
-                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/561/561127.png" alt="" style="height: 30px; width: 30px;">  Mensagens</a>
-                </div>
+ 
+        <div class="feed col-sm-6 debug">
+ 
+            <div class="profile d-flex justify-content-start align-items-center">
+                <img src="https://i.pinimg.com/474x/fb/51/f8/fb51f8c6016cf9c445137ed550ae1d25.jpg" class="profile-pic img-fluid m-3 rounded-circle">
+                <p class="profile-name">
+                    <b>João Especialista - Especialista no Assunto</b>
+                </p>
             </div>
+            <p class="message m-4">
+                Bebam água. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
+                recusandae
+                beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque error
+                illo.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
+                recusandae
+                beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque error
+                illo.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus recusandae
+                beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque error
+                illo.
+            </p>
+            <div class="reaction d-flex justify-content-end">
+                <i class="icon far fa-comment"></i>
+                <i class="icon far fa-thumbs-up"></i>
+                <i class="icon far fa-heart"></i>
+            </div>
+ 
+            <hr class="m-4">
+ 
+            <div class="profile d-flex justify-content-start align-items-center">
+                <img src="https://64.media.tumblr.com/240e554e9abfd89d15fafaee1cf62efe/c04b759aae5ab1d7-b5/s400x600/6915fdc4efd9b60346248f3ed2e8fb43092c1a34.jpg" class="profile-pic img-fluid m-3 rounded-circle">
+                <p class="profile-name">
+                    <b>Joãozinho - Proplayer</b>
+                </p>
+            </div>
+            <p class="message m-4">
+ 
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus recusandae
+                beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque error
+                illo.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus
+                recusandae
+                beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque error
+                illo.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci maxime quae nisi delectus recusandae
+                beatae, odit vero est possimus nostrum suscipit fugit explicabo consectetur ab culpa quasi, atque error
+                illo.
+ 
+            </p>
+            <div class="reaction d-flex justify-content-end">
+                <i class="icon far fa-comment"></i>
+                <i class="icon far fa-thumbs-up"></i>
+                <i class="icon far fa-heart"></i>
+            </div>
+ 
+            <hr class="m-4">
+ 
         </div>
+ 
+        <div class="community col-md-3 debug">
+ 
+        </div>
+ 
     </div>
 </div>

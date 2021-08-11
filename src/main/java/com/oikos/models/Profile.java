@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
-@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesReceived" })
+@JsonIgnoreProperties({ "communitiesOwned", "messagesReceived" })
 public class Profile {
 
 	@Id

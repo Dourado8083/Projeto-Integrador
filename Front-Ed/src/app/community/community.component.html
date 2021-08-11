@@ -1,10 +1,10 @@
-<div class="container-fluid bg-grad p-5 d-flex align-items-center">
+<div class="container-fluid bg-grad p-5 d-flex align-items-center flex-wrap">
 
-    <div class="container bg-white oikos-border">
+    <div class="container bg-white oikos-border mb-3">
 
         <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link text-secondary fw-bold active" id="myCommunities-tab" data-bs-toggle="tab"
+                <button (click)="getProfileById()" class="nav-link text-secondary fw-bold active" id="myCommunities-tab" data-bs-toggle="tab"
                     data-bs-target="#myCommunities" type="button" role="tab" aria-controls="myCommunities"
                     aria-selected="true">Minhas Comunidades</button>
             </li>
@@ -22,23 +22,30 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Membros</th>
-                            <th scope="col">Status</th>
+                            <th class="text-center" scope="col">Comunidade</th>
+                            <th class="text-center" scope="col">Informação</th>
+                            <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr *ngFor="let com of profile.memberOf">
-                            <th scope="row">com.communityId</th>
-                            <td></td>
-                            <td>com.communityName</td>
-                            <td>com.communityBio</td>
-                            <td>com.communityNumberOfMembers</td>
-                            <td>Membro</td>
+                            <th class="d-flex flex-column align-items-center mt-3" scope="col">
+                                <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}" class="communityPic img-fluid"></a>
+                                <a [routerLink]="['/community-page', com.communityId]" class="text-center fw-bold mt-2 text-dark" style="text-decoration: none;">{{com.communityName}}</a>
+                            </th>
+                            <td scope="col">
+                                <p class="fw-bold mt-3">Biografia: </p>
+                                <p><em>{{com.communityBio}}</em></p>
+                                <p class="mt-4"><b>Membros:</b> {{com.communityNumberOfMembers}}</p>
+                            </td>
+
+                            <td scope="col">
+                                <div class="text-white bg-dark text-center m-auto mt-5 status">Não-Membro</div>
+                                <div class="text-white bg-success text-center m-auto mt-5 status">Membro</div>
+                                
+                                <!--<div class="text-white bg-danger text-center m-auto mt-5 status">Admin</div>-->
+                            </td>
                         </tr>
 
                     </tbody>
@@ -51,27 +58,34 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Membros</th>
-                            <th scope="col">Status</th>
+                            <th class="text-center" scope="col">Comunidade</th>
+                            <th class="text-center" scope="col">Informação</th>
+                            <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr *ngFor="let com of communityList">
-                            <th scope="row">{{com.communityId}}</th>
-                            <td><img src="{{com.communityPic}}" class="communityPic"></td>
-                            <td>{{com.communityName}}</td>
-                            <td>{{com.communityBio}}</td>
-                            <td>{{com.communityNumberOfMembers}}</td>
-                            <td>Membro</td>
+                            <th class="d-flex flex-column align-items-center mt-3" scope="col">
+                                <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}" class="communityPic img-fluid"></a>
+                                <a [routerLink]="['/community-page', com.communityId]" class="text-center fw-bold mt-2 text-dark" style="text-decoration: none;">{{com.communityName}}</a>
+                            </th>
+                            <td scope="col">
+                                <p class="fw-bold mt-3">Biografia: </p>
+                                <p><em>{{com.communityBio}}</em></p>
+                                <p class="mt-4"><b>Membros:</b> {{com.communityNumberOfMembers}}</p>
+                                <p><b>Administrador</b>: <a href="">{{com.communityOwner.profileName}}</a></p>
+                            </td>
+
+                            <td scope="col">
+                                <div class="text-white bg-dark text-center m-auto mt-5 status">Não-Membro</div>
+                                <div class="text-white bg-success text-center m-auto mt-5 status">Membro</div>
+                                <div class="text-white bg-danger text-center m-auto mt-5 status">Admin</div>
+                            </td>
                         </tr>
 
                     </tbody>
-                </table>
+                </table> 
 
             </div>
 
@@ -79,8 +93,11 @@
 
     </div>
 
-    <button class="btn" data-bs-toggle="modal" data-bs-target="#newCommunity"><i
+    <div class="m-auto create">
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#newCommunity"><i
             class="fas fa-globe-americas fs-204 create"></i></button>
+        <p class="text-center mt-1 create-text">CRIAR</p>
+    </div>
 
 </div>
 

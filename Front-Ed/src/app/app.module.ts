@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './service/auth.service';
 import { CommunityComponent } from './community/community.component';
 import { MessageComponent } from './message/message.component';
+import { environment } from 'src/environments/environment.prod';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CommunityPageComponent } from './community-page/community-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { MessageComponent } from './message/message.component';
     CadastrarComponent,
     CommunityComponent,
     MessageComponent,
+    CommunityPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +39,12 @@ import { MessageComponent } from './message/message.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
 
 }

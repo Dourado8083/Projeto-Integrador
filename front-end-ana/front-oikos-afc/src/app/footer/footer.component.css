@@ -1,6 +1,6 @@
-.bg-bar{
-  background-color: #81D27F;
-}
+.grad {
+    background-image: linear-gradient(to right,#3DBCBB, #65DAB8);
+  }
   ul.social{
     list-style: none;
     padding: 0%;

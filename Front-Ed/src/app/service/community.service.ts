@@ -10,6 +10,7 @@ import { ProfileCommunityDTO } from '../model/ProfileCommunityDTO';
 })
 export class CommunityService {
 
+
   constructor(
     private http: HttpClient
   ) { }
@@ -20,6 +21,10 @@ export class CommunityService {
 
   getAll(): Observable<Community[]> {
     return this.http.get<Community[]>("http://localhost:8080/community/all", this.token);
+  }
+
+  getCommunityById(communityId: number): Observable<Community> {
+    return this.http.get<Community>(`http://localhost:8080/community/${communityId}`, this.token);
   }
 
   createCommunity(profileCommunityDto: ProfileCommunityDTO): Observable<Community> {

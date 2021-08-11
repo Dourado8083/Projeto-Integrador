@@ -25,33 +25,36 @@ import com.oikos.services.ProfileService;
 
 @RestController
 @RequestMapping("/profile")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*" , allowedHeaders = "*")
 public class ProfileController {
 
 	@Autowired
 	private ProfileRepository profileRepository;
-	
+
 	@Autowired
 	private ProfileService profileService;
-	
+
 	@GetMapping("/all")
-	public ResponseEntity<List<Profile>> GetAll(){
+	public ResponseEntity<List<Profile>> GetAll() {
 		return ResponseEntity.ok(profileRepository.findAll());
 	}
 	
-	
+	@GetMapping("/{profileId}")
+	public ResponseEntity<Profile> profileGetById(@PathVariable long profileId) {
+		return profileRepository.findById(profileId).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
+	}
+
 	@GetMapping("/name/{profileName}")
-	public ResponseEntity<List<Profile>> GetByName(@PathVariable String profileName)
-	{
+	public ResponseEntity<List<Profile>> GetByName(@PathVariable String profileName) {
 		return ResponseEntity.ok(profileRepository.findAllByProfileNameContainingIgnoreCase(profileName));
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public void delete (@PathVariable long id)
-	{
+	public void delete(@PathVariable long id) {
 		profileRepository.deleteById(id);
 	}
-	
+
 	@PostMapping("/signup")
 	public ResponseEntity<Object> cadastrarUsuario(@Valid @RequestBody Profile profile) {
 
@@ -63,28 +66,24 @@ public class ProfileController {
 		}
 
 	}
-	
+
 	@PostMapping("/credentials")
 	public ResponseEntity<?> getCredentials(@Valid @RequestBody ProfileLoginDTO profileLoginDto) {
-		return profileService.getCredentials(profileLoginDto)
-				.map(profile -> ResponseEntity.ok(profile))
+		return profileService.getCredentials(profileLoginDto).map(profile -> ResponseEntity.ok(profile))
 				.orElse(ResponseEntity.badRequest().build());
 	}
-	
+
 	@PostMapping("/signin")
 	public ResponseEntity<ProfileLoginDTO> signIn(@RequestBody Optional<ProfileLoginDTO> user) {
 		return profileService.signIn(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
-	
+
 	@PostMapping("/create-community")
 	public ResponseEntity<?> createCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return profileService.createCommunity(profileCommunityDto).map(newCommunity -> {
 			return ResponseEntity.status(201).build();
 		}).orElse(ResponseEntity.status(400).build());
 	}
-	
 
 }
-
-
