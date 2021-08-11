@@ -10,17 +10,18 @@
 .bg-white
 {
     background-color: white;
+    border-radius: 15px;
 }
 
 .logo
 {
     height: 200px;
-    width: 200px;
+    padding: 15px;
 }
 
 .top
 {
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
 .box
@@ -34,4 +35,20 @@
     padding: 14px 20px;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
+
+.back
+{
+    color: white;
+    font-size: 50px;
+    margin-top: 15px;
+}
+
+.butt
+{
+    height: 70px;
+    width: 150px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}

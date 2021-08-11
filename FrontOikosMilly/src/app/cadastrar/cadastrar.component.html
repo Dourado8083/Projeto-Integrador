@@ -1,10 +1,12 @@
 <div class="container-fluid" id="bg-img">
 
+    <a routerLink="/entrar"> <i class="fas fa-arrow-circle-left back"></i> </a>
+
     <div class="row d-flex justify-content-center">
 
-        <div class="col-md-6 bg-white top box">
+        <div class="col-md-6 bg-white top box text-center">
             <div class="align-items-center">
-            <img class="logo mb-3" src="../../assets/img/logo-oikos.png">
+                <img class="logo mb-3" src="../../assets/img/logo-oikos-int.png">
             </div>
         </div>
     </div>
@@ -14,46 +16,52 @@
         <div class="col-md-6 bg-white box">
 
 
-            <h1 class="text-center">Cadastrar</h1>
-            <form class="p-4">
-                <div class="form-group mt-3">
-                    <label for="name">Nome</label>
-                    <input [(ngModel)]="profile.profileName" class="form-control form-st" type="text" name="name" id="name"
-                        placeholder="Seu nome">
+            <h1 class="text-center mt-3">Cadastrar</h1>
+            <form class="me-4 ms-4">
+                <div class="form-group ">
+                    <label for="name"></label>
+                    <input [(ngModel)]="profile.profileName" class="form-control form-st" type="text" name="name"
+                        id="name" placeholder="Nome Completo">
                 </div>
 
-                <div class="form-group mt-3">
-                    <label for="email">E-mail</label>
-                    <input [(ngModel)]="profile.profileEmail" class="form-control form-st" type="text" name="email" id="email"
-                        placeholder="Seu e-mail">
+                <div class="form-group">
+                    <label for="email"></label>
+                    <input [(ngModel)]="profile.profileAlias" class="form-control form-st" type="text" name="alias" id="alias"
+                        placeholder="Usuário">
                 </div>
 
-                <div class="form-group mt-3">
-                    <label for="pic">Link da Foto</label>
+                <div class="form-group">
+                    <label for="email"></label>
+                    <input [(ngModel)]="profile.profileEmail" class="form-control form-st" type="text" name="email"
+                        id="email" placeholder="E-mail">
+                </div>
+
+                <div class="form-group">
+                    <label for="pic"></label>
                     <input [(ngModel)]="profile.profilePic" class="form-control form-st" type="text" name="pic" id="pic"
-                        placeholder="Link da sua foto">
+                        placeholder="Link da Foto">
                 </div>
 
 
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha</label>
+                <div>
+                    <label for="senha" class="form-label"></label>
                     <input (input)="confirmSenha($event)" type="password" class="form-control form-st" id="senha"
-                        placeholder="Sua senha">
+                        placeholder="Senha">
                 </div>
 
 
-                <div class="form-group mt-3">
-                    <label for="confirmPassword">Senha</label>
+                <div class="form-group mb-3">
+                    <label for="confirmPassword"></label>
                     <input [(ngModel)]="profile.profilePassword" class="form-control form-st" type="password"
-                        name="confirmPassword" id="confirmPassword" placeholder="Confirme sua senha">
+                        name="confirmPassword" id="confirmPassword" placeholder="Confirme sua Senha">
                 </div>
-
-                <button type="submit" class="btn btn-danger" routerLink="/entrar">Cancelar</button>
-                <button type="submit" class="btn btn-success" (click)='cadastrar()'>Cadastrar</button>
             </form>
 
-
         </div>
+    </div>
+
+    <div class="d-flex justify-content-end me-5">
+        <button type="submit" class="btn btn-primary butt fw-bold" (click)='cadastrar()'>Cadastrar</button>
     </div>
 
 
