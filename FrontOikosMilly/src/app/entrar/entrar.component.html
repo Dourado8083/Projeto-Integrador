@@ -1,24 +1,40 @@
-<h1>Entrar</h1>
-<form>
-  <h1 class="text-center mb-3 my-text">Entrar</h1>
 
-  <div class="form-group mt-3">
-      <label for="user">E-mail</label>
-      <input [(ngModel)]="profileLoginDto.profileEmail" class="form-control" type="text" name="user" id="user" placerholder="Seu e-mail">
-  </div>
 
-  <div class="form-group mt-3">
-      <label for="password">Senha</label>
-      <input [(ngModel)]="profileLoginDto.profilePassword" class="form-control" type="password" name="password" id="password" placerholder="Sua senha">
-  </div>
+<div class="container-fluid" id="bg-img">
 
-  <div class="d-flex justify-content-center mt-4">
-      <button (click)="signIn()" type="submit" class="btn btn-success">Entrar</button>
-  </div>
 
-  <hr class="mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
 
-  <p class="text-center my-text">
-      Não tem uma conta? <a routerLink="/cadastrar">Cadastre-se</a>
-  </p>
-  </form>
+        <div class="col-md-6 bg-white top box">
+            <form class="p-4">
+
+                <img class="logo mb-3" src="../../assets/img/logo-oikos.png">
+                <h1 class="text-center mb-3 my-text">Entrar</h1>
+
+                <div class="form-group mt-2 p-3">
+                    <label class="form-label" for="user">E-mail</label>
+                    <input [(ngModel)]="profileLoginDto.profileEmail" class="form-control form-st" type="text" name="user" id="user" placerholder="Seu e-mail">
+                </div>
+
+                <div class="form-group mt-2 p-3">
+                    <label for="password">Senha</label>
+                    <input [(ngModel)]="profileLoginDto.profilePassword" class="form-control form-st" type="password"
+                        name="password" id="password" placerholder="Sua senha">
+                </div>
+
+                <div class="d-flex justify-content-center mt-3 p-3">
+                    <button (click)="signIn()" type="submit" class="btn btn-primary butt">Entrar</button>
+                </div>
+
+                <hr>
+
+                <p class="text-center my-text">
+                    Não tem uma conta? <a routerLink="/cadastrar">Cadastre-se</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>

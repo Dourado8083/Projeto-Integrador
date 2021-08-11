@@ -1,0 +1,49 @@
+#bg-img
+{
+    background-image: url("https://cdn.pixabay.com/photo/2016/08/15/12/52/carrots-1595308_960_720.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-white
+{
+    background-color: cornsilk;
+    border-radius: 15px;
+}
+
+.top
+{
+    margin-top: 200px;
+}
+
+.box
+{
+    width: 500px;
+}
+
+.form-st
+{
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.butt
+{
+    padding: 14px 20px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logo
+{
+    height: 80px;
+    width: 80px;
+    margin-left: 180px;
+}
+
+
