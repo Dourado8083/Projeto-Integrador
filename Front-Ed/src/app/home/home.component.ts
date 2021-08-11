@@ -43,9 +43,7 @@ export class HomeComponent implements OnInit {
   }
   send()
   {
-    this.profile.profileId = environment.id;
-    this.message.profileOn = this.profile
-
+   
     console.log(environment.token)
     console.log(environment.name)
     this.messageService.postMessage(this.message).subscribe((resp)=>{

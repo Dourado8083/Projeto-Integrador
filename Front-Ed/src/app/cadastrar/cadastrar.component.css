@@ -1,0 +1,54 @@
+#bg-img
+{
+    background-image: url("https://cdn.pixabay.com/photo/2015/10/22/17/45/leaf-1001679_960_720.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-white
+{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.logo
+{
+    height: 200px;
+    padding: 15px;
+}
+
+.top
+{
+    margin-top: 40px;
+}
+
+.box
+{
+    width: 500px;
+}
+
+.form-st
+{
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back
+{
+    color: white;
+    font-size: 50px;
+    margin-top: 15px;
+}
+
+.butt
+{
+    height: 70px;
+    width: 150px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -26,7 +26,6 @@ export class EntrarComponent implements OnInit {
       this.profileLoginDto = resp;
       this.router.navigate(["/home"]);
 
-      environment.email = this.profileLoginDto.profileEmail;
       environment.token = this.profileLoginDto.profileToken;
       environment.pic = this.profileLoginDto.profilePic;
       environment.id = this.profileLoginDto.profileId;

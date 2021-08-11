@@ -8,4 +8,5 @@ export class Profile {
     public profileBio: string;
     public profilePic: string;
     public memberOf: Community[];
+    public profileAlias: string;
 }
