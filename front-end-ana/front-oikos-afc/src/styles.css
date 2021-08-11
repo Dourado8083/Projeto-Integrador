@@ -1,5 +1,5 @@
 .bg{
-    background-color: #80CFEE;
+    background-color: #D9EFFC;
 }
 
 .font-p{
@@ -8,4 +8,8 @@
 
 .rad{
     border-radius: 20px;
+}
+
+.rounded-p{
+    border-radius: 10px;
 }
