@@ -1,0 +1,23 @@
+.fs-user{
+    font-size: 14pt;
+}
+
+small{
+    font-size: 9pt;
+}
+
+.bg-sla{
+    background-color: #D9EFFC;
+}
+
+.fs-follow{
+    font-size: 12pt;
+}
+
+a:link{
+    color: black;
+}
+
+a:visited{
+    color: black;
+}

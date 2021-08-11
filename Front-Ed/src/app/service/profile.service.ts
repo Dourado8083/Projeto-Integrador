@@ -21,4 +21,6 @@ export class ProfileService {
     return this.http.get<Profile>(`http://localhost:8080/profile/${profileId}`, this.token);
   }
 
+  
+
 }

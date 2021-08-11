@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oikos.models.Community;
+import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.services.CommunityService;
 
 @RestController
 @RequestMapping("/community")
-@CrossOrigin(origins = "*" , allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CommunityController {
 
 	@Autowired
@@ -49,11 +50,6 @@ public class CommunityController {
 		return communityRepository.findAllByCommunityNameContainingIgnoreCase(communityName);
 	}
 
-	@PostMapping("/create")
-	public ResponseEntity<Community> communityPost(@RequestBody Community com) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(communityRepository.save(com));
-	}
-
 	@DeleteMapping("/delete/{communityid}")
 	public void communityDelete(@PathVariable long communityId) {
 		communityRepository.deleteById(communityId);
@@ -74,18 +70,24 @@ public class CommunityController {
 					"Você saiu da comunidade" + profileCommunityDto.getCommunityName() + ". Sentiremos sua falta!");
 		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
 	}
-
+	
 	@PutMapping("/edit-bio")
 	public ResponseEntity<?> editBio(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return communityService.editBio(profileCommunityDto).map(community -> {
-			return ResponseEntity.status(200).body("A descrição foi alteradas com sucesso!");
-		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+			return ResponseEntity.status(200).body(community);
+		}).orElse(ResponseEntity.status(400).build());
 	}
+
 
 	@PutMapping("/delete-community")
 	public ResponseEntity<?> deleteCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
-		return communityService.deleteCommunity(profileCommunityDto).map(community -> {
-			return ResponseEntity.status(200).body("Comunidade deletada com sucesso!");
-		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+		return communityService.deleteCommunity(profileCommunityDto).map(community -> ResponseEntity.ok(community))
+				.orElse(ResponseEntity.status(401).build());
 	}
+	
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable long id) {
+		communityRepository.deleteById(id);
+	}	
+	
 }

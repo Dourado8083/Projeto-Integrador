@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Community } from '../model/community';
 import { Profile } from '../model/Profile';
+import { ProfileCommunityDTO } from '../model/ProfileCommunityDTO';
 import { AuthService } from '../service/auth.service';
 import { CommunityService } from '../service/community.service';
 import { ProfileService } from '../service/profile.service';
@@ -20,6 +21,8 @@ export class CommunityPageComponent implements OnInit {
   profile: Profile = new Profile();
   profileId: number = environment.id;
 
+  profileCommunityDto: ProfileCommunityDTO = new ProfileCommunityDTO();
+
   constructor(
     private communityService: CommunityService,
     private profileService: ProfileService,
@@ -28,6 +31,12 @@ export class CommunityPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
+    if(environment.token == "") {
+      alert("Sua seção expirou, faça login novamente.");
+      this.router.navigate(["/entrar"]);
+    }
+
     this.getUserById();
     this.getCommunityById();
   }
@@ -43,5 +52,38 @@ export class CommunityPageComponent implements OnInit {
       this.community = resp;
     })
   }
+
+  editCommunityBio() {
+    this.profileCommunityDto.communityId = this.communityId;
+    this.profileCommunityDto.profileId = this.profileId;
+    this.communityService.editCommunityBio(this.profileCommunityDto).subscribe((resp: Community) => {
+      alert("Biografia alterada com sucesso!");
+    });
+  }
+
+  joinCommunity() {
+
+  }
+
+  leaveCommunity() {
+    
+  }
+
+  editCommunityPic() {
+
+  }
+
+  deleteCommunity() {
+    this.communityService.deleteCommunity(this.communityId).subscribe(() => {
+      alert("Comunidade deletada com sucesso!");
+      this.router.navigate(["/community"]);
+    });
+
+  }
+
+  /*
+  deletePost(profileCommunityDto: ProfileCommunityDTO) {
+    this.postService.deletePost()
+  }*/
 
 }

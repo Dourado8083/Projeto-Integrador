@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
-@JsonIgnoreProperties({ "communitiesOwned", "messagesReceived" })
+@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesReceived" })
 public class Profile {
 
 	@Id
@@ -24,6 +24,9 @@ public class Profile {
 
 	@NotNull
 	private String profileName;
+	
+	@NotNull
+	private String profileAlias;
 
 	@NotNull
 	private String profileEmail;
@@ -69,6 +72,14 @@ public class Profile {
 
 	public void setProfileName(String profileName) {
 		this.profileName = profileName;
+	}
+	
+	public String getProfileAlias() {
+		return profileAlias;
+	}
+
+	public void setProfileAlias(String profileAlias) {
+		this.profileAlias = profileAlias;
 	}
 
 	public String getProfileEmail() {

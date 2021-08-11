@@ -6,6 +6,7 @@ import { CommunityComponent } from './community/community.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
+import { ProfilePageComponent } from './page/profile-page/profile-page.component';
 
 const routes: Routes = [
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "community", component: CommunityComponent},
   {path: "message", component: MessageComponent},
-  {path: "community-page/:id", component: CommunityPageComponent}
+  {path: "community-page/:id", component: CommunityPageComponent},
+  {path: "profile-page/:id", component: ProfilePageComponent}
 
 ];
 

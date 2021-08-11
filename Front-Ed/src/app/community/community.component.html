@@ -1,7 +1,9 @@
 <div class="container-fluid bg-grad p-5 d-flex align-items-center flex-wrap">
 
-    <div class="container bg-white oikos-border mb-3">
+    <!-- Div Principal -->
+    <div class="container bg-white oikos-border mb-3 p-3">
 
+        <!-- Nav-Tab para comunidades -->
         <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button (click)="getProfileById()" class="nav-link text-secondary fw-bold active" id="myCommunities-tab" data-bs-toggle="tab"
@@ -35,9 +37,10 @@
                                 <a [routerLink]="['/community-page', com.communityId]" class="text-center fw-bold mt-2 text-dark" style="text-decoration: none;">{{com.communityName}}</a>
                             </th>
                             <td scope="col">
-                                <p class="fw-bold mt-3">Biografia: </p>
+                                <p class="mt-4 mb-1"><i class="fas fa-book"></i><b> Biografia: </b> </p>
                                 <p><em>{{com.communityBio}}</em></p>
-                                <p class="mt-4"><b>Membros:</b> {{com.communityNumberOfMembers}}</p>
+                                <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b> {{com.communityNumberOfMembers}}</p>
+                                <p><b>Administrador</b>: <a [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a></p>
                             </td>
 
                             <td scope="col">
@@ -71,16 +74,18 @@
                                 <a [routerLink]="['/community-page', com.communityId]" class="text-center fw-bold mt-2 text-dark" style="text-decoration: none;">{{com.communityName}}</a>
                             </th>
                             <td scope="col">
-                                <p class="fw-bold mt-3">Biografia: </p>
+                                <p class="mt-4 mb-1"><i class="fas fa-book"></i><b> Biografia: </b> </p>
                                 <p><em>{{com.communityBio}}</em></p>
-                                <p class="mt-4"><b>Membros:</b> {{com.communityNumberOfMembers}}</p>
-                                <p><b>Administrador</b>: <a href="">{{com.communityOwner.profileName}}</a></p>
+                                <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b> {{com.communityNumberOfMembers}}</p>
+                                <p><b>Administrador</b>: <a [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a></p>
                             </td>
 
                             <td scope="col">
                                 <div class="text-white bg-dark text-center m-auto mt-5 status">Não-Membro</div>
                                 <div class="text-white bg-success text-center m-auto mt-5 status">Membro</div>
+                                <!--
                                 <div class="text-white bg-danger text-center m-auto mt-5 status">Admin</div>
+                                -->
                             </td>
                         </tr>
 
@@ -93,6 +98,7 @@
 
     </div>
 
+    <!-- Ícone de criação de comunidade -->
     <div class="m-auto create">
         <button class="btn" data-bs-toggle="modal" data-bs-target="#newCommunity"><i
             class="fas fa-globe-americas fs-204 create"></i></button>
@@ -101,7 +107,7 @@
 
 </div>
 
-
+<!-- Modal para criação -->
 <div id="newCommunity" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

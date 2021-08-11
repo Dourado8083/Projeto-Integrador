@@ -2,9 +2,13 @@
     <div class="row d-flex justify-content-center ml col-sep">
 
         <div class="col-md-2 mt-5 p-3 d-flex flex-column justify-content-start align-items-center info top border-rad">
+            <p class="fs-20 text-center"><b>{{community.communityName}}</b></p>
             <img src="{{community.communityPic}}" class="pic img-fluid mt-2">
-            <p class="mt-4"><i class="fas fa-book"></i><b> Biografia: </b> <em>{{community.communityBio}}</em></p>
-            <p class="mt-2"><i class="fas fa-user-friends"></i><b> <em> Nº</em> Membros: </b> {{community.communityNumberOfMembers}}</p>
+            <p class="mt-4 mb-1"><i class="fas fa-book"></i><b> Biografia: </b></p>
+            <p><em>{{community.communityBio}}</em></p>
+            <p class="mt-1"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b> {{community.communityNumberOfMembers}}</p>
+            <button (click)="joinCommunity()" class="btn btn-success mt-3">Entrar na comunidade</button>
+            <button (click)="leaveCommunity()" class="btn btn-danger mt-3">Sair da comunidade</button>
         </div>
 
         <div class="col-md-6 post mt-5 justify-content-center align-items-center border-rad">
@@ -13,13 +17,51 @@
 
         </div>
 
-        <div class="col-md-2 mt-5 post border-rad">
+        <div class="col-md-2 mt-5 d-flex flex-column justify-content-start">
+            
+            <div class="container-fluid border-rad mb-3 d-flex flex-column align-items-center admin">
+                <p class="mt-3 fs-20"><b>Menu de Administrador</b></p>
+                <button (click)="deleteCommunity()" class="btn btn-danger">Apagar comunidade</button>
+                <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#editCommunity">Editar biografia</button>
+                <button (click)="editCommunityPic()" class="btn btn-success mt-3">Editar foto</button>
+            </div>
+            
+            <div class="container-fluid border-rad mb-4 menu">
 
-    
+            </div>
 
         </div>
 
 
 
+    </div>
+</div>
+
+
+<div id="editCommunity" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar comunidade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-control">
+
+                    <label for="communityBio" class="mt-3 mb-1">Biografia da comunidade</label>
+                    <div class="form-floating">
+                        <textarea [(ngModel)]="profileCommunityDto.communityBio" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2"></label>
+                      </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button (click)="editCommunityBio()" type="button" data-bs-dismiss="modal" class="btn btn-success">Criar</button>
+            </div>
+        </div>
     </div>
 </div>

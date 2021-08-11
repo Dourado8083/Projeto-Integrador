@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.oikos.models.Community;
 import com.oikos.models.Message;
 import com.oikos.models.Profile;
-import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.models.dtos.MessageDTO;
+import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.ProfileRepository;
 
@@ -98,53 +98,32 @@ public class CommunityService {
 
 		}).orElse(Optional.empty());
 	}
-
+	
 	/**
-	 * Método para editar a bio de uma comunidade caso o usuário seja dono dela.
+	 * Método para deletar uma comunidade.
 	 * 
-	 * @param ProfileCommunityDTO
-	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
-	 *         ser tratado como erro.
+	 * @param profileMessageCommunityDTO
+	 * @return Um Optional nulo ou com uma comunidade recém-instanciada para indicar sucesso
+	 * 
 	 */
-	public Optional<?> editBio(ProfileCommunityDTO profileCommunityDto) {
-		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
-
-			Optional<Profile> profile = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
-
-			if (profile.isEmpty()
-					|| !community.getCommunityOwner().getProfileEmail().equals(profile.get().getProfileEmail())) {
-				return Optional.empty();
-			}
-
-			community.setCommunityBio(profileCommunityDto.getCommunityBio());
-
-			return Optional.ofNullable(communityRepository.save(community));
-		}).orElse(Optional.empty());
-	}
-
 	public Optional<?> deleteCommunity(ProfileCommunityDTO profileCommunityDto) {
 		Optional<Community> comunidadeQueEstouProcurando = communityRepository
-				.findByCommunityName(profileCommunityDto.getCommunityName());
+				.findById(profileCommunityDto.getCommunityId());
 		return comunidadeQueEstouProcurando.map(community -> {
 
-			// só roda se tiver encontrado uma comunidade
-
 			Optional<Profile> usuarioQueEstouProcurando = profileRepository
-					.findByProfileEmail(profileCommunityDto.getProfileEmail());
+					.findById(profileCommunityDto.getProfileId());
 
-			// Retorna um erro se o usuário não existe
 			if (usuarioQueEstouProcurando.isEmpty()) {
 				return Optional.empty();
 			}
 
-			// Retorna um erro se o usuário não é o dono da comunidade
 			if (usuarioQueEstouProcurando.get().equals(community.getCommunityOwner()) == false) {
 				return Optional.empty();
 			}
 
 			communityRepository.deleteById(community.getCommunityId());
 
-			// Retorna uma comunidade só para diferenciar dos retornos nulos que são erros
 			return Optional.ofNullable(new Community());
 
 		}).orElse(Optional.empty());
@@ -159,8 +138,7 @@ public class CommunityService {
 	 */
 	public Optional<?> postMessageOnCommunity(MessageDTO messageDto) {
 		return profileRepository.findByProfileEmail(messageDto.getProfileEmail()).map(profile -> {
-			Optional<Community> community = communityRepository
-					.findByCommunityName(messageDto.getCommunityName());
+			Optional<Community> community = communityRepository.findByCommunityName(messageDto.getCommunityName());
 			if (community.isEmpty()) {
 				return Optional.empty();
 			}
@@ -173,7 +151,7 @@ public class CommunityService {
 		}).orElse(Optional.empty());
 
 	}
-	
+
 	/**
 	 * Método para editar a foto de uma comunidade caso o usuário seja dono dela.
 	 * 
@@ -181,9 +159,9 @@ public class CommunityService {
 	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
 	 *         ser tratado como erro.
 	 */
-	public Optional<?> changePicture (ProfileCommunityDTO profileCommunityDto){
+	public Optional<?> changePicture(ProfileCommunityDTO profileCommunityDto) {
 		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
-		
+
 			Optional<Profile> profile = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
 
 			if (profile.isEmpty()
@@ -195,7 +173,31 @@ public class CommunityService {
 
 			return Optional.ofNullable(communityRepository.save(community));
 		}).orElse(Optional.empty());
-		
+
 	}
+	
+	/**
+	 * Método para editar a bio de uma comunidade caso o usuário seja dono dela.
+	 * 
+	 * @param ProfileCommunityDTO
+	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
+	 *         ser tratado como erro.
+	 */
+	public Optional<?> editBio(ProfileCommunityDTO profileCommunityDto) {
+		return communityRepository.findById(profileCommunityDto.getCommunityId()).map(community -> {
+
+			Optional<Profile> profile = profileRepository.findById(profileCommunityDto.getProfileId());
+
+			if (profile.isEmpty()
+					|| !community.getCommunityOwner().getProfileEmail().equals(profile.get().getProfileEmail())) {
+				return Optional.empty();
+			}
+
+			community.setCommunityBio(profileCommunityDto.getCommunityBio());
+
+			return Optional.ofNullable(communityRepository.save(community));
+		}).orElse(Optional.empty());
+	}
+
 
 }

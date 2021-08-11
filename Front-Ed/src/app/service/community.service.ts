@@ -31,4 +31,17 @@ export class CommunityService {
     return this.http.post<Community>("http://localhost:8080/profile/create-community", profileCommunityDto, this.token);
   }
 
+  editCommunityBio(profileCommunityDto: ProfileCommunityDTO): Observable<Community> {
+    return this.http.put<Community>("http://localhost:8080/community/edit-bio", profileCommunityDto, this.token);
+  }
+
+  /*
+  deleteCommunity(profileCommunityDto: ProfileCommunityDTO): Observable<ProfileCommunityDTO> {
+    return this.http.put<ProfileCommunityDTO>("http://localhost:8080/community/delete-community", profileCommunityDto, this.token);
+  }*/
+
+  deleteCommunity(communityId: number) {
+    return this.http.delete(`http://localhost:8080/community/${communityId}`, this.token);
+  }
+
 }
