@@ -58,17 +58,15 @@ public class CommunityController {
 	@PutMapping("/join-community")
 	public ResponseEntity<?> joinCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return communityService.joinCommunity(profileCommunityDto).map(community -> {
-			return ResponseEntity.status(200)
-					.body("Você agora é membro da comunidade " + profileCommunityDto.getCommunityName() + "!");
-		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+			return ResponseEntity.status(200).body(community);
+		}).orElse(ResponseEntity.status(400).build());
 	}
 
 	@PutMapping("/leave-community")
 	public ResponseEntity<?> leaveCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return communityService.leaveCommunity(profileCommunityDto).map(community -> {
-			return ResponseEntity.status(200).body(
-					"Você saiu da comunidade" + profileCommunityDto.getCommunityName() + ". Sentiremos sua falta!");
-		}).orElse(ResponseEntity.status(400).body("Oops, operação inválida!"));
+			return ResponseEntity.status(200).body(community);
+		}).orElse(ResponseEntity.status(400).build());
 	}
 	
 	@PutMapping("/edit-bio")

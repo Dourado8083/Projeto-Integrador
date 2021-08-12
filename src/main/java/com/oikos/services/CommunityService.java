@@ -20,7 +20,26 @@ public class CommunityService {
 	private CommunityRepository communityRepository;
 	@Autowired
 	private ProfileRepository profileRepository;
-
+	
+	/**
+	 * Método para checar se um usuário pertence a uma comunidade
+	 * 
+	 * @param ProfileCommunityDTO
+	 * @return Um booleano 
+	 */
+	boolean isMember(Profile profile, Community community) {
+		
+		
+		for(int i = 0; i < profile.getMemberOf().size(); i++) {
+			Community comm = profile.getMemberOf().get(i);
+			if(comm.getCommunityId() == community.getCommunityId()) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	/**
 	 * Método para entrar em uma comunidade.
 	 * 
@@ -29,11 +48,11 @@ public class CommunityService {
 	 *         para ser tratado como erro.
 	 */
 	public Optional<?> joinCommunity(ProfileCommunityDTO profileCommunityDto) {
-		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
+		return communityRepository.findById(profileCommunityDto.getCommunityId()).map(community -> {
 
-			Optional<Profile> profile = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
+			Optional<Profile> profile = profileRepository.findById(profileCommunityDto.getProfileId());
 
-			if (profile.isEmpty()) {
+			if (profile.isEmpty() || isMember(profile.get(), community)) {
 				return Optional.empty();
 			}
 
@@ -58,36 +77,28 @@ public class CommunityService {
 	 *         para ser tratado como erro.
 	 */
 	public Optional<?> leaveCommunity(ProfileCommunityDTO profileCommunityDto) {
-		return communityRepository.findByCommunityName(profileCommunityDto.getCommunityName()).map(community -> {
+		return communityRepository.findByCommunityId(profileCommunityDto.getCommunityId()).map(community -> {
 
-			Optional<Profile> profile = profileRepository.findByProfileEmail(profileCommunityDto.getProfileEmail());
+			Optional<Profile> profile = profileRepository.findById(profileCommunityDto.getProfileId());
 
-			if (profile.isEmpty()) {
+			if (profile.isEmpty() || !isMember(profile.get(), community)) {
 				return Optional.empty();
 			}
-
-			boolean flagProfile = true;
-			boolean flagCommunity = true;
-			int communitySize = community.getCommunityMembers().size();
-			int profileCommunitiesOn = profile.get().getMemberOf().size();
-
-			for (int i = 0; i < Math.max(communitySize, profileCommunitiesOn) && flagCommunity && flagProfile; i++) {
-				if (i < communitySize && flagProfile) {
-					if (community.getCommunityMembers().get(i).equals(profile.get())) {
-						community.getCommunityMembers().remove(i);
-						flagProfile = false;
-					}
-				}
-				if (i < profileCommunitiesOn && flagCommunity) {
-					if (profile.get().getMemberOf().get(i).equals(community)) {
-						profile.get().getMemberOf().remove(i);
-						flagCommunity = false;
-					}
+			
+			for(int i = 0; i < profile.get().getMemberOf().size(); i++) {
+				Community comm = profile.get().getMemberOf().get(i);
+				if(profileCommunityDto.getCommunityId() == comm.getCommunityId()) {
+					profile.get().getMemberOf().remove(i);
+					break;
 				}
 			}
-
-			if (flagCommunity || flagProfile) {
-				return Optional.empty();
+			
+			for(int i = 0; i < community.getCommunityMembers().size(); i++) {
+				Profile prof = community.getCommunityMembers().get(i);
+				if(profileCommunityDto.getProfileId() == prof.getProfileId()) {
+					community.getCommunityMembers().remove(i);
+					break;
+				}
 			}
 
 			community.setCommunityNumberOfMembers(community.getCommunityNumberOfMembers() - 1);

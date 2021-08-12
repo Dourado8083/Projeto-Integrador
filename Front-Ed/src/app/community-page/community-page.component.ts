@@ -58,15 +58,27 @@ export class CommunityPageComponent implements OnInit {
     this.profileCommunityDto.profileId = this.profileId;
     this.communityService.editCommunityBio(this.profileCommunityDto).subscribe((resp: Community) => {
       alert("Biografia alterada com sucesso!");
+      this.router.navigate([this.router.url]);
     });
+    this.profileCommunityDto = new ProfileCommunityDTO();
   }
 
   joinCommunity() {
-
+    this.profileCommunityDto.communityId = this.communityId;
+    this.profileCommunityDto.profileId = this.profileId;
+    this.communityService.joinCommunity(this.profileCommunityDto).subscribe((resp: Community) => {
+      this.community = resp;
+    }); 
+    this.profileCommunityDto = new ProfileCommunityDTO();
   }
 
   leaveCommunity() {
-    
+    this.profileCommunityDto.communityId = this.communityId;
+    this.profileCommunityDto.profileId = this.profileId;
+    this.communityService.leaveCommunity(this.profileCommunityDto).subscribe((resp: Community) => {
+      this.community = resp;
+    }); 
+    this.profileCommunityDto = new ProfileCommunityDTO();
   }
 
   editCommunityPic() {
@@ -85,5 +97,14 @@ export class CommunityPageComponent implements OnInit {
   deletePost(profileCommunityDto: ProfileCommunityDTO) {
     this.postService.deletePost()
   }*/
+
+  isMember(): boolean {
+    for (let i = 0; i < this.community.communityMembers.length; i++) {
+      if (this.community.communityMembers[i].profileId == this.profileId) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 }
