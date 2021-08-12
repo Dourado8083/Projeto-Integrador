@@ -1,6 +1,6 @@
 .bg
 {
-    background-color: lightblue;
+    background-color: rgb(136, 136, 136);
 }
 
 ul.social
@@ -15,3 +15,16 @@ ul.social li
     margin: 0%;
     padding: 5px;
 } 
+
+.copy-color
+{
+    background-color: rgb(68, 68, 68);
+    color: white;
+}
+
+.butt
+{
+    height: 60px;
+    width:  180px;
+    font-size: 25px;
+}
