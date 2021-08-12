@@ -1,6 +1,8 @@
 import { Community } from "./community";
+import { Message } from "./Message";
 
 export class Profile {
+    
     public profileId: number;
     public profileName: string;
     public profileAlias: string;
@@ -10,4 +12,7 @@ export class Profile {
     public profilePic: string;
     public memberOf: Community[];
     public communitiesOwned: Community[];
+    public messagesSent: Message[];
+    public messagesReceived: Message[];
+
 }

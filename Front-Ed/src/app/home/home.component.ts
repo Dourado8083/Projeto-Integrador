@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Message } from '../model/Message';
+import { MessageProfileDTO } from '../model/MessageProfileDTO';
 import { Profile } from '../model/Profile';
 import { MessageService } from '../service/message.service';
 import { ProfileService } from '../service/profile.service';
@@ -16,13 +17,13 @@ import { ProfileService } from '../service/profile.service';
 })
 export class HomeComponent implements OnInit {
 
-  message: Message = new Message
-  messageList: Message[]
+  profile: Profile = new Profile();
+  profileId: number = environment.id;
 
-  profile: Profile = new Profile()
-  
+  messageProfileDto: MessageProfileDTO = new MessageProfileDTO();
 
-  profileId = environment.id
+  message: Message = new Message();
+  messageList: Message[];
 
   constructor(
     private router: Router,
@@ -37,8 +38,9 @@ export class HomeComponent implements OnInit {
     if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
-    this.findAllMessage()
+
     this.getProfileById();
+    this.getAllMessage();
   }
 
   getProfileById() {
@@ -47,25 +49,27 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  findAllMessage() {
+  getFeed() {
+    this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
+      this.profile = resp;
+      alert(this.profile.profileId)
+      alert(this.profile.profileName)
+      this.messageList = this.profile.messagesReceived;
+    });
+  }
+
+  getAllMessage() {
     this.messageService.getAllMessage().subscribe((resp: Message[]) => {
-      this.messageList = resp
-    })
-  }
- 
-
-  send() {
-    this.profile.profileId = environment.id;
-    this.message.profileOn = this.profile
-    
-    this.messageService.postMessage(this.message).subscribe((resp) => {
-      resp = this.message
-      alert('Mensagem cadastrada.')
-      this.findAllMessage()
-
-      this.message = new Message()
-    })
+      this.messageList = resp;
+    });
   }
 
+  postMessage() {
+    this.messageProfileDto.profileFromId = this.profileId;
+    this.messageProfileDto.profileToId = this.profileId;
+    this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
+      this.getAllMessage();
+    });
+  }
 
 }

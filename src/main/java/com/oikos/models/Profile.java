@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
-@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesReceived" })
 public class Profile {
 
 	@Id
@@ -43,7 +42,7 @@ public class Profile {
 	private int numberOfFollowers;
 	
 	@OneToMany(mappedBy = "communityOwner")
-	@JsonIgnoreProperties("communitiesOwned")
+	@JsonIgnoreProperties({"communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages", "numberOfFollowers"})
 	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
@@ -51,11 +50,11 @@ public class Profile {
 	private List<Community> memberOf = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "profileFrom")
-	@JsonIgnoreProperties("messagesSent")
+	@JsonIgnoreProperties({"communityOn", "profileFrom", "profileOn"})
 	private List<Message> messagesSent = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "profileOn")
-	@JsonIgnoreProperties("messagesReceived")
+	@JsonIgnoreProperties({"communityOn", "profileFrom", "profileOn"})
 	private List<Message> messagesReceived = new ArrayList<>();
 
 	public long getProfileId() {
@@ -125,6 +124,23 @@ public class Profile {
 
 	public int getNumberOfFollowers() {
 		return numberOfFollowers;
+	}
+	
+
+	public List<Message> getMessagesSent() {
+		return messagesSent;
+	}
+
+	public void setMessagesSent(List<Message> messagesSent) {
+		this.messagesSent = messagesSent;
+	}
+
+	public List<Message> getMessagesReceived() {
+		return messagesReceived;
+	}
+
+	public void setMessagesReceived(List<Message> messagesReceived) {
+		this.messagesReceived = messagesReceived;
 	}
 
 	public void setNumberOfFollowers(int numberOfFollowers) {

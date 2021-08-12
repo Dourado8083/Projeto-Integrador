@@ -2,6 +2,8 @@ package com.oikos.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +18,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oikos.models.Message;
+import com.oikos.models.dtos.MessageProfileDTO;
+import com.oikos.models.dtos.ProfileCommunityDTO;
 import com.oikos.repositories.MessageRepository;
+import com.oikos.services.MessageService;
 
 @RestController
 @RequestMapping("/message")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MessageController {
+	
 	@Autowired
 	private MessageRepository messageRepository;
 
+	@Autowired
+	private MessageService messageService;
+	
 	@GetMapping("/all")
 	public List<Message> messageGetAll() {
 		return messageRepository.findAll();
@@ -40,16 +49,23 @@ public class MessageController {
 		return messageRepository.findById(messageId).map(mes -> ResponseEntity.ok(mes))
 				.orElse(ResponseEntity.notFound().build());
 	}
-
+	
+	/*
 	@PostMapping("/post")
 	public ResponseEntity<Message> messagePost(@RequestBody Message message) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(messageRepository.save(message));
+	}*/
+	
+	@PostMapping("/post")
+	public ResponseEntity<?> postMessageOnProfile(@Valid @RequestBody MessageProfileDTO messageProfileDto) {
+		return messageService.postMessageOnProfile(messageProfileDto).map(message -> {
+			return ResponseEntity.status(200).body(message);
+		}).orElse(ResponseEntity.status(400).build());
 	}
 
 	@PutMapping("/edit")
 	public ResponseEntity<Message> messagePut(@RequestBody Message message) {
 		return ResponseEntity.status(HttpStatus.OK).body(messageRepository.save(message));
-
 	}
 
 	@DeleteMapping("/delete/{messageId}")

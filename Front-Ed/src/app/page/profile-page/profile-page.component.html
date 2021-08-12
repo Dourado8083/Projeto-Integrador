@@ -4,11 +4,12 @@
         <!-- Perfil do Usuário -->
         <div class="col-md-3 bg-light rounded-p me-4 ms-3 mt-3 fw-bold" style="max-height:420px">
             <div class=" d-flex justify-content-center m-3">
-                <img src="{{profile.profilePic}}" alt=""
-                    class="img-fluid rounded-circle img-thumbnail" style="width: 130px; height: 130px;">
+                <img src="{{profile.profilePic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
+                    style="width: 130px; height: 130px;">
             </div>
             <h4 class="text-center fw-bold mb-0">{{profile.profileName}}</h4>
             <p class="text-center lead fs-user mb-2">@{{profile.profileAlias}}</p>
+
             <hr class="ms-5 me-5">
             <p class="text-center lead fs-follow mb-2">20 Seguindo · 30 Seguidores</p>
             <hr class="ms-5 me-5">
@@ -30,38 +31,30 @@
                     <div class="mb-3 mt-1 bg-sla p-3 rounded-p">
                         <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
                             pensamentos:</label>
-                        <textarea [(ngModel)]="message.messageContent" type="text" class="form-control" id="descricao"
-                            placeholder="Digite a mensagem">
-
-
-                        ngModel='' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <button class="btn btn-success mb-2 mt-2" (click)='send()'>POSTAR</button>
+                        <textarea [(ngModel)]="messageProfileDto.messageContent" type="text" class="form-control"
+                            id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
+                        <button (click)="postMessage()" class="btn btn-success mb-2 mt-2">POSTAR</button>
                     </div>
 
 
                     <!-- Posts -->
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <img src="https://i.pinimg.com/736x/e2/3b/49/e23b4984602d769e8f836205b7a33607.jpg" alt=""
-                                class="img-fluid rounded-circle" style="width: 30px; height: 30px;"> @usuario<small
-                                class="text-muted ms-2">15h34 · 10/08/2021</small>
-                        </div>
-                        <div class="card-body ">
-                            <h5 class="card-title fw-bold mb-0">Titulo </h5>
-                            <p class="card-text mt-2">{{message.messageContent}}</p>
-                        </div>
-                    </div>
+                    <div *ngFor="let item of messageList">
 
-                    <div class="card mb-3" *ngFor="let item of messageList ">
-                        <div class="card-header">
-                            <img src="https://i.pinimg.com/474x/44/b8/ee/44b8ee9049da6c7812166e2957fae37b.jpg" alt=""
-                                class="img-fluid rounded-circle" style="width: 30px; height: 30px;"> @usuario<small
-                                class="text-muted ms-2">15h34 · 10/08/2021</small>
+
+                        <div *ngIf="item.profileOn.profileId == profileToId" class="card mb-3">
+                            <div class="card-header">
+                                <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
+                                    style="width: 30px; height: 30px;"> <a
+                                    [routerLink]="['/profile-page', item.profileFrom.profileId]"> @{{item.profileFrom.profileAlias}}</a><small
+                                    class="text-muted ms-2">15h34 · 10/08/2021</small>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
+                                <p class="card-text mt-2">{{item.messageContent}}</p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
-                            <p class="card-text mt-2">{{item.messageContent}}</p>
-                        </div>
+
+
                     </div>
                 </div>
 

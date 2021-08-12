@@ -1,6 +1,7 @@
 package com.oikos.models.dtos;
 
 public class MessageDTO {
+	
 	private String profileEmail;
 	private String messageTitle;
 	private String messageContent;

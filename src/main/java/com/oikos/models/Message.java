@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@JsonIgnoreProperties({ "communityOn", "profileOn", "profileFrom" })
 public class Message {
 
 	@Id
@@ -33,6 +32,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "communityOnId")
+	@JsonIgnoreProperties({ "communityOn" })
 	private Community communityOn;
 
 	/*
@@ -40,6 +40,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileFromId")
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived" })
 	private Profile profileFrom;
 	
 	/*
@@ -47,6 +48,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileOnId")
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived" })
 	private Profile profileOn;
 	
 	public Message() {
@@ -99,6 +101,14 @@ public class Message {
 
 	public void setProfileOn(Profile profileOn) {
 		this.profileOn = profileOn;
+	}
+	
+	public Profile getProfileFrom() {
+		return profileFrom;
+	}
+
+	public void setProfileFrom(Profile profileFrom) {
+		this.profileFrom = profileFrom;
 	}
 
 	@Override
