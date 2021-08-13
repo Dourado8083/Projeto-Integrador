@@ -35,12 +35,12 @@ public class Community {
 	private String communityBio;
 
 	@ManyToOne
-	@JsonIgnoreProperties({"profilePassword", "profileBio", "profileType"})
+	@JsonIgnoreProperties({"communitiesOwned ", "memberOf", "messagesSent", "messagesReceived"})
 	private Profile communityOwner;
 
 	@ManyToMany
-	@JsonIgnoreProperties({"profileId", "profileEmail", "profilePassword", "profileBio", "profileType"})
 	@JoinTable(name = "Community_Profile", joinColumns = @JoinColumn(name = "communityId"), inverseJoinColumns = @JoinColumn(name = "profileId"))
+	@JsonIgnoreProperties({"communitiesOwned ", "memberOf", "messagesSent", "messagesReceived"})
 	private List<Profile> communityMembers = new ArrayList<>();
 
 	/*
@@ -48,7 +48,7 @@ public class Community {
 	 */
 
 	@OneToMany(mappedBy = "communityOn")
-	@JsonIgnoreProperties("messages")
+	@JsonIgnoreProperties({"communityOn", "profileFrom", "profileOn"})
 	private List<Message> messages = new ArrayList<>();
 
 	public Community() {

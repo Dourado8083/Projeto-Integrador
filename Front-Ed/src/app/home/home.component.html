@@ -2,7 +2,7 @@
     <div class="row d-flex justify-content-center">
 
         <!-- Perfil do Usuário -->
-        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mt-3 fw-bold" style="max-height:420px">
+        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold" >
             <div class=" d-flex justify-content-center m-3">
                 <img src="{{profile.profilePic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
                     style="width: 130px; height: 130px;">
@@ -11,12 +11,16 @@
             <p class="text-center lead fs-user mb-2">@{{profile.profileAlias}}</p>
 
             <hr class="ms-5 me-5">
-            <p class="text-center lead fs-follow mb-2">20 Seguindo · 30 Seguidores</p>
+            <p class="text-center lead fs-follow mb-2"></p>
             <hr class="ms-5 me-5">
             <div>
                 <p class="fs-user text-center mb-2">Comunidades</p>
-                <div *ngFor="let com of profile.memberOf"> 
-                    <p class="text-center lead fs-follow mb-1">{{com.communityPic}} test</p>
+                <div *ngFor="let com of profile.memberOf" class="d-flex justify-content-center">
+                    <div class=""> 
+                        <a [routerLink]="['/community-page', com.communityId]">
+                            <img src="{{com.communityPic}}" class="communityPic mb-2">
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -45,9 +49,8 @@
                             <div class="card-header">
                                 <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
                                     style="width: 30px; height: 30px;"> <a
-                                    [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                     @{{item.profileFrom.profileAlias}} </a><small class="text-muted ms-2">15h34 ·
-                                    10/08/2021</small>
+                                    [routerLink]="['/profile-page', item.profileFrom.profileId]"> @{{item.profileFrom.profileAlias}}</a><small
+                                    class="text-muted ms-2">12/08/2021</small>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>

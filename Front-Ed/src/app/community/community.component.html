@@ -6,9 +6,9 @@
         <!-- Nav-Tab para comunidades -->
         <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button (click)="getProfileById()" class="nav-link text-secondary fw-bold active" id="myCommunities-tab" data-bs-toggle="tab"
-                    data-bs-target="#myCommunities" type="button" role="tab" aria-controls="myCommunities"
-                    aria-selected="true">Minhas Comunidades</button>
+                <button (click)="getProfileById()" class="nav-link text-secondary fw-bold active" id="myCommunities-tab"
+                    data-bs-toggle="tab" data-bs-target="#myCommunities" type="button" role="tab"
+                    aria-controls="myCommunities" aria-selected="true">Minhas Comunidades</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link text-secondary fw-bold" id="allCommunities-tab" data-bs-toggle="tab"
@@ -20,8 +20,8 @@
         <div class="tab-content mt-5" id="myTabContent">
             <div class="tab-pane fade show active" id="myCommunities" role="tabpanel"
                 aria-labelledby="myCommunities-tab">
-
-                <table class="table">
+                
+                <table class="table ">
                     <thead>
                         <tr>
                             <th class="text-center" scope="col">Comunidade</th>
@@ -30,24 +30,29 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr *ngFor="let com of profile.memberOf">
+                        
+                        <tr *ngFor="let com of profile.memberOf" class="bg-light">
                             <th class="d-flex flex-column align-items-center mt-3" scope="col">
-                                <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}" class="communityPic img-fluid"></a>
-                                <a [routerLink]="['/community-page', com.communityId]" class="text-center fw-bold mt-2 text-dark" style="text-decoration: none;">{{com.communityName}}</a>
+                                <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}"
+                                        class="communityPic img-fluid"></a>
+                                <a [routerLink]="['/community-page', com.communityId]"
+                                    class="text-center fw-bold mt-2 text-dark"
+                                    style="text-decoration: none;">{{com.communityName}}</a>
                             </th>
                             <td scope="col">
                                 <p class="mt-4 mb-1"><i class="fas fa-book"></i><b> Biografia: </b> </p>
                                 <p><em>{{com.communityBio}}</em></p>
-                                <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b> {{com.communityNumberOfMembers}}</p>
-                                <p><b>Administrador</b>: <a [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a></p>
+                                <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b>
+                                    {{com.communityNumberOfMembers}}</p>
+                                <p><b>Administrador</b>: <a
+                                        [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a>
+                                </p>
                             </td>
 
                             <td scope="col">
                                 <div class="text-white bg-dark text-center m-auto mt-5 status">Não-Membro</div>
                                 <div class="text-white bg-success text-center m-auto mt-5 status">Membro</div>
-                                
-                                <!--<div class="text-white bg-danger text-center m-auto mt-5 status">Admin</div>-->
+                                <div class="text-white bg-danger text-center m-auto mt-5 status">Admin</div>
                             </td>
                         </tr>
 
@@ -68,29 +73,37 @@
                     </thead>
                     <tbody>
 
-                        <tr *ngFor="let com of communityList">
+                        <tr *ngFor="let com of communityList bg-light">
                             <th class="d-flex flex-column align-items-center mt-3" scope="col">
-                                <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}" class="communityPic img-fluid"></a>
-                                <a [routerLink]="['/community-page', com.communityId]" class="text-center fw-bold mt-2 text-dark" style="text-decoration: none;">{{com.communityName}}</a>
+                                <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}"
+                                        class="communityPic img-fluid"></a>
+                                <a [routerLink]="['/community-page', com.communityId]"
+                                    class="text-center fw-bold mt-2 text-dark"
+                                    style="text-decoration: none;">{{com.communityName}}</a>
                             </th>
                             <td scope="col">
                                 <p class="mt-4 mb-1"><i class="fas fa-book"></i><b> Biografia: </b> </p>
                                 <p><em>{{com.communityBio}}</em></p>
-                                <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b> {{com.communityNumberOfMembers}}</p>
-                                <p><b>Administrador</b>: <a [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a></p>
+                                <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b>
+                                    {{com.communityNumberOfMembers}}</p>
+                                <p><b>Administrador</b>: <a
+                                        [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a>
+                                </p>
                             </td>
 
                             <td scope="col">
+
+                                <!--
                                 <div class="text-white bg-dark text-center m-auto mt-5 status">Não-Membro</div>
                                 <div class="text-white bg-success text-center m-auto mt-5 status">Membro</div>
-                                <!--
                                 <div class="text-white bg-danger text-center m-auto mt-5 status">Admin</div>
                                 -->
+
                             </td>
                         </tr>
 
                     </tbody>
-                </table> 
+                </table>
 
             </div>
 
@@ -101,7 +114,7 @@
     <!-- Ícone de criação de comunidade -->
     <div class="m-auto create">
         <button class="btn" data-bs-toggle="modal" data-bs-target="#newCommunity"><i
-            class="fas fa-globe-americas fs-204 create"></i></button>
+                class="fas fa-globe-americas fs-204 create"></i></button>
         <p class="text-center mt-1 create-text">CRIAR <i class="fas fa-plus-square"></i></p>
     </div>
 
@@ -110,7 +123,7 @@
 <!-- Modal para criação -->
 <div id="newCommunity" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-bg">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Criar Comunidade</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -120,18 +133,19 @@
                 <div class="form-control">
 
                     <label for="communityName" class="mt-3 mb-1">Nome da comunidade</label>
-                    <input [(ngModel)]="profileCommunityDto.communityName" type="text" class="form-control" id="communityName"
-                        placeholder="Insira o nome para a comunidade">
+                    <input [(ngModel)]="profileCommunityDto.communityName" type="text" class="form-control"
+                        id="communityName" placeholder="Insira o nome para a comunidade">
 
                     <label for="communityPic" class="mt-3 mb-1">Link da foto</label>
-                    <input [(ngModel)]="profileCommunityDto.communityPic" type="text" class="form-control" id="communityPic"
-                        placeholder="Insira um link para a foto da comunidade">
+                    <input [(ngModel)]="profileCommunityDto.communityPic" type="text" class="form-control"
+                        id="communityPic" placeholder="Insira um link para a foto da comunidade">
 
-                    <label for="communityBio" class="mt-3 mb-1">Descrição da comunidade</label>
+                    <label for="communityBio" class="mt-3 mb-1">Biografia da comunidade</label>
                     <div class="form-floating">
-                        <textarea [(ngModel)]="profileCommunityDto.communityBio" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <textarea [(ngModel)]="profileCommunityDto.communityBio" class="form-control mb-5"
+                            placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                         <label for="floatingTextarea2"></label>
-                      </div>
+                    </div>
 
 
 
@@ -140,7 +154,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button (click)="createCommunity()" type="button" data-bs-dismiss="modal" class="btn btn-success">Criar</button>
+                <button (click)="createCommunity()" type="button" data-bs-dismiss="modal"
+                    class="btn btn-success">Criar</button>
             </div>
         </div>
     </div>

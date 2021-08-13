@@ -1,7 +1,11 @@
+* {
+    margin: 0;
+}
+
 #bg-img
 {
     background-image: url("https://cdn.pixabay.com/photo/2015/10/22/17/45/leaf-1001679_960_720.jpg");
-    height: 100vh;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,4 +38,4 @@
     padding: 14px 20px;
     border-radius: 4px;
     cursor: pointer;
-  }
+}

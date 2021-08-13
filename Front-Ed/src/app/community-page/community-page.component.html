@@ -6,28 +6,68 @@
             <img src="{{community.communityPic}}" class="pic img-fluid mt-2">
             <p class="mt-4 mb-1"><i class="fas fa-book"></i><b> Biografia: </b></p>
             <p><em>{{community.communityBio}}</em></p>
-            <p class="mt-1"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b> {{community.communityNumberOfMembers}}</p>
-            <button (click)="joinCommunity()" class="btn btn-success mt-3">Entrar na comunidade</button>
-            <button (click)="leaveCommunity()" class="btn btn-danger mt-3">Sair da comunidade</button>
+            <p class="mt-1"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b>
+                {{community.communityNumberOfMembers}}</p>
+            <button (click)="joinCommunity()" class="btn btn-success mt-3 mb-3">Entrar na comunidade</button>
+            <button (click)="leaveCommunity()" class="btn btn-danger mt-3 mb-3">Sair da comunidade</button>
         </div>
 
-        <div class="col-md-6 post mt-5 justify-content-center align-items-center border-rad">
+        <!--Feed da comunidade-->
+        <div class="col-md-6 post mt-5 mb-5 justify-content-center align-items-center border-rad">
+
+            <div class="me-3 mt-3">
+                <!-- Postar -->
+                <div class="mb-3 mt-1 bg-sla p-3 rounded-p">
+                    <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
+                        pensamentos:</label>
+                    <textarea [(ngModel)]="messageCommunityDto.messageContent" type="text" class="form-control"
+                        id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
+                    <button (click)="postMessage()" class="btn btn-success mb-2 mt-2">POSTAR</button>
+                </div>
 
 
+                <!-- Posts -->
+                <div *ngFor="let item of messageList">
+
+                    <div *ngIf="false" class="card mb-3" script="">
+                        <div class="card-header"> <a [routerLink]="['/profile-page', item.profileFrom.profileId]">
+                            Teste
+                                <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
+                                    style="width: 30px; height: 30px;">
+                                <p class="mt-5"> @{{item.profileFrom.profileAlias}} </p>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
+                            <p class="card-text mt-2">{{item.messageContent}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
         </div>
 
         <div class="col-md-2 mt-5 d-flex flex-column justify-content-start">
-            
-            <div class="container-fluid border-rad mb-3 d-flex flex-column align-items-center admin">
+
+            <div *ngIf="community.communityOwner.profileId == profileId"
+                class="container-fluid border-rad mb-3 d-flex flex-column align-items-center admin">
                 <p class="mt-3 fs-20"><b>Menu de Administrador</b></p>
                 <button (click)="deleteCommunity()" class="btn btn-danger">Apagar comunidade</button>
-                <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#editCommunity">Editar biografia</button>
+                <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#editCommunity">Editar
+                    biografia</button>
                 <button (click)="editCommunityPic()" class="btn btn-success mt-3">Editar foto</button>
             </div>
-            
-            <div class="container-fluid border-rad mb-4 menu">
 
+            <div class="container-fluid border-rad mb-5 menu">
+                <p class="mt-3 fs-24 mb-1"><b>Membros: </b></p>
+                <div *ngFor="let prof of community.communityMembers">
+                    <a [routerLink]="['/profile-page', prof.profileId]"
+                        class="d-flex justify-content-start align-items-center mt-0">
+                        <img src="{{ prof.profilePic }}" class="rounded-circle profile-pic mt-1">
+                        <p class="mt-5 ms-1"> <b>@{{ prof.profileAlias }}</b></p>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -51,16 +91,18 @@
 
                     <label for="communityBio" class="mt-3 mb-1">Biografia da comunidade</label>
                     <div class="form-floating">
-                        <textarea [(ngModel)]="profileCommunityDto.communityBio" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <textarea [(ngModel)]="profileCommunityDto.communityBio" class="form-control"
+                            placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                         <label for="floatingTextarea2"></label>
-                      </div>
+                    </div>
 
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button (click)="editCommunityBio()" type="button" data-bs-dismiss="modal" class="btn btn-success">Criar</button>
+                <button (click)="editCommunityBio()" type="button" data-bs-dismiss="modal"
+                    class="btn btn-success">Criar</button>
             </div>
         </div>
     </div>

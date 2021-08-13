@@ -32,7 +32,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "communityOnId")
-	@JsonIgnoreProperties({ "communityOn" })
+	@JsonIgnoreProperties({ "communityOwner", "communityMembers", "messages"})
 	private Community communityOn;
 
 	/*

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Message } from '../model/Message';
+import { MessageCommunityDTO } from '../model/MessageCommunityDTO';
 import { MessageProfileDTO } from '../model/MessageProfileDTO';
 
 @Injectable({
@@ -24,6 +25,10 @@ export class MessageService {
 
   postMessage(messageProfileDto: MessageProfileDTO): Observable<Message> {
     return this.http.post<Message>('http://localhost:8080/message/post', messageProfileDto, this.token)
+  }
+
+  postMessageOnCommunity(messageCommunityDto: MessageCommunityDTO): Observable<Message> {
+    return this.http.post<Message>('http://localhost:8080/message/community-post', messageCommunityDto, this.token)
   }
   
   deleteMessage(messageId: number) {

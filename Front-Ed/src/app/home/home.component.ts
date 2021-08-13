@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private profileService: ProfileService,
-
     private route: ActivatedRoute
   ) { }
 

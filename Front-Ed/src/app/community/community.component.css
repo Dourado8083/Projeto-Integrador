@@ -35,3 +35,9 @@
     font-size: 36px;
     font-family: "Fredoka One";
 }
+
+.modal-bg {
+    background-image: url("../../assets/img/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

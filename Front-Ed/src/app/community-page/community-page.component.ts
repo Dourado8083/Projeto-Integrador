@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Community } from '../model/community';
+import { Message } from '../model/Message';
+import { MessageCommunityDTO } from '../model/MessageCommunityDTO';
 import { Profile } from '../model/Profile';
 import { ProfileCommunityDTO } from '../model/ProfileCommunityDTO';
 import { AuthService } from '../service/auth.service';
 import { CommunityService } from '../service/community.service';
+import { MessageService } from '../service/message.service';
 import { ProfileService } from '../service/profile.service';
 
 @Component({
@@ -18,6 +21,11 @@ export class CommunityPageComponent implements OnInit {
   community: Community = new Community();
   communityId: number = this.activatedRoute.snapshot.params["id"];
 
+  message: Message = new Message();
+  messageList: Message[];
+
+  messageCommunityDto: MessageCommunityDTO = new MessageCommunityDTO();
+
   profile: Profile = new Profile();
   profileId: number = environment.id;
 
@@ -27,6 +35,7 @@ export class CommunityPageComponent implements OnInit {
     private communityService: CommunityService,
     private profileService: ProfileService,
     private activatedRoute: ActivatedRoute,
+    private messageService: MessageService,
     private router: Router
   ) { }
 
@@ -39,6 +48,7 @@ export class CommunityPageComponent implements OnInit {
 
     this.getUserById();
     this.getCommunityById();
+    this.getAllMessage();
   }
 
   getUserById() {
@@ -87,7 +97,7 @@ export class CommunityPageComponent implements OnInit {
 
   deleteCommunity() {
     this.communityService.deleteCommunity(this.communityId).subscribe(() => {
-      alert("Comunidade deletada com sucesso!");
+      alert("Comunida de deletada com sucesso!");
       this.router.navigate(["/community"]);
     });
 
@@ -98,13 +108,28 @@ export class CommunityPageComponent implements OnInit {
     this.postService.deletePost()
   }*/
 
-  isMember(): boolean {
-    for (let i = 0; i < this.community.communityMembers.length; i++) {
-      if (this.community.communityMembers[i].profileId == this.profileId) {
+  getAllMessage() {
+    this.messageService.getAllMessage().subscribe((resp: Message[]) => {
+      this.messageList = resp;
+    });
+  }
+
+  postMessage() {
+    this.messageCommunityDto.profileFromId = this.profileId;
+    this.messageCommunityDto.communityToId = this.communityId;
+    this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
+      this.getAllMessage();
+    });
+  }
+
+  isMember() {
+    for(let i = 0; i < this.community.communityMembers.length; i++) {
+      if(this.community.communityMembers[i].profileId == this.profileId) {
         return true;
       }
     }
     return false;
   }
+
 
 }
