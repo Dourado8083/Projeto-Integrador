@@ -17,10 +17,13 @@ export class CommunityComponent implements OnInit {
   profile: Profile = new Profile();
   profileId: number = environment.id;
 
+  memberType: number;
+
   profileCommunityDto: ProfileCommunityDTO = new ProfileCommunityDTO();
 
   community: Community = new Community();
   communityList: Community[];
+
 
   constructor(
     private router: Router,
@@ -37,7 +40,28 @@ export class CommunityComponent implements OnInit {
 
   getAllCommunities() {
     this.communityService.getAll().subscribe((resp: Community[]) => {
+      
       this.communityList = resp;
+
+      for(let i = 0; i < this.communityList.length; i++) {
+        let com = this.communityList[i];
+        let flag: number = 0;
+        for(let j = 0; j < com.communityMembers.length; j++) {
+          let comMember = com.communityMembers[j];
+          if(comMember.profileId == this.profileId) {
+            flag = 1;
+          }
+        }
+        
+        if(flag) {
+          this.memberType = 1;
+        }
+        else {
+          this.memberType = 0;
+        }
+
+      }
+
     });
   }
 
@@ -63,21 +87,5 @@ export class CommunityComponent implements OnInit {
       this.profile = resp;
     });
   }
-
-  isMember(community: Community): boolean {
-
-    for (let i = 0; i < community.communityMembers.length; i++) {
-      if (community.communityMembers[i].profileId == environment.id) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  getMemberType(communityId: number) {
-
-  }
-
 
 }
