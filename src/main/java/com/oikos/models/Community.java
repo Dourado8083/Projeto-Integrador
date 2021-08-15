@@ -48,7 +48,7 @@ public class Community {
 	 */
 
 	@OneToMany(mappedBy = "communityOn")
-	@JsonIgnoreProperties({"communityOn", "profileFrom", "profileOn"})
+	@JsonIgnoreProperties({"communityOn", "profileOn"})
 	private List<Message> messages = new ArrayList<>();
 
 	public Community() {

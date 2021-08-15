@@ -14,9 +14,10 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ProfilePageComponent implements OnInit {
 
-  profile: Profile = new Profile();
-  profileId: number = environment.id;
-  profileToId: number = this.activatedRoute.snapshot.params["id"];
+  myProfile: Profile = new Profile();
+  visitingProfile: Profile = new Profile();
+  myProfileId: number = environment.id;
+  visitingProfileId: number = this.activatedRoute.snapshot.params["id"];
 
   messageProfileDto: MessageProfileDTO = new MessageProfileDTO();
 
@@ -36,34 +37,27 @@ export class ProfilePageComponent implements OnInit {
       this.router.navigate(['/entrar'])
     }
 
-    this.getProfileById();
-    this.getAllMessage();
+    this.getMyProfileById();
+    this.getVisitingProfileById();
   }
 
-  getProfileById() {
-    this.profileService.getProfileById(this.profileToId).subscribe((resp: Profile) => {
-      this.profile = resp;
+  getMyProfileById() {
+    this.profileService.getProfileById(this.myProfileId).subscribe((resp: Profile) => {
+      this.myProfile = resp;
     });
   }
 
-  getFeed() {
-    this.profileService.getProfileById(this.profileToId).subscribe((resp: Profile) => {
-      this.profile = resp;
-      this.messageList = this.profile.messagesReceived;
-    });
-  }
-
-  getAllMessage() {
-    this.messageService.getAllMessage().subscribe((resp: Message[]) => {
-      this.messageList = resp;
-    });
+  getVisitingProfileById() {
+    this.profileService.getProfileById(this.visitingProfileId).subscribe((resp: Profile) => {
+      this.visitingProfile = resp;
+    });  
   }
 
   postMessage() {
-    this.messageProfileDto.profileFromId = this.profileId;
-    this.messageProfileDto.profileToId = this.profileToId;
+    this.messageProfileDto.profileFromId = this.myProfileId;
+    this.messageProfileDto.profileToId = this.visitingProfileId;
     this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
-      this.getAllMessage();
+      this.getVisitingProfileById();
     });
   }
 

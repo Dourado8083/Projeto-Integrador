@@ -77,15 +77,14 @@ button {
     background-color: rgb(252, 252, 252);
 }
 
+a:link{
+    color: black;
+}
+
+a:visited{
+    color: black;
+}
+
 a {
     text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    color: black;
-}
-
-a:link {
-    color: black;
 }

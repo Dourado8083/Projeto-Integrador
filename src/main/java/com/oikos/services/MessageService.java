@@ -45,6 +45,7 @@ public class MessageService {
 			Message message = new Message();
 			
 			message.setMessageContent(messageProfileDto.getMessageContent());
+			message.setMessagePic(messageProfileDto.getMessagePic());
 			message.setProfileFrom(profileFrom);
 			message.setProfileOn(profileOn.get());
 			
@@ -77,6 +78,7 @@ public class MessageService {
 			Message message = new Message();
 			
 			message.setMessageContent(messageCommunityDto.getMessageContent());
+			message.setMessagePic(messageCommunityDto.getMessagePic());
 			message.setProfileFrom(profileFrom);
 			message.setCommunityOn(communityOn.get());
 			

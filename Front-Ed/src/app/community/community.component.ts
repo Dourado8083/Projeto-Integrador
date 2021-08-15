@@ -36,6 +36,7 @@ export class CommunityComponent implements OnInit {
     window.scroll(0, 0);
 
     this.getAllCommunities();
+    this.getProfileById();
   }
 
   getAllCommunities() {

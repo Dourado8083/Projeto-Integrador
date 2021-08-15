@@ -2,7 +2,7 @@
     <div class="row d-flex justify-content-center">
 
         <!-- Perfil do Usuário -->
-        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold" >
+        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold">
             <div class=" d-flex justify-content-center m-3">
                 <img src="{{profile.profilePic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
                     style="width: 130px; height: 130px;">
@@ -16,7 +16,7 @@
             <div>
                 <p class="fs-user text-center mb-2">Comunidades</p>
                 <div *ngFor="let com of profile.memberOf" class="d-flex justify-content-center">
-                    <div class=""> 
+                    <div class="">
                         <a [routerLink]="['/community-page', com.communityId]">
                             <img src="{{com.communityPic}}" class="communityPic mb-2">
                         </a>
@@ -38,21 +38,29 @@
                             pensamentos:</label>
                         <textarea [(ngModel)]="messageProfileDto.messageContent" type="text" class="form-control"
                             id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
-                        <button (click)="postMessage()" class="btn btn-success mb-2 mt-2">POSTAR</button>
+                        <div class="form-group mt-3">
+                            <label for="pic">Gostaria de inserir uma imagem?</label>
+                            <input [(ngModel)]="messageProfileDto.messagePic" class="form-control form-st" type="text"
+                                name="pic" id="pic" placeholder="Link da imagem">
+                        </div>
+                        <button (click)="postMessage()" class="btn btn-success mb-2 mt-3">POSTAR</button>
                     </div>
 
 
                     <!-- Posts -->
-                    <div *ngFor="let item of messageList">
+                    <div *ngFor="let item of profile.messagesReceived">
 
-                        <div *ngIf="item.profileOn.profileId == profileId" class="card mb-3">
+                        <div class="card mb-3">
                             <div class="card-header">
+                                <div class="d-flex align-items-center">
                                 <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
-                                    style="width: 30px; height: 30px;"> <a
-                                    [routerLink]="['/profile-page', item.profileFrom.profileId]"> @{{item.profileFrom.profileAlias}}</a><small
-                                    class="text-muted ms-2">12/08/2021</small>
+                                    style="width: 30px; height: 30px;"> <a class="mt-3"
+                                    [routerLink]="['/profile-page', item.profileFrom.profileId]">
+                                    @{{item.profileFrom.profileAlias}}</a>
+                                </div>
                             </div>
                             <div class="card-body">
+                                <img *ngIf="item.messagePic != null" src="{{item.messagePic}}" class="post-img">
                                 <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
                                 <p class="card-text mt-2">{{item.messageContent}}</p>
                             </div>

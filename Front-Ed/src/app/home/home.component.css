@@ -34,3 +34,8 @@ a {
     border-style: double;
     border-color: #0fbe8c;
 }
+
+.post-img {
+    max-height: 500px;
+    width: auto;
+}

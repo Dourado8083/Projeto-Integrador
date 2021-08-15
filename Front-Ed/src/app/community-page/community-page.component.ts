@@ -48,7 +48,6 @@ export class CommunityPageComponent implements OnInit {
 
     this.getUserById();
     this.getCommunityById();
-    this.getAllMessage();
   }
 
   getUserById() {
@@ -103,33 +102,15 @@ export class CommunityPageComponent implements OnInit {
 
   }
 
-  /*
-  deletePost(profileCommunityDto: ProfileCommunityDTO) {
-    this.postService.deletePost()
-  }*/
-
-  getAllMessage() {
-    this.messageService.getAllMessage().subscribe((resp: Message[]) => {
-      this.messageList = resp;
-    });
-  }
-
   postMessage() {
     this.messageCommunityDto.profileFromId = this.profileId;
     this.messageCommunityDto.communityToId = this.communityId;
     this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
-      this.getAllMessage();
-    });
+      this.message = resp;
+      this.message = new Message();
+    })
   }
 
-  isMember() {
-    for(let i = 0; i < this.community.communityMembers.length; i++) {
-      if(this.community.communityMembers[i].profileId == this.profileId) {
-        return true;
-      }
-    }
-    return false;
-  }
 
 
 }

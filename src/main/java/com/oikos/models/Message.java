@@ -18,14 +18,13 @@ public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long messageId;
-
 	
 	private String messageTitle;
 	
 	@NotNull
 	private String messageContent;
 	
-	private int messageType;
+	private String messagePic;
 
 	/*
 	 * Relação de mensagens postadas em uma comunidade.
@@ -78,13 +77,13 @@ public class Message {
 	public void setMessageTitle(String messageTitle) {
 		this.messageTitle = messageTitle;
 	}
-
-	public Integer getMessageType() {
-		return messageType;
+	
+	public String getMessagePic() {
+		return messagePic;
 	}
 
-	public void setMessageType(Integer messageType) {
-		this.messageType = messageType;
+	public void setMessagePic(String messagePic) {
+		this.messagePic = messagePic;
 	}
 
 	public Community getCommunityOn() {

@@ -46,15 +46,15 @@ public class Profile {
 	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
-	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
+	@JsonIgnoreProperties({"communityMembers", "messages"})
 	private List<Community> memberOf = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "profileFrom")
-	@JsonIgnoreProperties({"communityOn", "profileFrom", "profileOn"})
+	@JsonIgnoreProperties({"communityOn", "profileFrom", "messagesSent"})
 	private List<Message> messagesSent = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "profileOn")
-	@JsonIgnoreProperties({"communityOn", "profileFrom", "profileOn"})
+	@JsonIgnoreProperties({"communityOn", "profileOn", "messagesReceived"})
 	private List<Message> messagesReceived = new ArrayList<>();
 
 	public long getProfileId() {

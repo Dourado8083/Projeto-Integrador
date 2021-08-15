@@ -22,24 +22,29 @@
                         pensamentos:</label>
                     <textarea [(ngModel)]="messageCommunityDto.messageContent" type="text" class="form-control"
                         id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
-                    <button (click)="postMessage()" class="btn btn-success mb-2 mt-2">POSTAR</button>
+                    <div class="form-group mt-3">
+                        <label for="pic">Gostaria de inserir uma imagem?</label>
+                        <input [(ngModel)]="messageCommunityDto.messagePic" class="form-control form-st" type="text"
+                            name="pic" id="pic" placeholder="Link da imagem">
+                    </div>
+                    <button (click)="postMessage()" class="btn btn-success mb-2 mt-3">POSTAR</button>
                 </div>
 
 
                 <!-- Posts -->
-                <div *ngFor="let item of messageList">
+                <div *ngFor="let mes of community.messages">
 
                     <div *ngIf="false" class="card mb-3" script="">
-                        <div class="card-header"> <a [routerLink]="['/profile-page', item.profileFrom.profileId]">
+                        <div class="card-header"> <a [routerLink]="['/profile-page', mes.profileFrom.profileId]">
                             Teste
-                                <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
+                                <img src="{{mes.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
                                     style="width: 30px; height: 30px;">
-                                <p class="mt-5"> @{{item.profileFrom.profileAlias}} </p>
+                                <p class="mt-5"> @{{mes.profileFrom.profileAlias}} </p>
                             </a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
-                            <p class="card-text mt-2">{{item.messageContent}}</p>
+                            <h5 class="card-title fw-bold mb-0">{{mes.messageTitle}} </h5>
+                            <p class="card-text mt-2">{{mes.messageContent}}</p>
                         </div>
                     </div>
 
@@ -65,7 +70,7 @@
                     <a [routerLink]="['/profile-page', prof.profileId]"
                         class="d-flex justify-content-start align-items-center mt-0">
                         <img src="{{ prof.profilePic }}" class="rounded-circle profile-pic mt-1">
-                        <p class="mt-5 ms-1"> <b>@{{ prof.profileAlias }}</b></p>
+                        <p class="mt-5">@{{ prof.profileAlias }}</p>
                     </a>
                 </div>
             </div>

@@ -2,6 +2,7 @@ export class MessageCommunityDTO {
 
     profileFromId: number;
     communityToId: number;
-    messageContent: string;
-
+    messageContent: string; 
+    messagePic: string;
+    
 }

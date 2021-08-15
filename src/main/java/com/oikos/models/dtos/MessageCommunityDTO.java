@@ -5,6 +5,7 @@ public class MessageCommunityDTO {
 	private long profileFromId;
 	private long CommunityToId;
 	private String messageContent;
+	private String messagePic;
 	
 	public long getProfileFromId() {
 		return profileFromId;
@@ -12,7 +13,6 @@ public class MessageCommunityDTO {
 	public void setProfileFromId(long profileFromId) {
 		this.profileFromId = profileFromId;
 	}
-
 	public long getCommunityToId() {
 		return CommunityToId;
 	}
@@ -26,6 +26,12 @@ public class MessageCommunityDTO {
 		this.messageContent = messageContent;
 	}
 	
+	public String getMessagePic() {
+		return messagePic;
+	}
+	public void setMessagePic(String messagePic) {
+		this.messagePic = messagePic;
+	}
 	
 
 }

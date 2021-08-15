@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
     
     if (environment.token == '') {
       this.router.navigate(['/entrar'])
+      this.getProfileById();
     }
 
     this.getProfileById();
@@ -45,15 +46,6 @@ export class HomeComponent implements OnInit {
   getProfileById() {
     this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
       this.profile = resp;
-    });
-  }
-
-  getFeed() {
-    this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
-      this.profile = resp;
-      alert(this.profile.profileId)
-      alert(this.profile.profileName)
-      this.messageList = this.profile.messagesReceived;
     });
   }
 
@@ -67,7 +59,7 @@ export class HomeComponent implements OnInit {
     this.messageProfileDto.profileFromId = this.profileId;
     this.messageProfileDto.profileToId = this.profileId;
     this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
-      this.getAllMessage();
+      this.getProfileById();
     });
   }
 
