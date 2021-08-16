@@ -13,7 +13,7 @@
         </div>
 
         <!--Feed da comunidade-->
-        <div class="col-md-6 post mt-5 mb-5 justify-content-center align-items-center border-rad">
+        <div class="col-md-6 post mt-5 mb-5 justify-content-center align-items-center border-rad feed">
 
             <div class="me-3 mt-3">
                 <!-- Postar -->
@@ -32,23 +32,26 @@
 
 
                 <!-- Posts -->
-                <div *ngFor="let mes of community.messages">
+                <div *ngFor="let item of community.messages">
 
-                    <div *ngIf="false" class="card mb-3" script="">
-                        <div class="card-header"> <a [routerLink]="['/profile-page', mes.profileFrom.profileId]">
-                            Teste
-                                <img src="{{mes.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
-                                    style="width: 30px; height: 30px;">
-                                <p class="mt-5"> @{{mes.profileFrom.profileAlias}} </p>
-                            </a>
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                            <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
+                                style="width: 30px; height: 30px;"> <a class="mt-3"
+                                [routerLink]="['/profile-page', item.profileFrom.profileId]">
+                                @{{item.profileFrom.profileAlias}}</a>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title fw-bold mb-0">{{mes.messageTitle}} </h5>
-                            <p class="card-text mt-2">{{mes.messageContent}}</p>
+                            <img *ngIf="item.messagePic != null" src="{{item.messagePic}}" class="post-img">
+                            <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
+                            <p class="card-text mt-2">{{item.messageContent}}</p>
                         </div>
                     </div>
 
                 </div>
+
             </div>
 
         </div>

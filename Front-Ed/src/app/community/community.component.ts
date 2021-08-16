@@ -74,6 +74,7 @@ export class CommunityComponent implements OnInit {
     this.communityService.createCommunity(this.profileCommunityDto).subscribe(() => {
       alert("Comunidade criada com sucesso!");
       this.getAllCommunities();
+      this.getProfileById();
     })
   }
 

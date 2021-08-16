@@ -46,8 +46,8 @@ export class CommunityPageComponent implements OnInit {
       this.router.navigate(["/entrar"]);
     }
 
-    this.getUserById();
     this.getCommunityById();
+    this.getUserById();
   }
 
   getUserById() {
@@ -59,6 +59,7 @@ export class CommunityPageComponent implements OnInit {
   getCommunityById() {
     this.communityService.getCommunityById(this.communityId).subscribe((resp: Community) => {
       this.community = resp;
+      console.log(this.community.messages)
     })
   }
 
@@ -67,7 +68,7 @@ export class CommunityPageComponent implements OnInit {
     this.profileCommunityDto.profileId = this.profileId;
     this.communityService.editCommunityBio(this.profileCommunityDto).subscribe((resp: Community) => {
       alert("Biografia alterada com sucesso!");
-      this.router.navigate([this.router.url]);
+      this.getCommunityById();
     });
     this.profileCommunityDto = new ProfileCommunityDTO();
   }
@@ -107,7 +108,7 @@ export class CommunityPageComponent implements OnInit {
     this.messageCommunityDto.communityToId = this.communityId;
     this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
       this.message = resp;
-      this.message = new Message();
+      this.getCommunityById();
     })
   }
 
