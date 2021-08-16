@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   message: Message = new Message();
   messageList: Message[];
+  idMessage: number
 
   constructor(
     private router: Router,
@@ -61,6 +62,11 @@ export class HomeComponent implements OnInit {
     this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
       this.getProfileById();
     });
+  }
+  delete(){
+    this.messageService.deleteMessage(this.idMessage).subscribe(()=>{
+      alert('Postagem apagada com sucesso!')
+    })
   }
 
 }
