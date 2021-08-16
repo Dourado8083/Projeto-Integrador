@@ -1,6 +1,6 @@
 #bg-img
 {
-    background-image: url("https://cdn.pixabay.com/photo/2016/08/15/12/52/carrots-1595308_960_720.jpg");
+    background-image: url("../../assets/img/fundoentrar.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
 
 .top
 {
-    margin-top: 200px;
+    margin-top: 120px;
 }
 
 .box
@@ -41,8 +41,8 @@
 
 .logo
 {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     margin-left: 180px;
 }
 

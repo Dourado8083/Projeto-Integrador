@@ -1,26 +1,27 @@
 #bg-img
 {
-    background-image: url("https://cdn.pixabay.com/photo/2015/10/22/17/45/leaf-1001679_960_720.jpg");
+    background-image: url("../../assets/img/fundocadastro.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.bg-white
+.bg-w
 {
-    background-color: white;
+    background-color: rgb(216, 216, 216);
+    border-radius: 15px;
 }
 
 .logo
 {
-    height: 200px;
-    width: 200px;
+
+    width: 300px;
 }
 
 .top
 {
-    margin-top: 100px;
+    margin-top: px;
 }
 
 .box
@@ -34,4 +35,19 @@
     padding: 14px 20px;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  .back
+  {
+      font-size: 50px;
+      color: rgb(0, 0, 0);
+      padding: 20px;
+  }
+
+  .butt
+  {
+    font-size: 20px;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-top: 60px;
   }

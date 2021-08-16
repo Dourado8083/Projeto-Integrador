@@ -5,4 +5,5 @@ export class Profile {
     public profilePassword: string
     public profileBio: string
     public profilePic: string
+    public profileAlias: string
 }
