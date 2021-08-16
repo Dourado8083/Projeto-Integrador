@@ -1,6 +1,6 @@
 #bg-img
 {
-    background-image: url("https://i.pinimg.com/originals/cc/f7/37/ccf737b92967ddb1ad489e257d7275e2.png");
+    background-image: url("../../assets/img/fundoentrar.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
 
 .top
 {
-    margin-top: 200px;
+    margin-top: 120px;
 }
 
 .box
@@ -41,8 +41,8 @@
 
 .logo
 {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     margin-left: 180px;
 }
 
