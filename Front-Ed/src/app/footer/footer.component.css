@@ -1,12 +1,18 @@
 .bg
 {
-    background-color: lightblue;
+    background-color: rgb(226, 223, 223);
 }
 
-ul.social
+.title
 {
-    list-style: none;
+    text-decoration: none;
     padding: 0%;
+    color: black;
+}
+
+.title:hover
+{
+    color: cadetblue;
 }
 
 ul.social li
@@ -15,3 +21,9 @@ ul.social li
     margin: 0%;
     padding: 5px;
 } 
+
+.logo
+{
+    width: 150px;
+    padding: 10px;
+}

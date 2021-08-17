@@ -54,19 +54,20 @@
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
                                 <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
-                                    style="width: 30px; height: 30px;"> <a class="ms-1"
+                                    style="width: 30px; height: 30px;"> <a class="mt-3"
                                     [routerLink]="['/profile-page', item.profileFrom.profileId]">
                                     @{{item.profileFrom.profileAlias}}</a>
 
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete" class="far fa-trash-alt btn delete ms-2"></button>
-                                    <button type="button" data-toggle="modal" data-target="#meuModal" class="fas fa-edit btn"></button> 
+                                    <button type="button" data-toggle="modal" data-target="#meuModal" class=" m-end  fas fa-edit mt-2 btn"></button> 
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete" class="far fa-trash-alt me-1 mt-2 btn delete"></button>
 
                                 </div>
                             </div>
                             <div class="card-body">
-                                <img  *ngIf="item.messagePic != null" src="{{item.messagePic}}" class="post-img debug">
-                                <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
                                 <p class="card-text mt-2">{{item.messageContent}}</p>
+                                <hr>
+                                <img *ngIf="item.messagePic != null" src="{{item.messagePic}}" class=" mw post-img">
+                                <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
                             </div>
                         </div>
 
@@ -75,15 +76,23 @@
 
                 <!--Barra Lateral -->
                 <div class="col-md-3 mt-3">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success mt-2 mb-3" type="submit">Search</button>
-                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/1946/1946429.png" alt=""
-                            style="height: 30px; width: 30px;"> Perfil</a>
-                    <button routerLink='/community' class="nav-link btn btn-light"><img
-                            src="https://image.flaticon.com/icons/png/512/4350/4350908.png" alt=""
-                            style="height: 30px; width: 30px;"> Comunidades</button>
-                    <a class="nav-link"><img src="https://image.flaticon.com/icons/png/512/561/561127.png" alt=""
-                            style="height: 30px; width: 30px;"> Mensagens</a>
+                   
+                    <button class="nav-link btn btn-light mt-3"><img
+                        src="https://image.flaticon.com/icons/png/512/1946/1946429.png" alt=""
+                        style="height: 30px; width: 30px;">  Perfil   </button>
+                
+                
+                    <button routerLink='/community' class="nav-link btn btn-light  mt-3"><img
+                    src="https://image.flaticon.com/icons/png/512/4350/4350908.png" alt=""
+                    style="height: 30px; width: 30px;"> Comunidades</button>
+
+                    <button  class="nav-link btn btn-light  mt-3"><img
+                        src="https://image.flaticon.com/icons/png/512/561/561127.png" alt=""
+                        style="height: 30px; width: 30px;"> Mensagens</button>
+
+                    <button class="nav-link btn btn-light  mt-3"><img
+                        src="https://img-premium.flaticon.com/png/512/3932/premium/3932615.png?token=exp=1629141119~hmac=7adac49cfaaa9159918a3febcbd83971" alt=""
+                        style="height: 30px; width: 30px;"> Empresas</button>
                 </div>
             </div>
         </div>
