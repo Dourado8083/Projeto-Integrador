@@ -5,6 +5,10 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+.bg-sla{
+    background-color: #D9EFFC;
+}
+
 .mr-3{
     margin-right: 3pt;
 }

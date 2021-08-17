@@ -2,7 +2,7 @@
     <div class="row d-flex justify-content-center">
 
         <!-- Perfil do Usuário -->
-        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold">
+        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold oikos-border">
             <div class=" d-flex justify-content-center m-3">
                 <img src="{{profile.profilePic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
                     style="width: 130px; height: 130px;">
@@ -27,13 +27,13 @@
         </div>
 
         <!-- Feed -->
-        <div class="col-md-8 bg-light me-0 mt-3 rounded-p bg-img mb-3">
+        <div class="col-md-8 bg-light me-0 mt-3 rounded-p bg- mb-3 oikos-border">
             <div class="row d-flex justify-content-center">
 
                 <!-- Feed Principal -->
                 <div class="col-md-8  me-3 mt-3">
                     <!-- Postar -->
-                    <div class="mb-3 mt-1 bg-sla p-3 rounded-p">
+                    <div class="mb-3 mt-1 bg-sla p-3 oikos-border">
                         <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
                             pensamentos:</label>
                         <textarea [(ngModel)]="messageProfileDto.messageContent" type="text" class="form-control"
@@ -43,7 +43,7 @@
                             <input [(ngModel)]="messageProfileDto.messagePic" class="form-control form-st" type="text"
                                 name="pic" id="pic" placeholder="Link da imagem">
                         </div>
-                        <button (click)="postMessage()" class="btn btn-success mb-2 mt-3">POSTAR</button>
+                        <button (click)="postMessage()" class="btn btn-outline-primary mb-2 mt-3">POSTAR</button>
                     </div>
 
 
@@ -54,12 +54,12 @@
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
                                 <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
-                                    style="width: 30px; height: 30px;"> <a class="mt-3"
+                                    style="width: 30px; height: 30px;"> <a class="ms-1"
                                     [routerLink]="['/profile-page', item.profileFrom.profileId]">
                                     @{{item.profileFrom.profileAlias}}</a>
 
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete" class="far fa-trash-alt m-end me-1 mt-2 btn delete"></button>
-                                    <button type="button" data-toggle="modal" data-target="#meuModal" class="fas fa-edit mt-2 btn"></button> 
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete" class="far fa-trash-alt btn delete ms-2"></button>
+                                    <button type="button" data-toggle="modal" data-target="#meuModal" class="fas fa-edit btn"></button> 
 
                                 </div>
                             </div>
