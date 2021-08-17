@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import com.oikos.models.Community;
 import com.oikos.models.Message;
 import com.oikos.models.Profile;
+import com.oikos.models.dtos.MessageBusinessDTO;
 import com.oikos.models.dtos.MessageCommunityDTO;
 import com.oikos.models.dtos.MessageProfileDTO;
+import com.oikos.repositories.BusinessRepository;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.MessageRepository;
 import com.oikos.repositories.ProfileRepository;
@@ -25,6 +27,9 @@ public class MessageService {
 	
 	@Autowired
 	private ProfileRepository profileRepository;
+	
+	@Autowired
+	private BusinessRepository businessRepository;
 	
 	
 	/**
@@ -87,6 +92,28 @@ public class MessageService {
 			
 			profileRepository.save(profileFrom);
 			communityRepository.save(communityOn.get());
+			
+			return Optional.ofNullable(messageRepository.save(message));
+			
+		}).orElse(Optional.empty());
+	}
+	
+	/**
+	 * Método para postar uma mensagem em um negócio
+	 * 
+	 * @param ProfileCommunityDTO
+	 * @return Um Optional contendo a mensagem postada
+	 */
+	public Optional<?> postMessageOnBusiness(MessageBusinessDTO messageBusinessDto) {
+		return businessRepository.findById(messageBusinessDto.getBusinessToId()).map(business -> {
+			
+			Message message = new Message();
+			
+			message.setBusinessOn(business);
+			message.setMessageContent(messageBusinessDto.getMessageContent());
+			
+			business.getBusinessMessages().add(message);
+			businessRepository.save(business);
 			
 			return Optional.ofNullable(messageRepository.save(message));
 			

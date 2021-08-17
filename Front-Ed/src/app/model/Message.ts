@@ -1,3 +1,4 @@
+import { Business } from "./Business";
 import { Community } from "./community"
 import { Profile } from "./Profile"
 
@@ -10,5 +11,6 @@ export class Message{
     public communityOn: Community;
     public profileFrom: Profile;
     public profileOn: Profile;
+    public businessOn: Business;
 
 }

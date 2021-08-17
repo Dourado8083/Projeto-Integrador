@@ -36,7 +36,7 @@ public class Message {
 
 	@ManyToOne
 	@JoinColumn(name = "businessOnId")
-	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
+	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages", "businessOwner"})
 	private Business businessOn;
 	
 	/*
@@ -115,6 +115,14 @@ public class Message {
 		this.profileFrom = profileFrom;
 	}
 
+	public Business getBusinessOn() {
+		return businessOn;
+	}
+
+	public void setBusinessOn(Business businessOn) {
+		this.businessOn = businessOn;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(messageId);
@@ -131,5 +139,7 @@ public class Message {
 		Message other = (Message) obj;
 		return messageId == other.messageId;
 	}
+
+
 
 }

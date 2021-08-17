@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment.prod';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CommunityPageComponent } from './community-page/community-page.component';
 import { ProfilePageComponent } from './page/profile-page/profile-page.component';
+import { BusinessPageComponent } from './page/business-page/business-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ProfilePageComponent } from './page/profile-page/profile-page.component
     MessageComponent,
     CommunityPageComponent,
     ProfilePageComponent,
+    BusinessPageComponent,
   ],
   imports: [
     BrowserModule,

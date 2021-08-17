@@ -3,9 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Business } from '../model/Business';
 import { Message } from '../model/Message';
 import { MessageProfileDTO } from '../model/MessageProfileDTO';
 import { Profile } from '../model/Profile';
+import { ProfileBusinessDTO } from '../model/ProfileBusinessDTO';
+import { BusinessService } from '../service/business.service';
 import { MessageService } from '../service/message.service';
 import { ProfileService } from '../service/profile.service';
 
@@ -20,7 +23,10 @@ export class HomeComponent implements OnInit {
   profile: Profile = new Profile();
   profileId: number = environment.id;
 
+  business: Business = new Business();
+
   messageProfileDto: MessageProfileDTO = new MessageProfileDTO();
+  profileBusinessDto: ProfileBusinessDTO = new ProfileBusinessDTO();
 
   message: Message = new Message();
   messageList: Message[];
@@ -30,11 +36,12 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private profileService: ProfileService,
+    private businessService: BusinessService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    
+
     if (environment.token == '') {
       this.router.navigate(['/entrar'])
       this.getProfileById();
@@ -47,6 +54,7 @@ export class HomeComponent implements OnInit {
   getProfileById() {
     this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
       this.profile = resp;
+      console.log(this.profile);
     });
   }
 
@@ -63,10 +71,19 @@ export class HomeComponent implements OnInit {
       this.getProfileById();
     });
   }
-  delete(){
-    this.messageService.deleteMessage(this.idMessage).subscribe(()=>{
+
+  delete() {
+    this.messageService.deleteMessage(this.idMessage).subscribe(() => {
       alert('Postagem apagada com sucesso!')
     })
+  }
+
+  createBusiness() {
+    this.profileBusinessDto.profileId = this.profileId;
+    this.businessService.createBusiness(this.profileBusinessDto).subscribe((resp: Business) => {
+      alert("Seu negócio foi cadastrado com sucesso!")
+      this.getProfileById();
+    });
   }
 
 }

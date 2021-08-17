@@ -1,3 +1,4 @@
+import { Business } from "./Business";
 import { Community } from "./community";
 import { Message } from "./Message";
 
@@ -14,5 +15,6 @@ export class Profile {
     public communitiesOwned: Community[];
     public messagesSent: Message[];
     public messagesReceived: Message[];
-
+    public businessOwned: Business[];
+    
 }

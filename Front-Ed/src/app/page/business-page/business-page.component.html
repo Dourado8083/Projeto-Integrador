@@ -1,43 +1,18 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-center">
 
-        <!-- Perfil do Usuário -->
+        <!-- Perfil da Empresa -->
         <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold oikos-border">
+
             <div class=" d-flex justify-content-center m-3">
-                <img src="{{profile.profilePic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
+                <img src="{{business.businessPic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
                     style="width: 130px; height: 130px;">
             </div>
-            <h4 class="text-center fw-bold mb-0">{{profile.profileName}}</h4>
-            <p class="text-center lead fs-user mb-2">@{{profile.profileAlias}}</p>
+            <h4 class="text-center fw-bold mb-0">{{business.businessName}}</h4>
 
             <hr class="ms-5 me-5">
             <p class="text-center lead fs-follow mb-2"></p>
             <hr class="ms-5 me-5">
-
-            <!-- Comunidades -->
-            <div>
-                <p class="fs-user text-center mb-4">Comunidades</p>
-
-                <div class="row mt-2">
-                    <div *ngFor="let com of profile.memberOf" class="col-md-3 col-sm-4 col-6 m-auto">
-                        <a [routerLink]="['/community-page', com.communityId]">
-                            <img src="{{com.communityPic}}" class="communityPic mb-2">
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <hr class="ms-5 me-5">
-            <p class="fs-user text-center mb-4">Meus negócios</p>
-
-            <div class="row mt-2">
-                <div *ngFor="let bus of profile.businessOwned" class="col-md-3 col-sm-4 col-6 m-auto">
-                    <a [routerLink]="['/business-page', bus.businessId]">
-                        <img src="{{bus.businessPic}}" class="communityPic mb-2">
-                    </a>
-                </div>
-            </div>
 
 
         </div>
@@ -50,20 +25,19 @@
                 <div class="col-md-8  me-3 mt-3">
                     <!-- Postar -->
                     <div class="mb-3 mt-1 bg-sla p-3 oikos-border">
-                        <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
-                            pensamentos:</label>
-                        <textarea [(ngModel)]="messageProfileDto.messageContent" type="text" class="form-control"
+                        <label for="exampleFormControlTextarea1" class="form-label">Faça uma postagem nova: </label>
+                        <textarea [(ngModel)]="messageBusinessDto.messageContent" type="text" class="form-control"
                             id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
                         <div class="form-group mt-3">
                             <label for="pic">Gostaria de inserir uma imagem?</label>
-                            <input [(ngModel)]="messageProfileDto.messagePic" class="form-control form-st" type="text"
+                            <input [(ngModel)]="messageBusinessDto.messagePic" class="form-control form-st" type="text"
                                 name="pic" id="pic" placeholder="Link da imagem">
                         </div>
                         <button (click)="postMessage()" class="btn btn-outline-primary mb-2 mt-3">POSTAR</button>
                     </div>
 
 
-                    <!-- Posts -->
+                    <!-- 
                     <div *ngFor="let item of profile.messagesReceived">
 
                         <div class="card mb-3">
@@ -90,6 +64,7 @@
                         </div>
 
                     </div>
+                    -->
                 </div>
 
                 <!--Barra Lateral -->
@@ -119,13 +94,12 @@
 </div>
 
 <!--Modal Delete-->
-<div class="modal" data-bs-toggle="modal" id="modalDelete" *ngFor="let item of profile.messagesReceived">
+<div class="modal" data-bs-toggle="modal" id="modalDelete">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
             </div>
             <div class="modal-body">
-                <p>{{item.messageContent}}</p>
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <button type="button" class="btn btn-danger">Deletar</button>
@@ -135,42 +109,4 @@
     </div>
 </div>
 
-<!-- Modal para criação -->
-<div id="newBusiness" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modal-bg">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cadastrar seu negócio</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-control">
-
-                    <label for="businessName" class="mt-3 mb-1">Nome da empresa</label>
-                    <input [(ngModel)]="profileBusinessDto.businessName" type="text" class="form-control"
-                        id="businessName" placeholder="Insira o nome da sua empresa">
-                    <label for="businessName" class="mt-3 mb-1">E-mail comercial</label>
-                    <input [(ngModel)]="profileBusinessDto.businessEmail" type="text" class="form-control"
-                        id="businessEmail" placeholder="Insira o seu e-mail comercial">
-                    <label for="businessName" class="mt-3 mb-1">Endereço</label>
-                    <input [(ngModel)]="profileBusinessDto.businessAdress" type="text" class="form-control"
-                        id="businessAdress" placeholder="Insira o endereço da sua empresa">
-                    <label for="businessName" class="mt-3 mb-1">Telefone</label>
-                    <input [(ngModel)]="profileBusinessDto.businessPhone" type="text" class="form-control"
-                        id="businessPhone" placeholder="Insira o número de telefone da sua empresa">
-                    <label for="businessName" class="mt-3 mb-1">Logo</label>
-                    <input [(ngModel)]="profileBusinessDto.businessPic" type="text" class="form-control"
-                        id="businessPic" placeholder="Insira o logo da sua empresa">
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button (click)="createBusiness()" type="button" data-bs-dismiss="modal"
-                    class="btn btn-success">Criar</button>
-            </div>
-        </div>
-    </div>
-</div>
+<

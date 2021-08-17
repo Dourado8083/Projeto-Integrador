@@ -27,12 +27,13 @@ a {
 }
 
 .communityPic {
-    width: 65px;
-    height: 65px;
+    width: 90%;
+    height: 70px;
     border-radius: 5px;
     border-width: 4px;
     border-style: double;
     border-color: #0fbe8c;
+    display: block;
 }
 
 .post-img {

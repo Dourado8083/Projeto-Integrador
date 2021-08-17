@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oikos.models.Message;
+import com.oikos.models.dtos.MessageBusinessDTO;
 import com.oikos.models.dtos.MessageCommunityDTO;
 import com.oikos.models.dtos.MessageProfileDTO;
 import com.oikos.repositories.MessageRepository;
@@ -66,6 +67,13 @@ public class MessageController {
 	@PostMapping("/community-post")
 	public ResponseEntity<?> postMessageOnCommunity(@Valid @RequestBody MessageCommunityDTO messageCommunityDto) {
 		return messageService.postMessageOnCommunity(messageCommunityDto).map(message -> {
+			return ResponseEntity.status(200).body(message);
+		}).orElse(ResponseEntity.status(400).build());
+	}
+	
+	@PostMapping("/business-post")
+	public ResponseEntity<?> postMessageOnBusiness(@Valid @RequestBody MessageBusinessDTO messageBusinessDto) {
+		return messageService.postMessageOnBusiness(messageBusinessDto).map(message -> {
 			return ResponseEntity.status(200).body(message);
 		}).orElse(ResponseEntity.status(400).build());
 	}

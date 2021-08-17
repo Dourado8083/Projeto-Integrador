@@ -42,7 +42,7 @@ public class Profile {
 	private int numberOfFollowers;
 	
 	@OneToMany(mappedBy = "businessOwner")
-	@JsonIgnoreProperties({"messages"})
+	@JsonIgnoreProperties({"businessOwner", "businessMessages"})
 	private List<Business> businessOwned = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "communityOwner")
@@ -157,6 +157,14 @@ public class Profile {
 
 	public void setCommunitiesOwned(List<Community> communitiesOwned) {
 		this.communitiesOwned = communitiesOwned;
+	}
+	
+	public List<Business> getBusinessOwned() {
+		return businessOwned;
+	}
+
+	public void setBusinessOwned(List<Business> businessOwned) {
+		this.businessOwned = businessOwned;
 	}
 
 	public List<Community> getMemberOf() {

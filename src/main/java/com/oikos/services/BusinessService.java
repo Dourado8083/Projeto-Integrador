@@ -41,6 +41,9 @@ public class BusinessService {
 			business.setBusinessPic(profileBusinessDto.getBusinessPic());
 			business.setBusinessPhone(profileBusinessDto.getBusinessPhone());
 			business.setBusinessAdress(profileBusinessDto.getBusinessAdress());
+			
+			profile.getBusinessOwned().add(business);
+			profileRepository.save(profile);
 
 			return Optional.ofNullable(businessRepository.save(business));
 
