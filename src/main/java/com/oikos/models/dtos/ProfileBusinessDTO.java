@@ -1,56 +1,25 @@
-package com.oikos.models;
+package com.oikos.models.dtos;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ProfileBusinessDTO {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
-
-@Entity
-public class Business {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long businessId;
-
-	@NotNull
+	long profileId;
+	long businessId;
 	private String businessName;
-
-	@NotNull
 	private String businessAlias;
-
-	@NotNull
 	private String businessEmail;
-
 	private String businessBio;
-
 	private String businessPic;
-
 	private String businessAdress;
-
 	private String businessPhone;
-
 	private String businessHeader;
-
 	private String businessBackground;
 
-	@ManyToOne
-	@JsonIgnoreProperties({ "communitiesOwned", "businessOwned", "memberOf", "messagesSent", "messagesReceived" })
-	private Profile businessOwner;
+	public long getProfileId() {
+		return profileId;
+	}
 
-	@OneToMany(mappedBy = "businessOn")
-	@JsonIgnoreProperties({ "communityOn", "profileOn", "ProfileFrom", "businessOn" })
-	private List<Message> businessMessages = new ArrayList<>();
-
-	public Business() {
-
+	public void setProfileId(long profileId) {
+		this.profileId = profileId;
 	}
 
 	public long getBusinessId() {
@@ -101,14 +70,6 @@ public class Business {
 		this.businessPic = businessPic;
 	}
 
-	public String getBusinessPhone() {
-		return businessPhone;
-	}
-
-	public void setBusinessPhone(String businessPhone) {
-		this.businessPhone = businessPhone;
-	}
-
 	public String getBusinessAdress() {
 		return businessAdress;
 	}
@@ -117,12 +78,12 @@ public class Business {
 		this.businessAdress = businessAdress;
 	}
 
-	public Profile getBusinessOwner() {
-		return businessOwner;
+	public String getBusinessPhone() {
+		return businessPhone;
 	}
 
-	public void setBusinessOwner(Profile businessOwner) {
-		this.businessOwner = businessOwner;
+	public void setBusinessPhone(String businessPhone) {
+		this.businessPhone = businessPhone;
 	}
 
 	public String getBusinessHeader() {
@@ -139,14 +100,6 @@ public class Business {
 
 	public void setBusinessBackground(String businessBackground) {
 		this.businessBackground = businessBackground;
-	}
-
-	public List<Message> getBusinessMessages() {
-		return businessMessages;
-	}
-
-	public void setBusinessMessages(List<Message> businessMessages) {
-		this.businessMessages = businessMessages;
 	}
 
 }

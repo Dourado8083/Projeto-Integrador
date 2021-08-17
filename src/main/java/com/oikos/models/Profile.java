@@ -41,6 +41,10 @@ public class Profile {
 	
 	private int numberOfFollowers;
 	
+	@OneToMany(mappedBy = "businessOwner")
+	@JsonIgnoreProperties({"messages"})
+	private List<Business> businessOwned = new ArrayList<>();
+	
 	@OneToMany(mappedBy = "communityOwner")
 	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
 	private List<Community> communitiesOwned = new ArrayList<>();

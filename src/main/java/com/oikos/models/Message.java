@@ -31,15 +31,20 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "communityOnId")
-	@JsonIgnoreProperties({ "communityOwner", "communityMembers", "messages"})
+	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
 	private Community communityOn;
 
+	@ManyToOne
+	@JoinColumn(name = "businessOnId")
+	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
+	private Business businessOn;
+	
 	/*
 	 * Relação de quem enviou a mensagem.
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileFromId")
-	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived" })
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned" })
 	private Profile profileFrom;
 	
 	/*
@@ -47,7 +52,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileOnId")
-	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived" })
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned" })
 	private Profile profileOn;
 	
 	public Message() {
