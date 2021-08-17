@@ -1,21 +1,17 @@
+
+
 .bg
 {
-    background-color:rgb(254, 255, 255);
-    height: 1000px;
-    width: 100%;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
 }
 
-ul.social{
-    list-style: none;
-}
-
-.icon
+.bg2
 {
-    font-size: 50px;
-    padding: 5px;
+    background-color: crimson;
 }
 
-.fs
+.f-25
 {
-    font-size: 40px;
+    font-size: 20px;
 }
