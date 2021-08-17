@@ -1,6 +1,6 @@
 .pic {
-    height: 250px;
-    width: 250px;
+    height: 180px;
+    width: 180px;
     border-radius: 5px;
     border-width: 4px;
     border-style: double;
@@ -9,7 +9,7 @@
 
 .bg-grad {
     background-color:rgb(221, 236, 243);
-    height: 100%px;
+    height: 100%;
     width: 100%;
 }
 
@@ -20,14 +20,6 @@
 .info {
     height: 100%;
     background-color: rgb(252, 252, 252);
-}
-
-.info p {
-    width: 250px;
-}
-
-button {
-    width: 225px;
 }
 
 .post {
