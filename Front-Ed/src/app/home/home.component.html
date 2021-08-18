@@ -77,7 +77,7 @@
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
                                     <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
-                                        style="width: 30px; height: 30px;"> <a class="mt-3"
+                                        style="width: 30px; height: 30px;"> <a class="ms-1"
                                         [routerLink]="['/profile-page', item.profileFrom.profileId]">
                                         @{{item.profileFrom.profileAlias}}</a>
 
@@ -102,7 +102,8 @@
                 <!--Barra Lateral -->
                 <div class="col-md-3 mt-3">
 
-                    <button class="nav-link btn btn-light mt-3"><img
+                    <button [routerLink]="['/profile-page', profileId]"
+                            class="nav-link btn btn-light mt-3"><img
                             src="https://image.flaticon.com/icons/png/512/1946/1946429.png" alt=""
                             style="height: 30px; width: 30px;"> Perfil </button>
 
