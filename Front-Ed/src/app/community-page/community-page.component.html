@@ -44,9 +44,10 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <p class="card-text mt-2 p1">{{item.messageContent}}</p>
+                            <hr>
                             <img *ngIf="item.messagePic != null" src="{{item.messagePic}}" class="post-img">
                             <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
-                            <p class="card-text mt-2">{{item.messageContent}}</p>
                         </div>
                     </div>
 
