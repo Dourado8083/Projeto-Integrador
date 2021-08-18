@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileLoginDTO } from '../model/profileLoginDTO';
+import { ProfileLoginDTO } from '../model/ProfileLoginDTO';
 import { AuthService } from '../service/auth.service';
 import { environment } from './../../environments/environment.prod';
 

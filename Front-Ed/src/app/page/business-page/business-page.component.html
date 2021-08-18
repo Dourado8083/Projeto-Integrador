@@ -37,16 +37,16 @@
                     </div>
 
 
-                    <!-- 
-                    <div *ngFor="let item of profile.messagesReceived">
+                    
+                    <div *ngFor="let item of business.businessMessages">
 
                         <div class="card mb-3">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
+                                    <img src="{{business.businessPic}}" alt="" class="img-fluid rounded-circle"
                                         style="width: 30px; height: 30px;"> <a class="mt-3"
-                                        [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                        @{{item.profileFrom.profileAlias}}</a>
+                                        [routerLink]="['/business-page', business.businessId]">
+                                        @{{business.businessName}}</a>
 
                                     <button type="button" data-toggle="modal" data-target="#meuModal"
                                         class=" m-end  fas fa-edit mt-2 btn"></button>
@@ -64,7 +64,7 @@
                         </div>
 
                     </div>
-                    -->
+                    
                 </div>
 
                 <!--Barra Lateral -->

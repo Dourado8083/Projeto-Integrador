@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Profile } from '../model/Profile';
-import { ProfileLoginDTO } from '../model/profileLoginDTO';
+import { ProfileLoginDTO } from '../model/ProfileLoginDTO';
 
 @Injectable({
   providedIn: 'root'
