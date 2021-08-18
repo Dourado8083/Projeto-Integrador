@@ -12,5 +12,7 @@ export class Business {
     public businessPic: string;
     public businessOwner: Profile;
     public businessMessages: Message[];
+    public businessHeader: string;
+    public businessBackground: string;
 
 }

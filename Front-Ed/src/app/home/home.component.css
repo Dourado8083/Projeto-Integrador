@@ -28,8 +28,18 @@ a {
 
 .communityPic {
     width: 90%;
-    height: 70px;
+    height: 85px;
     border-radius: 5px;
+    border-width: 4px;
+    border-style: double;
+    border-color: #0fbe8c;
+    display: block;
+}
+
+.businessPic {
+    width: 90%;
+    height: 85px;
+    border-radius: 45px;
     border-width: 4px;
     border-style: double;
     border-color: #0fbe8c;

@@ -43,11 +43,11 @@ export class MessageService {
   }
 
   putMessage(message: Message): Observable<Message> {
-    return this.http.put<Message>('http://localhost:8081/message/edit', message, this.token)
+    return this.http.put<Message>('http://localhost:8080/message/edit', message, this.token)
   }
 
   postMessageOnBusiness(messageBusinessDto: MessageBusinessDTO): Observable<Message>{
-    return this.http.post<Message>('http://localhost:8081/message/business-post', messageBusinessDto, this.token)
+    return this.http.post<Message>('http://localhost:8080/message/business-post', messageBusinessDto, this.token)
   }
 
 }

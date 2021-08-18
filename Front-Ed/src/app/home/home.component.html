@@ -16,29 +16,36 @@
 
             <!-- Comunidades -->
             <div>
-                <p class="fs-user text-center mb-4">Comunidades</p>
+
+                <div class="d-flex justify-content-center mb-2">
+                    <img src="https://image.flaticon.com/icons/png/512/85/85849.png" height=25px width=25px>
+                    <p class="fs-user text-center mt-1 ms-1">Meus negócios: </p>
+                </div>
 
                 <div class="row mt-2">
-                    <div *ngFor="let com of profile.memberOf" class="col-md-3 col-sm-4 col-6 m-auto">
-                        <a [routerLink]="['/community-page', com.communityId]">
-                            <img src="{{com.communityPic}}" class="communityPic mb-2">
+                    <div *ngFor="let bus of profile.businessOwned" class="col-md-3 col-sm-4 col-6 m-auto">
+                        <a [routerLink]="['/business-page', bus.businessId]">
+                            <img src="{{bus.businessPic}}" class="businessPic mb-2">
                         </a>
                     </div>
                 </div>
 
             </div>
 
-            <hr class="ms-5 me-5">
-            <p class="fs-user text-center mb-4">Meus negócios</p>
+            <hr class="ms-5 me-5 mb-3 mt-5">
 
-            <div class="row mt-2">
-                <div *ngFor="let bus of profile.businessOwned" class="col-md-3 col-sm-4 col-6 m-auto">
-                    <a [routerLink]="['/business-page', bus.businessId]">
-                        <img src="{{bus.businessPic}}" class="communityPic mb-2">
+            <div class="d-flex justify-content-center mb-2">
+                <img src="https://image.flaticon.com/icons/png/512/4800/4800666.png" height=25px width=25px>
+                <p class="fs-user text-center mt-1 ms-1">Comunidades: </p>
+            </div>
+
+            <div class="row mt-2 mb-5">
+                <div *ngFor="let com of profile.memberOf" class="col-md-3 col-sm-4 col-6 m-auto">
+                    <a [routerLink]="['/community-page', com.communityId]">
+                        <img src="{{com.communityPic}}" class="communityPic mb-2">
                     </a>
                 </div>
             </div>
-
 
         </div>
 
@@ -162,6 +169,12 @@
                     <label for="businessName" class="mt-3 mb-1">Logo</label>
                     <input [(ngModel)]="profileBusinessDto.businessPic" type="text" class="form-control"
                         id="businessPic" placeholder="Insira o logo da sua empresa">
+                    <label for="businessHeader" class="mt-3 mb-1">Header de página</label>
+                    <input [(ngModel)]="profileBusinessDto.businessHeader" type="text" class="form-control"
+                        id="businessName" placeholder="Insira o header">
+                    <label for="businessName" class="mt-3 mb-1">Fundo de página</label>
+                    <input [(ngModel)]="profileBusinessDto.businessBackground" type="text" class="form-control"
+                        id="businessName" placeholder="Insira o fundo da sua página">
 
                 </div>
 

@@ -1,11 +1,26 @@
-.bg-c{
+.header {
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+    background-position: center;
+}
+
+.bg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-c {
     background-color: #3DBCBB;
     border-radius: 50px;
     width: 60%;
     margin-left: 55pt;
     }
      
-    .btn:hover{
-        transform: scale(1.3);
-        animation-duration: 1.2s;
-    }
+.btn:hover {
+    transform: scale(1.3);
+    animation-duration: 1.2s;
+}

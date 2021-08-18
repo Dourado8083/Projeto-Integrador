@@ -40,7 +40,8 @@ public class BusinessService {
 			business.setBusinessBio(profileBusinessDto.getBusinessBio());
 			business.setBusinessPic(profileBusinessDto.getBusinessPic());
 			business.setBusinessPhone(profileBusinessDto.getBusinessPhone());
-			business.setBusinessAdress(profileBusinessDto.getBusinessAdress());
+			business.setBusinessHeader(profileBusinessDto.getBusinessHeader());
+			business.setBusinessBackground(profileBusinessDto.getBusinessBackground());
 			
 			profile.getBusinessOwned().add(business);
 			profileRepository.save(profile);

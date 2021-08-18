@@ -1,5 +1,8 @@
-<div class="container-fluid">
-    <div class="row d-flex justify-content-center">
+<div class="container-fluid test">
+
+    <div class="header mt" style="background-image: url({{business.businessHeader}});"></div>
+
+    <div class="row d-flex justify-content-center" style="background-image: url({{business.businessBackground}});">
 
         <!-- Perfil da Empresa -->
         <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold oikos-border">
@@ -11,7 +14,8 @@
             <h4 class="text-center fw-bold mb-0">{{business.businessName}}</h4>
 
             <hr class="ms-5 me-5">
-            <h5 class="nav-link btn bg-c text-dark d-flex justify-content-center">ACESSE A LOJA  <i class="md-2 fas fa-link d-flex align-items-center"></i></h5>
+            <h5 class="nav-link btn bg-c text-dark d-flex justify-content-center">ACESSE A LOJA <i
+                    class="md-2 fas fa-link d-flex align-items-center"></i></h5>
             <hr class="ms-5 me-5">
 
         </div>
@@ -36,7 +40,7 @@
                     </div>
 
 
-                    
+
                     <div *ngFor="let item of business.businessMessages">
 
                         <div class="card mb-3">
@@ -63,7 +67,7 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
 
                 <!--Barra Lateral -->
