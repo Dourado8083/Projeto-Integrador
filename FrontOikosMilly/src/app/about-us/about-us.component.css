@@ -1,17 +1,47 @@
-
-
-.bg
+.bgc
 {
-    background-color: rgb(224, 224, 224);
-    border-radius: 10px;
+    background-color: rgb(219, 219, 219);
 }
 
-.bg2
+.bgb
 {
-    background-color: crimson;
+    background-color: white;
 }
 
 .f-25
 {
+    font-size: 25px;
+}
+
+.f-20
+{
     font-size: 20px;
+}
+
+.img1
+{
+    height: 600px;
+}
+
+.box
+{
+    height: 600px;
+    width: 700px;
+}
+
+.social
+{
+    font-size: 50px;
+    color: black;
+    padding: 5px;
+}
+
+.fa-linkedin:hover
+{
+    color:midnightblue;
+}
+
+.fa-github-square:hover
+{
+    color:darkviolet;
 }
