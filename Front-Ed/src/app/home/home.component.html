@@ -146,14 +146,14 @@
 <!-- Modal para criação -->
 <div id="newBusiness" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modal-bg">
-            <div class="modal-header">
+        <div class="modal-content modal-bg mod-rad">
+            <div class="modal-header bg-mod mod-radtop">
                 <h5 class="modal-title" id="exampleModalLabel">Cadastrar seu negócio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="">
 
-                <div class="form-control">
+                <div class="form-control p-4">
 
                     <label for="businessName" class="mt-3 mb-1">Nome da empresa</label>
                     <input [(ngModel)]="profileBusinessDto.businessName" type="text" class="form-control"
@@ -181,9 +181,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary butt2" data-bs-dismiss="modal">Cancelar</button>
                 <button (click)="createBusiness()" type="button" data-bs-dismiss="modal"
-                    class="btn btn-success">Criar</button>
+                    class="btn bg-mod butt">Criar</button>
             </div>
         </div>
     </div>
