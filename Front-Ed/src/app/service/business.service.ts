@@ -21,5 +21,8 @@ export class BusinessService {
   createBusiness(profileBusinessDto: ProfileBusinessDTO): Observable<Business> {
     return this.http.post<Business>("http://localhost:8080/business/create-business", profileBusinessDto, this.token);
   }
-
+  
+  getBusinessById(businessId: number):Observable<Business>{
+    return this.http.get<Business>(`http://localhost:8080/business/${businessId}`, this.token)
+  }
 }

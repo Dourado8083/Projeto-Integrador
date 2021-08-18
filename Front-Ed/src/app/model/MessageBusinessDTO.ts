@@ -1,7 +1,7 @@
 export class MessageBusinessDTO {
 
     profileFromId: number;
-    BusinessToId: number;
+    businessToId: number;
     messageContent: string; 
     messagePic: string;
     

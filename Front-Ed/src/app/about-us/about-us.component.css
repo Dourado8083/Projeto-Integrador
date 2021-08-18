@@ -1,21 +1,47 @@
-.bg
+.bgc
 {
-    background-color:rgb(254, 255, 255);
-    height: 1000px;
-    width: 100%;
+    background-color: rgb(219, 219, 219);
 }
 
-ul.social{
-    list-style: none;
+.bgb
+{
+    background-color: white;
 }
 
-.icon
+.f-25
+{
+    font-size: 25px;
+}
+
+.f-20
+{
+    font-size: 20px;
+}
+
+.img1
+{
+    height: 600px;
+}
+
+.box
+{
+    height: 600px;
+    width: 700px;
+}
+
+.social
 {
     font-size: 50px;
+    color: black;
     padding: 5px;
 }
 
-.fs
+.fa-linkedin:hover
 {
-    font-size: 40px;
+    color:midnightblue;
+}
+
+.fa-github-square:hover
+{
+    color:darkviolet;
 }
