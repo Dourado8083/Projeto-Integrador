@@ -4,5 +4,6 @@ export class MessageProfileDTO {
     profileToId: number;
     messageContent: string;
     messagePic: string;
+    messageType: string;
 
 }

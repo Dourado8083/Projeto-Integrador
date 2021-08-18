@@ -6,6 +6,7 @@ public class MessageDTO {
 	private String messageTitle;
 	private String messageContent;
 	private String communityName;
+	private String messageType;
 
 	public String getProfileEmail() {
 		return profileEmail;
@@ -37,6 +38,14 @@ public class MessageDTO {
 
 	public void setCommunityName(String communityName) {
 		this.communityName = communityName;
+	}
+
+	public String getMessageType() {
+		return messageType;
+	}
+
+	public void setMessageType(String messageType) {
+		this.messageType = messageType;
 	}
 
 }

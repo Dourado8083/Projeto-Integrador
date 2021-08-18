@@ -2,7 +2,7 @@
     <div class="row d-flex justify-content-center">
 
         <!-- Perfil do Usuário -->
-        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold oikos-border">
+        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 p-4 fw-bold oikos-border">
             <div class=" d-flex justify-content-center m-3">
                 <img src="{{profile.profilePic}}" alt="" class="img-fluid rounded-circle img-thumbnail"
                     style="width: 130px; height: 130px;">
@@ -71,9 +71,9 @@
 
 
                     <!-- Posts -->
-                    <div *ngFor="let item of profile.messagesReceived">
+                    <div *ngFor="let item of messageList">
 
-                        <div class="card mb-3">
+                        <div *ngIf="item.messageType == 'feed'" class="card mb-3">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
                                     <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"

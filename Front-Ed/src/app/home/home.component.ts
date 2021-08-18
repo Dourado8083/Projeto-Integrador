@@ -54,7 +54,6 @@ export class HomeComponent implements OnInit {
   getProfileById() {
     this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
       this.profile = resp;
-      console.log(this.profile);
     });
   }
 
@@ -67,8 +66,9 @@ export class HomeComponent implements OnInit {
   postMessage() {
     this.messageProfileDto.profileFromId = this.profileId;
     this.messageProfileDto.profileToId = this.profileId;
+    this.messageProfileDto.messageType = "feed"
     this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
-      this.getProfileById();
+      this.getAllMessage();
     });
   }
 
@@ -82,7 +82,6 @@ export class HomeComponent implements OnInit {
     this.profileBusinessDto.profileId = this.profileId;
     this.businessService.createBusiness(this.profileBusinessDto).subscribe((resp: Business) => {
       alert("Seu negócio foi cadastrado com sucesso!")
-      this.getProfileById();
     });
   }
 

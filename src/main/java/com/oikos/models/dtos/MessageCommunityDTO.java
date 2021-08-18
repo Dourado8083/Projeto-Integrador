@@ -6,6 +6,7 @@ public class MessageCommunityDTO {
 	private long CommunityToId;
 	private String messageContent;
 	private String messagePic;
+	private String messageType;
 	
 	public long getProfileFromId() {
 		return profileFromId;
@@ -31,6 +32,12 @@ public class MessageCommunityDTO {
 	}
 	public void setMessagePic(String messagePic) {
 		this.messagePic = messagePic;
+	}
+	public String getMessageType() {
+		return messageType;
+	}
+	public void setMessageType(String messageType) {
+		this.messageType = messageType;
 	}
 	
 

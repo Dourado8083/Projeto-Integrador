@@ -25,6 +25,9 @@ public class Message {
 	private String messageContent;
 	
 	private String messagePic;
+	
+	//feed, profile, community, business
+	private String messageType;
 
 	/*
 	 * Relação de mensagens postadas em uma comunidade.
@@ -89,6 +92,14 @@ public class Message {
 
 	public void setMessagePic(String messagePic) {
 		this.messagePic = messagePic;
+	}
+	
+	public String getMessageType() {
+		return messageType;
+	}
+
+	public void setMessageType(String messageType) {
+		this.messageType = messageType;
 	}
 
 	public Community getCommunityOn() {

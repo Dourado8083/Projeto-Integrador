@@ -106,6 +106,7 @@ export class CommunityPageComponent implements OnInit {
   postMessage() {
     this.messageCommunityDto.profileFromId = this.profileId;
     this.messageCommunityDto.communityToId = this.communityId;
+    this.messageCommunityDto.messageType = "community";
     this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
       this.message = resp;
       this.getCommunityById();

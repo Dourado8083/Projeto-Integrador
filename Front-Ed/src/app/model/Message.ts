@@ -8,6 +8,7 @@ export class Message{
     public messageTitle: string;
     public messageContent: string;
     public messagePic: string;
+    public messageType: string;
     public communityOn: Community;
     public profileFrom: Profile;
     public profileOn: Profile;

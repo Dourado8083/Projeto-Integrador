@@ -4,5 +4,6 @@ export class MessageCommunityDTO {
     communityToId: number;
     messageContent: string; 
     messagePic: string;
+    messageType: string;
     
 }

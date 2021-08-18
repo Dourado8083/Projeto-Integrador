@@ -53,6 +53,7 @@ public class MessageService {
 			message.setMessagePic(messageProfileDto.getMessagePic());
 			message.setProfileFrom(profileFrom);
 			message.setProfileOn(profileOn.get());
+			message.setMessageType(messageProfileDto.getMessageType());
 			
 			profileFrom.getMessagesSent().add(message);
 			profileOn.get().getMessagesReceived().add(message);
@@ -86,6 +87,7 @@ public class MessageService {
 			message.setMessagePic(messageCommunityDto.getMessagePic());
 			message.setProfileFrom(profileFrom);
 			message.setCommunityOn(communityOn.get());
+			message.setMessageType(messageCommunityDto.getMessageType());
 			
 			profileFrom.getMessagesSent().add(message);
 			communityOn.get().getMessages().add(message);
@@ -111,6 +113,7 @@ public class MessageService {
 			
 			message.setBusinessOn(business);
 			message.setMessageContent(messageBusinessDto.getMessageContent());
+			message.setMessageType(messageBusinessDto.getMessageType());
 			
 			business.getBusinessMessages().add(message);
 			businessRepository.save(business);

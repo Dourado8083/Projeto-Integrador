@@ -4,5 +4,6 @@ export class MessageBusinessDTO {
     businessToId: number;
     messageContent: string; 
     messagePic: string;
+    messageType: string;
     
 }

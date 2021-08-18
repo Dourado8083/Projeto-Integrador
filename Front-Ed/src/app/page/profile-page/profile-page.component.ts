@@ -56,6 +56,7 @@ export class ProfilePageComponent implements OnInit {
   postMessage() {
     this.messageProfileDto.profileFromId = this.myProfileId;
     this.messageProfileDto.profileToId = this.visitingProfileId;
+    this.messageProfileDto.messageType = "profile";
     this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
       this.getVisitingProfileById();
     });

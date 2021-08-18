@@ -6,6 +6,7 @@ public class MessageProfileDTO {
 	private long profileToId;
 	private String messageContent;
 	private String messagePic;
+	private String messageType;
 	
 	public long getProfileFromId() {
 		return profileFromId;
@@ -30,6 +31,12 @@ public class MessageProfileDTO {
 	}
 	public void setMessagePic(String messagePic) {
 		this.messagePic = messagePic;
+	}
+	public String getMessageType() {
+		return messageType;
+	}
+	public void setMessageType(String messageType) {
+		this.messageType = messageType;
 	}
 	
 	

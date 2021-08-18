@@ -34,7 +34,7 @@ export class BusinessPageComponent implements OnInit {
 
   postMessage() {
     this.messageBusinessDto.businessToId = this.businessId
-
+    this.messageBusinessDto.messageType = "business";
     this.messageService.postMessageOnBusiness(this.messageBusinessDto).subscribe((resp: Message)=>{
       this.getBusinessById()
     })
