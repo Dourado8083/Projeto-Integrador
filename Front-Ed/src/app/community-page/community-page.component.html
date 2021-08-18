@@ -1,15 +1,15 @@
 <div class="container-fluid bg-grad">
     <div class="row d-flex justify-content-center ml col-sep">
 
-        <div class="col-md-2 mt-5 p-3 d-flex flex-column justify-content-start align-items-center info top border-rad">
+        <div class="col-md-2 mt-5 mb-4 p-3 d-flex flex-column justify-content-start align-items-center info top border-rad">
             <img src="{{community.communityPic}}" class="pic img-fluid mt-2">
             <p class="fs-20 text-center mt-2"><b>{{community.communityName}}</b></p>
             <p class="mt-2 mb-1"><i class="fas fa-book"></i><b> Biografia: </b></p>
             <p><em>{{community.communityBio}}</em></p>
             <p class="mt-1"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b>
                 {{community.communityNumberOfMembers}}</p>
-            <button (click)="joinCommunity()" class="btn btn-outline-success mt-3 mb-3">Entrar na comunidade</button>
-            <button (click)="leaveCommunity()" class="btn btn-outline-danger mb-3">Sair da comunidade</button>
+            <button *ngIf="!isMember()" (click)="joinCommunity()" class="btn btn-outline-success mt-3 mb-3">Entrar na comunidade</button>
+            <button *ngIf="isMember()" (click)="leaveCommunity()" class="btn btn-outline-danger mb-3">Sair da comunidade</button>
         </div>
 
         <!--Feed da comunidade-->

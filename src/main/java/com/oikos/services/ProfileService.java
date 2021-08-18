@@ -120,25 +120,20 @@ public class ProfileService {
 	}
 	
 	/**
-	 * Método para editar a foto de um perfil caso o usuário seja dono dele.
+	 * Método para editar a bio de um perfil 
 	 * 
 	 * @param ProfileDTO
 	 * @return Um Optional contendo o perfil alterado pelo usuário ou vázio para
 	 *         ser tratado como erro.
 	 */
 	
-	public Optional<?> changePicture (ProfileDTO profiledto){
-		return profileRepository.findByProfileEmail(profiledto.getProfileEmail()).map(profiles ->{
+	public Optional<?> editBio (ProfileDTO profiledto){
+		return profileRepository.findById(profiledto.getProfileId()).map(profile -> {
 			
-			Optional<Profile> profile = profileRepository.findByProfileEmail(profiledto.getProfileEmail());
+		profile.setProfileBio(profiledto.getProfileBio());
+		
+		return Optional.ofNullable(profileRepository.save(profile));
 			
-			if(profile.isEmpty()) {
-				return Optional.empty();
-			}
-			
-			profiles.setProfilePic(profiledto.getProfilePic());
-			
-			return Optional.ofNullable(profileRepository.save(profiles));
 		}).orElse(Optional.empty());
 	}
 	

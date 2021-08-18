@@ -37,6 +37,7 @@ export class CadastrarComponent implements OnInit {
       alert("As senhas estão diferentes")
     }
     else {
+      this.profile.profileBio = "Olá, estou usando a rede social Oikos!"
       this.authService.cadastrar(this.profile).subscribe((resp: Profile) => {
         this.profile = resp
         this.router.navigate(['/entrar'])

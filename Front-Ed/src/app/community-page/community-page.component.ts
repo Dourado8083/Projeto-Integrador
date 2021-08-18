@@ -16,6 +16,7 @@ import { ProfileService } from '../service/profile.service';
   templateUrl: './community-page.component.html',
   styleUrls: ['./community-page.component.css']
 })
+
 export class CommunityPageComponent implements OnInit {
 
   community: Community = new Community();
@@ -78,6 +79,8 @@ export class CommunityPageComponent implements OnInit {
     this.profileCommunityDto.profileId = this.profileId;
     this.communityService.joinCommunity(this.profileCommunityDto).subscribe((resp: Community) => {
       this.community = resp;
+      this.getCommunityById();
+      this.getUserById();
     }); 
     this.profileCommunityDto = new ProfileCommunityDTO();
   }
@@ -87,6 +90,8 @@ export class CommunityPageComponent implements OnInit {
     this.profileCommunityDto.profileId = this.profileId;
     this.communityService.leaveCommunity(this.profileCommunityDto).subscribe((resp: Community) => {
       this.community = resp;
+      this.getCommunityById();
+      this.getUserById();
     }); 
     this.profileCommunityDto = new ProfileCommunityDTO();
   }
@@ -109,10 +114,17 @@ export class CommunityPageComponent implements OnInit {
     this.messageCommunityDto.messageType = "community";
     this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
       this.message = resp;
-      this.getCommunityById();
     })
   }
 
+  isMember(): boolean {
+    for(let i = 0; i < this.profile.memberOf.length; i++) {
+      if(this.profile.memberOf[i].communityId == this.communityId) {
+        return true;
+      }
+    }
 
+    return false;
+  }
 
 }

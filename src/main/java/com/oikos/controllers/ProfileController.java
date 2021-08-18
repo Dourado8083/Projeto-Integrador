@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.ProfileCommunityDTO;
+import com.oikos.models.dtos.ProfileDTO;
 import com.oikos.models.dtos.ProfileLoginDTO;
 import com.oikos.repositories.ProfileRepository;
 import com.oikos.services.ProfileService;
@@ -45,14 +47,16 @@ public class ProfileController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/name/{profileName}")
-	public ResponseEntity<List<Profile>> GetByName(@PathVariable String profileName) {
-		return ResponseEntity.ok(profileRepository.findAllByProfileNameContainingIgnoreCase(profileName));
-	}
-
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		profileRepository.deleteById(id);
+	}
+	
+	@PutMapping("/edit-profile")
+	public ResponseEntity<Object> editProfile(@Valid @RequestBody ProfileDTO profileDto) {
+		return profileService.editBio(profileDto).map(profile -> {
+			return ResponseEntity.status(200).build();
+		}).orElse(ResponseEntity.status(400).build());
 	}
 
 	@PostMapping("/signup")

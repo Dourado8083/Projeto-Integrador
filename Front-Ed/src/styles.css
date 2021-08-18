@@ -5,6 +5,18 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+  
+@font-face {
+    font-family: "Goldplay";
+    src: url(assets/font/GoldplayRegular.otf);
+}
+
+html * {
+    scroll-behavior: smooth;
+    font-family: "Goldplay";
+}
+
+
 .bg-sla{
     background-color: #D9EFFC;
 }
@@ -50,3 +62,4 @@
 .fs-204 {
     font-size: 204px;
 }
+

@@ -28,7 +28,7 @@ a {
 
 .communityPic {
     width: 90%;
-    height: 85px;
+    height: 70px;
     border-radius: 5px;
     border-width: 4px;
     border-style: double;
@@ -38,7 +38,7 @@ a {
 
 .businessPic {
     width: 90%;
-    height: 85px;
+    height: 70px;
     border-radius: 45px;
     border-width: 4px;
     border-style: double;
@@ -66,38 +66,11 @@ a {
     border-color: black;
     transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
+.hover:hover {
+    transform: scale(1.2);
+}
+
 .mw{
     max-width: 650px;
-}
-
-.bg-mod
-{
-    background-color:rgb(170, 220, 243);
-}
-
-.butt
-{
-    padding: 10px;
-    width: 70px;
-}
-
-.butt2
-{
-    padding: 10px;
-}
-
-.butt:hover
-{
-    background-color: rgb(120, 182, 211);
-}
-
-.mod-rad
-{
-    border-radius: 10px;
-}
-
-.mod-radtop
-{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }

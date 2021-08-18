@@ -44,25 +44,6 @@ export class CommunityComponent implements OnInit {
       
       this.communityList = resp;
 
-      for(let i = 0; i < this.communityList.length; i++) {
-        let com = this.communityList[i];
-        let flag: number = 0;
-        for(let j = 0; j < com.communityMembers.length; j++) {
-          let comMember = com.communityMembers[j];
-          if(comMember.profileId == this.profileId) {
-            flag = 1;
-          }
-        }
-        
-        if(flag) {
-          this.memberType = 1;
-        }
-        else {
-          this.memberType = 0;
-        }
-
-      }
-
     });
   }
 

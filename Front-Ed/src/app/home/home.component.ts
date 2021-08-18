@@ -42,11 +42,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    window.scroll(0,0)
-
     if (environment.token == '') {
       this.router.navigate(['/entrar'])
-      this.getProfileById();
     }
 
     this.getProfileById();
@@ -83,6 +80,7 @@ export class HomeComponent implements OnInit {
   createBusiness() {
     this.profileBusinessDto.profileId = this.profileId;
     this.businessService.createBusiness(this.profileBusinessDto).subscribe((resp: Business) => {
+      this.getProfileById();
       alert("Seu negócio foi cadastrado com sucesso!")
     });
   }
