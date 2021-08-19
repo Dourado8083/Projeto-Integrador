@@ -47,7 +47,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "businessOnId")
-	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages", "businessOwner"})
+	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages", "businessOwner", "businessMessages"})
 	private Business businessOn;
 	
 	/*
@@ -55,7 +55,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileFromId")
-	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned" })
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned", "commentsMade" })
 	private Profile profileFrom;
 	
 	/*
@@ -63,7 +63,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileOnId")
-	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned" })
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned", "commentsMade" })
 	private Profile profileOn;
 	
 	

@@ -20,14 +20,18 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name = "profileFromId")
-	@JsonIgnoreProperties({"businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived"})
+	@JsonIgnoreProperties({"businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "commentsMade"})
 	private Profile profileFrom;
 	
 	@ManyToOne
 	@JoinColumn(name = "messageOnId")
-	@JsonIgnoreProperties({"communityOn", "businessOn", "profileFrom", "profileOn"})
+	@JsonIgnoreProperties({"communityOn", "businessOn", "profileFrom", "profileOn", "commentList"})
 	private Message messageOn;
 
+	public Comment() {
+
+	}
+	
 	public long getCommentId() {
 		return commentId;
 	}

@@ -1,6 +1,11 @@
 * {
-    margin: 0;
     padding: 0;
+}
+
+.main {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .super-header {
@@ -52,8 +57,15 @@
     height: 100%;
 }
 
+.publish {
+    background-color: white;
+}
+
 .newpost {
-    background-color: rgba(1, 124, 17, 0.424);
+    background-color: white;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.315);
+    border-width: 1px;
     width: 95%;
 }
 
@@ -76,4 +88,22 @@ a:visited{
 a {
     text-decoration: none;
     display: block;
+}
+
+.bg-publish {
+    border-color: rgba(135, 59, 179, 0.582);
+}
+
+.bg-publish:hover {
+    background-color:rgba(72, 20, 102, 0.712);
+}
+
+.btn-outline-info {
+    border-color: rgba(135, 59, 179, 0.582);
+    color: rgba(135, 59, 179, 0.582);
+}
+
+.btn-outline-info:hover {
+    background-color: rgba(135, 59, 179, 0.582);
+    color: white;
 }
