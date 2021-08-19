@@ -60,6 +60,10 @@ public class Profile {
 	@OneToMany(mappedBy = "profileOn")
 	@JsonIgnoreProperties({"communityOn", "profileOn", "messagesReceived"})
 	private List<Message> messagesReceived = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "profileFrom")
+	@JsonIgnoreProperties({"profileFrom", "messageOn"})
+	private List<Comment> commentsMade = new ArrayList<>();
 
 	public long getProfileId() {
 		return profileId;
@@ -109,7 +113,6 @@ public class Profile {
 		this.profileBio = profileBio;
 	}
 	
-
 	public String getProfilePic() {
 		return profilePic;
 	}
@@ -129,7 +132,14 @@ public class Profile {
 	public int getNumberOfFollowers() {
 		return numberOfFollowers;
 	}
-	
+
+	public List<Comment> getCommentsMade() {
+		return commentsMade;
+	}
+
+	public void setCommentsMade(List<Comment> commentsMade) {
+		this.commentsMade = commentsMade;
+	}
 
 	public List<Message> getMessagesSent() {
 		return messagesSent;
@@ -182,6 +192,8 @@ public class Profile {
 	public void setFeed(List<Message> feed) {
 		this.messagesReceived = feed;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

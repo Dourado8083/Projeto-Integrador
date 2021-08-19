@@ -1,5 +1,7 @@
 package com.oikos.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -7,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,6 +26,7 @@ public class Message {
 	private String messageTitle;
 	
 	@NotNull
+	@Lob
 	private String messageContent;
 	
 	private String messagePic;
@@ -37,6 +42,9 @@ public class Message {
 	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
 	private Community communityOn;
 
+	/*
+	 * Relação de mensagens postadas em um negócio
+	 */
 	@ManyToOne
 	@JoinColumn(name = "businessOnId")
 	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages", "businessOwner"})
@@ -51,12 +59,21 @@ public class Message {
 	private Profile profileFrom;
 	
 	/*
-	 * Relação de mensagens em um feed.
+	 * Relação de mensagens em um perfil
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileOnId")
 	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned" })
 	private Profile profileOn;
+	
+	
+	/*
+	 * Relação de comentários em uma mensagem
+	 */
+	@OneToMany(mappedBy = "messageOn")
+	@JsonIgnoreProperties({"messageOn", "businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived"})
+	private List<Comment> commentList = new ArrayList<>();
+
 	
 	public Message() {
 
@@ -132,6 +149,14 @@ public class Message {
 
 	public void setBusinessOn(Business businessOn) {
 		this.businessOn = businessOn;
+	}
+
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
 	}
 
 	@Override

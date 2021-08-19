@@ -1,44 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.super-header {
+    height: 415px;
+    background-color: rgba(0, 0, 0, 0.671);
+}
+
 .header {
-    width: 100%;
-    height: 200px;
+    height: 400px;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-color: white;
     background-position: center;
+    background-size: cover;
 }
 
 .business-pic {
-    border-width: 3px;
+    height: 150px;
+    width: 150px;
+    display: block;
     border-style: solid;
-    border-color: rgba(224, 173, 4, 0.726);
+    border-width: 3px;
+    border-color: rgba(204, 164, 33, 0.87);
 }
 
-.bg {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.bg-c {
-    background-color: #3DBCBB;
-    border-radius: 50px;
-    width: 60%;
-    margin-left: 55pt;
-}
-
-.bg-post {
-    background-color: rgba(69, 245, 53, 0.287);
-}
-     
-.btn:hover {
-    transform: scale(1.3);
-    animation-duration: 1.2s;
+.business-icon {
+    height: 60px;
+    width: 60px;
+    display: block;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(204, 164, 33, 0.87);
 }
 
 .post-img {
-    max-height: 500px;
-    max-width: 650px;
-    width: auto;
+    max-width: 80%px;
+    height: auto;
+}
+
+.info {
+    background-color: rgba(0, 0, 0, 0.589);
+}
+
+.left-col {
+    background-color: white;
+    height: 100%;
+}
+
+.feed {
+    background-color: white;
+    height: 100%;
+}
+
+.newpost {
+    background-color: rgba(1, 124, 17, 0.424);
+    width: 95%;
+}
+
+.post {
+    width: 90%;
+}
+
+.post-header {
+    background-color: rgba(13, 207, 39, 0.411);
 }
 
 a:link{
@@ -51,9 +75,5 @@ a:visited{
 
 a {
     text-decoration: none;
+    display: block;
 }
-
-.card-header {
-    background-color: rgba(17, 167, 4, 0.424);
-}
-

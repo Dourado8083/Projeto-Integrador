@@ -10,6 +10,8 @@ export class Business {
     public businessPassword: string;
     public businessBio: string;
     public businessPic: string;
+    public businessAddress: string;
+    public businessPhone: string;
     public businessOwner: Profile;
     public businessMessages: Message[];
     public businessHeader: string;

@@ -33,7 +33,7 @@ public class Business {
 
 	private String businessPic;
 
-	private String businessAdress;
+	private String businessAddress;
 
 	private String businessPhone;
 
@@ -109,12 +109,12 @@ public class Business {
 		this.businessPhone = businessPhone;
 	}
 
-	public String getBusinessAdress() {
-		return businessAdress;
+	public String getBusinessAddress() {
+		return businessAddress;
 	}
 
-	public void setBusinessAdress(String businessAdress) {
-		this.businessAdress = businessAdress;
+	public void setBusinessAddress(String businessAddress) {
+		this.businessAddress = businessAddress;
 	}
 
 	public Profile getBusinessOwner() {
@@ -148,5 +148,7 @@ public class Business {
 	public void setBusinessMessages(List<Message> businessMessages) {
 		this.businessMessages = businessMessages;
 	}
+
+
 
 }

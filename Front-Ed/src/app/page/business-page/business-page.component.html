@@ -1,90 +1,118 @@
-<div class="container-fluid test">
+<div class="container-fluid" style="background-image: url({{business.businessBackground}});">
 
-    <div class="header mt" style="background-image: url({{business.businessHeader}});"></div>
-
-    <div class="row d-flex justify-content-center" style="background-image: url({{business.businessBackground}});">
-
-        <!-- Perfil da Empresa -->
-        <div class="col-md-3 bg-light rounded-p me-4 ms-3 mb-3 mt-3 fw-bold oikos-border">
-
-            <div class=" d-flex justify-content-center m-3">
-                <img src="{{business.businessPic}}" alt="" class="img-fluid rounded-circle img-thumbnail business-pic"
-                    style="width: 130px; height: 130px;">
+    <div class="container-fluid super-header">
+        <div class="row">
+            <div class="col-md-9 m-auto mt-2 mb-2 d-flex justify-content-between align-items-end oikos-border header"
+                style="background-image: url({{business.businessHeader}});">
+                <img src={{business.businessPic}} class="mb-3 ms-4 img-fluid rounded-circle business-pic">
+                <div class="info m-3 ps-3 pe-3 oikos-border">
+                    <p class="text-center text-white mt-4"><em><i class="fas fa-phone"></i> {{business.businessPhone}}</em>
+                    </p>
+                    <p class="text-center text-white"><em><i class="fas fa-map-marker-alt"></i>
+                            {{business.businessAddress}}</em></p>
+                </div>
             </div>
-            <h4 class="text-center fw-bold mb-0">{{business.businessName}}</h4>
+        </div>
+    </div>
 
-            <hr class="ms-5 me-5">
-            <h5 class="nav-link btn bg-c text-dark d-flex justify-content-center">ACESSE A LOJA <i
-                    class="md-2 fas fa-link d-flex align-items-center"></i></h5>
-            <hr class="ms-5 me-5">
+    <div class="row mt-2 mb-0">
+
+        <div class="col-md-3 m-auto me-1 bg-light oikos-border left-col">
 
         </div>
 
-        <!-- Feed -->
-        <div class="col-md-8 bg-light me-0 mt-3 rounded-p bg- mb-3 oikos-border">
-            <div class="row d-flex justify-content-center">
+        <!-- Feed de publicações -->
+        <div class="col-md-6 m-auto ms-1 oikos-border feed">
 
-                <!-- Feed Principal -->
-                <div class="col-md-8 me-3 mt-4 mb-4 bg-post oikos-border">
-                    <!-- Postar -->
-                    <div class="mb-3 mt-1 p-3 oikos-border">
-                        <label for="exampleFormControlTextarea1" class="form-label">Faça uma postagem nova: </label>
-                        <textarea [(ngModel)]="messageBusinessDto.messageContent" type="text" class="form-control"
-                            id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
-                        <div class="form-group mt-3">
-                            <label for="pic">Gostaria de inserir uma imagem?</label>
-                            <input [(ngModel)]="messageBusinessDto.messagePic" class="form-control form-st" type="text"
-                                name="pic" id="pic" placeholder="Link da imagem">
-                        </div>
-                        <button (click)="postMessage()" class="btn btn-outline-primary mb-2 mt-3">POSTAR</button>
+            <!-- Nova publicação-->
+            <div *ngIf="business.businessOwner.profileId == profileId" class="p-5 d-flex justify-content-center">
+
+                <div class="mb-3 mt-1 p-3 oikos-border newpost">
+                    <label for="exampleFormControlTextarea1" class="form-label d-flex align-items-center mb-2"> <img
+                            src={{business.businessPic}} class="rounded-circle me-1 business-icon">
+                        <p class="mt-4"><b>Gostaria de fazer uma nova
+                                publicação?</b></p>
+                    </label>
+                    <textarea [(ngModel)]="messageBusinessDto.messageContent" type="text" class="form-control"
+                        id="descricao" placeholder="Digite sua mensagem" rows="3"></textarea>
+                    <div class="form-group mt-4">
+                        <label for="pic"><b>Gostaria de inserir uma imagem?</b></label>
+                        <input [(ngModel)]="messageBusinessDto.messagePic" class="form-control form-st" type="text"
+                            name="pic" id="pic" placeholder="Link da imagem">
                     </div>
-
-
-
-                    <div *ngFor="let item of business.businessMessages">
-
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <a class="mt-2" [routerLink]="['/business-page', business.businessId]">
-                                        <img src="{{business.businessPic}}" alt="" class="img-fluid rounded-circle business-pic"
-                                            style="width: 40px; height: 40px;">
-                                        <b> {{business.businessName}}</b></a>
-
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text mt-2">{{item.messageContent}}</p>
-                                <hr>
-                                <img *ngIf="item.messagePic != null" src="{{item.messagePic}}" class="post-img">
-                            </div>
-                        </div>
-
-                    </div>
-
+                    <button data-bs-toggle="modal" data-bs-target="#newPost"
+                        class="btn btn-outline-success mb-2 mt-3">PUBLICAR</button>
                 </div>
 
-                <!--Barra Lateral -->
-                <div class="col-md-3 mt-3">
+            </div>
 
-                    <button class="nav-link btn btn-light mt-3"><img
-                            src="https://image.flaticon.com/icons/png/512/1946/1946429.png" alt=""
-                            style="height: 30px; width: 30px;"> Perfil </button>
-
-
-                    <button routerLink='/community' class="nav-link btn btn-light  mt-3"><img
-                            src="https://image.flaticon.com/icons/png/512/4350/4350908.png" alt=""
-                            style="height: 30px; width: 30px;"> Comunidades</button>
-
-                    <button class="nav-link btn btn-light  mt-3"><img
-                            src="https://image.flaticon.com/icons/png/512/561/561127.png" alt=""
-                            style="height: 30px; width: 30px;"> Mensagens</button>
-
-                    <button class="nav-link btn btn-light mt-3" data-bs-toggle="modal"
-                        data-bs-target="#newBusiness"><img
-                            src="https://image.flaticon.com/icons/png/512/2830/2830596.png" alt=""
-                            style="height: 30px; width: 30px;"> Empresas</button>
+            <!-- Publicações -->
+            <div *ngFor="let item of business.businessMessages" class="d-flex justify-content-center">
+                <div class="card mb-3 post">
+                    <div class="card-header post-header p-2">
+    
+                        <a class="d-flex align-items-center" [routerLink]="['/business-page', business.businessId]">
+                            <img src="{{business.businessPic}}" alt="" class="rounded-circle business-icon"
+                                style="height: 50px; width: 50px;">
+                            <p class="ms-1 mt-4"><b>@{{business.businessName}}</b></p>
+                        </a>
+    
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text mt-2 ms-2 p-2 fs-18">{{item.messageContent}}</p>
+                        <hr>
+                        <div *ngIf="item.messagePic != null" class="d-flex justify-content-center">
+                            <img class="mb-3 img-fluid post-img oikos-border"
+                                src="{{item.messagePic}}">
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- Modal de prévia da postagem -->
+<div id="newPost" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-bg mod-rad" style="width:1000px;">
+            <div class="modal-header bg-mod mod-radtop">
+                <h5 class="modal-title ms-2 fw-bold" id="exampleModalLabel">A sua publicação ficará assim. Gostaria de
+                    prosseguir?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modelo da postagem -->
+            <div class="card m-5">
+                <div class="card-header post-header">
+
+                    <a class="d-flex align-items-center" [routerLink]="['/business-page', business.businessId]">
+                        <img src="{{business.businessPic}}" alt="" class="rounded-circle business-icon"
+                            style="height: 50px; width: 50px;">
+                        <p class="ms-1 mt-4"><b>@{{business.businessName}}</b></p>
+                    </a>
+
+                </div>
+                <div class="card-body">
+                    <p class="card-text mt-2 ms-2 p-2 fs-18">{{messageBusinessDto.messageContent}}</p>
+                    <hr>
+                    <div *ngIf="messageBusinessDto.messagePic != null" class="d-flex justify-content-center">
+                        <img class="mb-3 img-fluid post-img oikos-border" src="{{messageBusinessDto.messagePic}}">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary butt2" data-bs-dismiss="modal">Cancelar</button>
+                <button (click)="postMessage()" type="button" data-bs-dismiss="modal"
+                    class="btn bg-mod butt">Publicar</button>
             </div>
         </div>
     </div>

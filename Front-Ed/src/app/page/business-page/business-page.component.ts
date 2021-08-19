@@ -6,6 +6,7 @@ import { MessageBusinessDTO } from 'src/app/model/MessageBusinessDTO';
 import { ProfileBusinessDTO } from 'src/app/model/ProfileBusinessDTO';
 import { BusinessService } from 'src/app/service/business.service';
 import { MessageService } from 'src/app/service/message.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-business-page',
@@ -16,6 +17,8 @@ export class BusinessPageComponent implements OnInit {
 
   business: Business = new Business();
   businessId: number = this.activatedRoute.snapshot.params["id"];
+
+  profileId: number = environment.id;
 
   messageBusinessDto: MessageBusinessDTO = new MessageBusinessDTO();
 
@@ -29,7 +32,6 @@ export class BusinessPageComponent implements OnInit {
 
   ngOnInit() {
     this.getBusinessById();
-
   }
 
   postMessage() {
@@ -43,6 +45,7 @@ export class BusinessPageComponent implements OnInit {
   getBusinessById(){
     this.businessService.getBusinessById(this.businessId).subscribe((resp: Business)=>{
       this.business = resp
+      console.log(this.business);
     })
   }
 

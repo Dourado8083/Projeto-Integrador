@@ -9,7 +9,7 @@ public class ProfileBusinessDTO {
 	private String businessEmail;
 	private String businessBio;
 	private String businessPic;
-	private String businessAdress;
+	private String businessAddress;
 	private String businessPhone;
 	private String businessHeader;
 	private String businessBackground;
@@ -70,12 +70,12 @@ public class ProfileBusinessDTO {
 		this.businessPic = businessPic;
 	}
 
-	public String getBusinessAdress() {
-		return businessAdress;
+	public String getBusinessAddress() {
+		return businessAddress;
 	}
 
-	public void setBusinessAdress(String businessAdress) {
-		this.businessAdress = businessAdress;
+	public void setBusinessAddress(String businessAddress) {
+		this.businessAddress = businessAddress;
 	}
 
 	public String getBusinessPhone() {

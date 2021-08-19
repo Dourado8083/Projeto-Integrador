@@ -113,6 +113,7 @@ public class MessageService {
 			
 			message.setBusinessOn(business);
 			message.setMessageContent(messageBusinessDto.getMessageContent());
+			message.setMessagePic(messageBusinessDto.getMessagePic());
 			message.setMessageType(messageBusinessDto.getMessageType());
 			
 			business.getBusinessMessages().add(message);

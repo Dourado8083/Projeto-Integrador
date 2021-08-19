@@ -1,4 +1,5 @@
 import { Business } from "./Business";
+import { Comments } from "./Comments";
 import { Community } from "./community"
 import { Profile } from "./Profile"
 
@@ -13,5 +14,6 @@ export class Message{
     public profileFrom: Profile;
     public profileOn: Profile;
     public businessOn: Business;
+    public commentList: Comments[];
 
 }

@@ -7,7 +7,7 @@ export class ProfileBusinessDTO {
 	businessEmail: string;
 	businessBio: string;
 	businessPic: string;
-	businessAdress: string;
+	businessAddress: string;
 	businessPhone: string;
 	businessHeader: string;
 	businessBackground: string;

@@ -39,6 +39,7 @@ public class BusinessService {
 			business.setBusinessEmail(profileBusinessDto.getBusinessEmail());
 			business.setBusinessBio(profileBusinessDto.getBusinessBio());
 			business.setBusinessPic(profileBusinessDto.getBusinessPic());
+			business.setBusinessAddress(profileBusinessDto.getBusinessAddress());
 			business.setBusinessPhone(profileBusinessDto.getBusinessPhone());
 			business.setBusinessHeader(profileBusinessDto.getBusinessHeader());
 			business.setBusinessBackground(profileBusinessDto.getBusinessBackground());
