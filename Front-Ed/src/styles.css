@@ -1,11 +1,3 @@
-/* html
-{
-    background-color:rgb(216, 236, 245);
-}
-
-/* You can add global styles to this file, and also import other style files */
-
-  
 @font-face {
     font-family: "Goldplay";
     src: url(assets/font/GoldplayRegular.otf);
@@ -26,7 +18,10 @@ html * {
 }
 
 .oikos-border {
-    border-radius: 10px;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: rgba(100, 100, 100, 0.26);
+    border-width: 1px;
 }
 
 .debug {

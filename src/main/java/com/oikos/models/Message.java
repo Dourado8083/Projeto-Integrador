@@ -1,6 +1,7 @@
 package com.oikos.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,6 +33,9 @@ public class Message {
 	private String messageContent;
 	
 	private String messagePic;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    private Date data = new java.sql.Date(System.currentTimeMillis());
 	
 	//feed, profile, community, business
 	private String messageType;
@@ -119,6 +125,14 @@ public class Message {
 		this.messageType = messageType;
 	}
 
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	public Community getCommunityOn() {
 		return communityOn;
 	}
@@ -158,6 +172,7 @@ public class Message {
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
 	}
+	
 
 	@Override
 	public int hashCode() {

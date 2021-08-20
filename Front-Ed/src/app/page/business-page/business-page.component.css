@@ -1,5 +1,10 @@
 * {
     padding: 0;
+    margin:0;
+}
+
+.modal-dialog {
+    margin-left: 35%;
 }
 
 .main {
@@ -47,9 +52,9 @@
     background-color: rgba(0, 0, 0, 0.589);
 }
 
-.left-col {
+.more-info {
     background-color: white;
-    height: 100%;
+    height: 500px;
 }
 
 .feed {
@@ -62,10 +67,7 @@
 }
 
 .newpost {
-    background-color: white;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.315);
-    border-width: 1px;
+
     width: 95%;
 }
 
@@ -75,6 +77,7 @@
 
 .post-header {
     background-color: rgba(13, 207, 39, 0.411);
+    background-color: rgba(11, 177, 149, 0.411);
 }
 
 a:link{
@@ -107,3 +110,8 @@ a {
     background-color: rgba(135, 59, 179, 0.582);
     color: white;
 }
+
+.comment {
+    font-size: 15px;
+}
+

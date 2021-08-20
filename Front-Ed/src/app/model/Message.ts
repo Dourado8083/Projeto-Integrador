@@ -15,5 +15,6 @@ export class Message{
     public profileOn: Profile;
     public businessOn: Business;
     public commentList: Comments[];
+    public data: Date;
 
 }

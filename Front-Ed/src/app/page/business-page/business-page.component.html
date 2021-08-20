@@ -6,7 +6,8 @@
                 style="background-image: url({{business.businessHeader}});">
                 <img src={{business.businessPic}} class="mb-3 ms-4 img-fluid rounded-circle business-pic">
                 <div class="info m-3 ps-3 pe-3 oikos-border">
-                    <p class="text-center text-white mt-4"><em><i class="fas fa-phone"></i> {{business.businessPhone}}</em>
+                    <p class="text-center text-white mt-4"><em><i class="fas fa-phone"></i>
+                            {{business.businessPhone}}</em>
                     </p>
                     <p class="text-center text-white"><em><i class="fas fa-map-marker-alt"></i>
                             {{business.businessAddress}}</em></p>
@@ -17,61 +18,116 @@
 
     <div class="row mt-2">
 
-        <div class="col-md-3 m-auto me-1 bg-light oikos-border left-col">
+        <div class="col-md-3 m-auto me-1 mt-2 bg">
+
+            <!-- Informações -->
+            <div class="bg-light oikos-border more-info">
+                <p><b>Sobre</b></p>
+            </div>
+
+            <!-- Reviews -->
+            <div class="bg-light oikos-border review-section">
+
+            </div>
 
         </div>
 
         <!-- Feed de publicações -->
-        <div class="col-md-6 m-auto ms-1 mt-2 oikos-border">
+        <div class="col-md-6 m-auto ms-1 mt-2">
 
             <!-- Nova publicação-->
-            <div *ngIf="business.businessOwner.profileId == profileId" class="container-fluid p-5 mb-2 d-flex justify-content-center oikos-border publish">
+            <div *ngIf="business.businessOwner.profileId == profileId"
+                class="container-fluid p-3 pt-5 pb-5 mb-2 d-flex justify-content-center oikos-border publish">
 
-                <div class="mb-3 mt-1 p-3 oikos-border newpost">
-                    <label for="exampleFormControlTextarea1" class="form-label d-flex mb-4"> <img
-                            src={{business.businessPic}} class="rounded-circle me-1 business-icon">
-                        <p class="mt-4"><b>Gostaria de fazer uma nova
-                                publicação?</b></p>
+                <div class="mb-3 mt-1 p-3 bg-light oikos-border newpost">
+                    <label for="exampleFormControlTextarea1" class="form-label">
+                        <p>Gostaria de fazer uma nova
+                            publicação?</p>
                     </label>
                     <textarea [(ngModel)]="messageBusinessDto.messageContent" type="text" class="form-control"
-                        id="descricao" placeholder="Digite sua mensagem" rows="3"></textarea>
+                        id="descricao" placeholder=" Digite a sua mensagem" rows="3"></textarea>
                     <div class="form-group mt-4">
-                        <label for="pic"><b>Gostaria de inserir uma imagem?</b></label>
+                        <label for="pic" class="mb">Gostaria de inserir uma imagem?</label>
                         <input [(ngModel)]="messageBusinessDto.messagePic" class="form-control form-st" type="text"
-                            name="pic" id="pic" placeholder="Link da imagem">
+                            name="pic" id="pic" placeholder=" Link da imagem">
                     </div>
-                    <button data-bs-toggle="modal" data-bs-target="#newPost"
-                        class="btn btn-outline-info p-2 mb-1 mt-4">PUBLICAR</button>
+                    <div class="d-flex justify-content-end">
+                        <button data-bs-toggle="modal" data-bs-target="#newPost"
+                            class="btn btn-outline-info p-2 mb-1 mt-4">Publicar</button>
+                    </div>
                 </div>
 
             </div>
 
             <!-- Publicações -->
-            <div class="container-fluid pb-3 oikos-border feed">
+            <div class="container-fluid pb-3 mb-5 oikos-border feed">
+                <p class="text-center mt-4 fs-54"><b>Publicações</b></p>
+                <hr>
                 <div *ngFor="let item of business.businessMessages" class="d-flex justify-content-center">
                     <div class="card mt-5 post">
                         <div class="card-header post-header p-2">
-        
+
+                            <!--
                             <a class="d-flex align-items-center" [routerLink]="['/business-page', business.businessId]">
                                 <img src="{{business.businessPic}}" alt="" class="rounded-circle business-icon"
                                     style="height: 50px; width: 50px;">
-                                <p class="ms-1 mt-4"><b>@{{business.businessName}}</b></p>
-                            </a>
-        
+                                <p class="ms-1 mt-4"><b>{{business.businessName}}</b></p>
+
+                                <p class=""><small class="text-muted date">{{item.data | date: "dd/MM/yyyy"}}</small></p>
+
+                            </a>-->
+
+                            <div class="row ps-3 pe-3">
+                                <div class="col-md-4">
+                                    <a [routerLink]="['/business-page', business.businessId]" class="d-flex">
+                                        <img src="{{business.businessPic}}" alt="" class="rounded-circle business-icon"
+                                            style="height: 50px; width: 50px;">
+                                        <p class="ms-1 mt-3"><b>{{business.businessName}}</b></p>
+                                    </a>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-2 d-flex justify-content-end">
+                                    <p class=""><small class="text-muted me-2">{{item.data | date:
+                                            "dd/MM/yyyy"}} às {{item.data | date: 'HH:mm'}}</small></p>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
-                            <p class="card-text mt-2 ms-2 p-2 fs-18">{{item.messageContent}}</p>
+                            <p class="card-text mt-2 ms-2 p-3 fs-18">{{item.messageContent}}</p>
                             <hr>
                             <div *ngIf="item.messagePic != null" class="d-flex justify-content-center">
-                                <img class="mb-3 mt-2 img-fluid post-img oikos-border"
-                                    src="{{item.messagePic}}">
+                                <img class="mb-3 mt-2 img-fluid post-img oikos-border" src="{{item.messagePic}}">
                             </div>
                             <hr>
                         </div>
-                        <div class="ps-4 pe-4 mb-2 comment-section"> 
-                            <label for="comment">Deixe aqui um comentário</label>
-                            <textarea [(ngModel)]="commentsDto.commentContent" type="text" class="form-control"
-                                id="comment" placeholder="Digite uma mensagem" rows="1"></textarea>
+
+                        <!-- Seção de comentários -->
+                        <div class="ps-3 pe-3 mb-2 mt-2 comment-section">
+
+                            <div class=" p-3 d-flex justify-content-start">
+                                <textarea [(ngModel)]="commentsDto.commentContent" type="text" class="form-control"
+                                    id="comment" placeholder=" Deixe aqui um comentário" rows="1"></textarea>
+                                <div>
+                                    <button (click)="postComment(item.messageId)" type="button"
+                                        class="btn btn-primary btn-sm rounded-circle p-1 mt-2 mb-1 ms-2" style="width:30px; height:30px;"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Comentários -->
+                            <div *ngFor="let comment of item.commentList" class="p-2 mt-1 mb-1">
+                                <div class="d-flex align-items-center bg-light oikos-border p-1 d-flex justify-content-between comment">
+                                    <div class="d-flex align-items-center">
+                                        <a [routerLink]="['/profile-page', comment.profileFrom.profileId]">
+                                            <img src={{comment.profileFrom.profilePic}} class="rounded-circle ms-2"
+                                                style="height: 35px; width: 35px;">
+                                        </a>
+                                        <p class="mt-3 ms-2">{{comment.commentContent}}</p>
+                                    </div>
+                                    <p class=""><small class="text-muted me-2">{{comment.data | date:
+                                        "dd/MM/yyyy"}} às {{comment.data | date: 'HH:mm'}}</small></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +147,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="p-3 modal-content modal-bg mod-rad" style="width:1000px;">
             <div class="modal-header bg-mod mod-radtop">
-                <h5 class="modal-title text-center me-2" id="exampleModalLabel">A sua publicação ficará assim. Gostaria de prosseguir?</h5>
+                <h5 class="modal-title text-center me-2" id="exampleModalLabel">A sua publicação ficará assim. Gostaria
+                    de prosseguir?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -102,12 +159,12 @@
                     <a class="d-flex align-items-center" [routerLink]="['/business-page', business.businessId]">
                         <img src="{{business.businessPic}}" alt="" class="rounded-circle business-icon"
                             style="height: 50px; width: 50px;">
-                        <p class="ms-1 mt-4"><b>@{{business.businessName}}</b></p>
+                        <p class="ms-1 mt-4"><b>{{business.businessName}}</b></p>
                     </a>
 
                 </div>
                 <div class="card-body">
-                    <p class="card-text mt-2 ms-2 p-2 fs-18">{{messageBusinessDto.messageContent}}</p>
+                    <p class="card-text mt-2 ms-2 p-3 fs-18">{{messageBusinessDto.messageContent}}</p>
                     <hr>
                     <div *ngIf="messageBusinessDto.messagePic != null" class="d-flex justify-content-center">
                         <img class="mb-3 mt-2 img-fluid post-img oikos-border" src="{{messageBusinessDto.messagePic}}">
@@ -117,12 +174,11 @@
 
 
             <div class="modal-footer">
-                <button type="button" class="p-2 btn btn-outline-danger" data-bs-dismiss="modal"><b>Cancelar</b></button>
+                <button type="button" class="p-2 btn btn-outline-danger"
+                    data-bs-dismiss="modal"><b>Cancelar</b></button>
                 <button (click)="postMessage()" type="button" data-bs-dismiss="modal"
-                    class="p-2 btn btn-outline-info"><b>Publicar</b></button>
+                    class="p-2 btn btn-outline-info ms-2"><b>Publicar</b></button>
             </div>
         </div>
     </div>
 </div>
-
-

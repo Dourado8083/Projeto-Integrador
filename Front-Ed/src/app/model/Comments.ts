@@ -7,5 +7,6 @@ export class Comments {
     public commentContent: string;
     public profileFrom: Profile;
     public messageOn: Message;
+    public data: Date;
 
 }
