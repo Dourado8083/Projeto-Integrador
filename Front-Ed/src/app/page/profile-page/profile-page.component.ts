@@ -52,6 +52,7 @@ export class ProfilePageComponent implements OnInit {
   getVisitingProfileById() {
     this.profileService.getProfileById(this.visitingProfileId).subscribe((resp: Profile) => {
       this.visitingProfile = resp;
+      console.log(this.visitingProfile)
     });  
   }
 

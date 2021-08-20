@@ -6,5 +6,6 @@ export class ProfileCommunityDTO {
     public communityName: string;
     public communityPic: string;
     public communityBio: string;
+    public communityHeader: string;
 
 }

@@ -68,6 +68,7 @@ export class CommunityComponent implements OnInit {
   getProfileById() {
     this.profileService.getProfileById(this.profileId).subscribe((resp: Profile) => {
       this.profile = resp;
+      console.log(this.profile);
     });
   }
 

@@ -42,10 +42,11 @@ export class CommunityPageComponent implements OnInit {
 
   ngOnInit() {
     
+    /*
     if(environment.token == "") {
       alert("Sua seção expirou, faça login novamente.");
       this.router.navigate(["/entrar"]);
-    }
+    }*/
 
     this.getCommunityById();
     this.getUserById();

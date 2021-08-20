@@ -1,116 +1,45 @@
-<div class="container-fluid bg-grad">
-    <div class="row d-flex justify-content-center ml col-sep">
+<div class="container-fluid">
 
-        <div class="col-md-2 mt-5 mb-4 p-3 d-flex flex-column justify-content-start align-items-center info top border-rad">
-            <img src="{{community.communityPic}}" class="pic img-fluid mt-2">
-            <p class="fs-20 text-center mt-2"><b>{{community.communityName}}</b></p>
-            <p class="mt-2 mb-1"><i class="fas fa-book"></i><b> Biografia: </b></p>
-            <p><em>{{community.communityBio}}</em></p>
-            <p class="mt-1"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b>
-                {{community.communityNumberOfMembers}}</p>
-            <button *ngIf="!isMember()" (click)="joinCommunity()" class="btn btn-outline-success mt-3 mb-3">Entrar na comunidade</button>
-            <button *ngIf="isMember()" (click)="leaveCommunity()" class="btn btn-outline-danger mb-3">Sair da comunidade</button>
-        </div>
-
-        <!--Feed da comunidade-->
-        <div class="col-md-6 post mt-5 mb-5 justify-content-center align-items-center border-rad feed">
-
-            <div class="me-3 mt-3">
-                <!-- Postar -->
-                <div class="mb-3 mt-1 bg-sla p-3 rounded-p">
-                    <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
-                        pensamentos:</label>
-                    <textarea [(ngModel)]="messageCommunityDto.messageContent" type="text" class="form-control"
-                        id="descricao" placeholder="Digite a mensagem" rows="3"></textarea>
-                    <div class="form-group mt-3">
-                        <label for="pic">Gostaria de inserir uma imagem?</label>
-                        <input [(ngModel)]="messageCommunityDto.messagePic" class="form-control form-st" type="text"
-                            name="pic" id="pic" placeholder="Link da imagem">
-                    </div>
-                    <button (click)="postMessage()" class="btn btn-success mb-2 mt-3">POSTAR</button>
-                </div>
-
-
-                <!-- Posts -->
-                <div *ngFor="let item of community.messages">
-
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                            <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
-                                style="width: 30px; height: 30px;"> <a class="ms-1"
-                                [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                @{{item.profileFrom.profileAlias}}</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text mt-2 p1">{{item.messageContent}}</p>
-                            <hr>
-                            <img *ngIf="item.messagePic != null" src="{{item.messagePic}}" class="post-img">
-                            <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-2 mt-5 d-flex flex-column justify-content-start">
-
-            <div *ngIf="community.communityOwner.profileId == profileId"
-                class="container-fluid border-rad mb-3 d-flex flex-column align-items-center admin">
-                <p class="mt-3 fs-20 text-center"><b>Menu de Administrador</b></p>
-                <button class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#editCommunity">Editar biografia</button>
-                <button (click)="editCommunityPic()" class="btn btn-outline-dark mt-3">Editar foto</button>
-                <button (click)="deleteCommunity()" class="btn btn-outline-danger mt-3 mb-3">Apagar</button>
-            </div>
-
-            <div class="container-fluid border-rad mb-5 menu">
-                <p class="mt-3 fs-24 mb-1 text-center"><b>Membros: </b></p>
-                <div *ngFor="let prof of community.communityMembers">
-                    <a [routerLink]="['/profile-page', prof.profileId]"
-                        class="d-flex justify-content-start align-items-center mt-0">
-                        <img src="{{ prof.profilePic }}" class="rounded-circle profile-pic mt-1">
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-
-
-    </div>
-</div>
-
-
-<div id="editCommunity" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar comunidade</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-control">
-
-                    <label for="communityBio" class="mt-3 mb-1">Biografia da comunidade</label>
-                    <div class="form-floating">
-                        <textarea [(ngModel)]="profileCommunityDto.communityBio" class="form-control"
-                            placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2"></label>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button (click)="editCommunityBio()" type="button" data-bs-dismiss="modal"
-                    class="btn btn-success">Criar</button>
-            </div>
+    <div class="row">
+        <div class="col-md-10 m-auto mb-2 oikos-border header"
+            style="background-image: url({{community.communityHeader}});">
         </div>
     </div>
+
+    <div class="row d-flex justify-content-center">
+        
+        <!-- Informações da Comunidade -->
+        <div class="col-md-2 oikos-border bg-white info">
+
+            <div class="bg-light oikos-border">
+                <img src="{{community.communityPic}}" class="rounded-circle img-fluid m-auto mt-3 community-pic">
+                <hr>
+            </div>
+ 
+
+        </div>
+
+        <!-- Coluna Principal -->
+        <div class="col-md-6">
+            
+            <!-- Mensagens Fixadas -->
+            <div class="container-fluid oikos-border mb-2 pinned temp">
+
+            </div>
+
+            <!-- Fórum -->
+            <div class="container-fluid oikos-border mb-5 boards temp">
+
+            </div>
+
+        </div>
+
+        <!-- Membros da Comunidade -->
+        <div class="col-md-1 oikos-border members temp">
+
+        </div>
+
+    </div>
+
+
 </div>

@@ -21,7 +21,7 @@
         <div class="tab-content mt-5" id="myTabContent">
             <div class="tab-pane fade show active" id="myCommunities" role="tabpanel"
                 aria-labelledby="myCommunities-tab">
-                
+
                 <table class="table ">
                     <thead>
                         <tr>
@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         <tr *ngFor="let com of profile.memberOf" class="bg-light">
                             <th class="d-flex flex-column align-items-center mt-3" scope="col">
                                 <a [routerLink]="['/community-page', com.communityId]"><img src="{{com.communityPic}}"
@@ -45,9 +45,6 @@
                                 <p><em>{{com.communityBio}}</em></p>
                                 <p class="mt-4"><i class="fas fa-user-friends"></i><b> <em> №</em> Membros: </b>
                                     {{com.communityNumberOfMembers}}</p>
-                                <p><b>Administrador</b>: <a
-                                        [routerLink]="['/profile-page', com.communityOwner.profileId]">{{com.communityOwner.profileName}}</a>
-                                </p>
                             </td>
 
                             <td scope="col">
@@ -76,7 +73,7 @@
                             <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <tr *ngFor="let com of communityList bg-light">
                             <th class="d-flex flex-column align-items-center mt-3" scope="col">
@@ -144,6 +141,10 @@
                     <label for="communityPic" class="mt-3 mb-1">Link da foto</label>
                     <input [(ngModel)]="profileCommunityDto.communityPic" type="text" class="form-control"
                         id="communityPic" placeholder="Insira um link para a foto da comunidade">
+
+                    <label for="communityHeader" class="mt-3 mb-1">Link do header</label>
+                    <input [(ngModel)]="profileCommunityDto.communityHeader" type="text" class="form-control"
+                        id="communityheader" placeholder="Insira um link para o header da comunidade">
 
                     <label for="communityBio" class="mt-3 mb-1">Biografia da comunidade</label>
                     <div class="form-floating">

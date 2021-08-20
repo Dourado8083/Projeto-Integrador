@@ -81,6 +81,11 @@ public class Message {
 	private List<Comment> commentList = new ArrayList<>();
 
 	
+	@ManyToOne
+	@JoinColumn(name = "threadOnId")
+	@JsonIgnoreProperties({"threadCreator", "communityName", "communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages", "threadList"})
+	private Thread threadOn;
+	
 	public Message() {
 
 	}
@@ -172,7 +177,14 @@ public class Message {
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
 	}
-	
+
+	public Thread getThreadOn() {
+		return threadOn;
+	}
+
+	public void setThreadOn(Thread threadOn) {
+		this.threadOn = threadOn;
+	}
 
 	@Override
 	public int hashCode() {

@@ -23,7 +23,7 @@ public class Profile {
 
 	@NotNull
 	private String profileName;
-	
+
 	@NotNull
 	private String profileAlias;
 
@@ -34,36 +34,39 @@ public class Profile {
 	private String profilePassword;
 
 	private String profileBio;
-	
+
 	private String profilePic;
 
-	private int profileType;
-	
 	private int numberOfFollowers;
-	
+
 	@OneToMany(mappedBy = "businessOwner")
-	@JsonIgnoreProperties({"businessOwner", "businessMessages"})
+	@JsonIgnoreProperties({ "businessOwner", "businessMessages", "businessAlias", "businessEmail", "businessBio",
+			"businessAddress", "businessPhone", "businessHeader", "businessBackground" })
 	private List<Business> businessOwned = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "communityOwner")
-	@JsonIgnoreProperties({"communityOwner", "communityMembers", "messages"})
+	@JsonIgnoreProperties({ "communityOwner", "communityMembers", "messages", "threadList" })
 	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
-	@JsonIgnoreProperties({"communityMembers", "messages"})
+	@JsonIgnoreProperties({ "communityMembers", "messages", "communityOwner", "threadList" })
 	private List<Community> memberOf = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "profileFrom")
-	@JsonIgnoreProperties({"communityOn", "profileFrom", "messagesSent"})
+	@JsonIgnoreProperties({ "communityOn", "profileFrom", "messagesSent" })
 	private List<Message> messagesSent = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "profileOn")
-	@JsonIgnoreProperties({"communityOn", "profileOn", "messagesReceived"})
+	@JsonIgnoreProperties({ "communityOn", "profileOn", "messagesReceived" })
 	private List<Message> messagesReceived = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "profileFrom")
-	@JsonIgnoreProperties({"profileFrom", "messageOn"})
+	@JsonIgnoreProperties({ "profileFrom", "messageOn", "commentContent", "data" })
 	private List<Comment> commentsMade = new ArrayList<>();
+
+	@OneToMany(mappedBy = "threadCreator")
+	@JsonIgnoreProperties({ "threadCreator", "communityOn" })
+	private List<Thread> threadsCreated = new ArrayList<>();
 
 	public long getProfileId() {
 		return profileId;
@@ -80,7 +83,7 @@ public class Profile {
 	public void setProfileName(String profileName) {
 		this.profileName = profileName;
 	}
-	
+
 	public String getProfileAlias() {
 		return profileAlias;
 	}
@@ -112,21 +115,13 @@ public class Profile {
 	public void setProfileBio(String profileBio) {
 		this.profileBio = profileBio;
 	}
-	
+
 	public String getProfilePic() {
 		return profilePic;
 	}
 
 	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
-	}
-
-	public int getProfileType() {
-		return profileType;
-	}
-
-	public void setProfileType(int profileType) {
-		this.profileType = profileType;
 	}
 
 	public int getNumberOfFollowers() {
@@ -168,7 +163,7 @@ public class Profile {
 	public void setCommunitiesOwned(List<Community> communitiesOwned) {
 		this.communitiesOwned = communitiesOwned;
 	}
-	
+
 	public List<Business> getBusinessOwned() {
 		return businessOwned;
 	}
@@ -192,8 +187,14 @@ public class Profile {
 	public void setFeed(List<Message> feed) {
 		this.messagesReceived = feed;
 	}
-	
-	
+
+	public List<Thread> getThreadsCreated() {
+		return threadsCreated;
+	}
+
+	public void setThreadsCreated(List<Thread> threadsCreated) {
+		this.threadsCreated = threadsCreated;
+	}
 
 	@Override
 	public int hashCode() {
@@ -211,6 +212,5 @@ public class Profile {
 		Profile other = (Profile) obj;
 		return profileId == other.profileId;
 	}
-
 
 }

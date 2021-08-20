@@ -8,6 +8,7 @@ export class Community{
     public communityNumberOfMembers:number;
     public communityPic: string;
     public communityBio: string;
+    public communityHeader: string;
     public communityOwner: Profile;
     public communityMembers: Profile[];
     public messages: Message[];

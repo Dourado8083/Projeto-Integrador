@@ -61,8 +61,8 @@
 
             <!-- Publicações -->
             <div class="container-fluid pb-3 mb-5 oikos-border feed">
-                <p class="text-center mt-4 fs-54"><b>Publicações</b></p>
-                <hr>
+                <p class="text-center mt-4 mb-2 fs-54"><b>Publicações</b></p>
+                <hr class="mb-3">
                 <div *ngFor="let item of business.businessMessages" class="d-flex justify-content-center">
                     <div class="card mt-5 post">
                         <div class="card-header post-header p-2">
@@ -85,8 +85,8 @@
                                         <p class="ms-1 mt-3"><b>{{business.businessName}}</b></p>
                                     </a>
                                 </div>
-                                <div class="col-md-6"></div>
-                                <div class="col-md-2 d-flex justify-content-end">
+                                <div class="col-md-5"></div>
+                                <div class="col-md-3 d-flex justify-content-end">
                                     <p class=""><small class="text-muted me-2">{{item.data | date:
                                             "dd/MM/yyyy"}} às {{item.data | date: 'HH:mm'}}</small></p>
                                 </div>

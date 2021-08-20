@@ -110,6 +110,7 @@ public class ProfileService {
 					communityToCreate.setCommunityName(profileCommunityDto.getCommunityName());
 					communityToCreate.setCommunityBio(profileCommunityDto.getCommunityBio());
 					communityToCreate.setCommunityPic(profileCommunityDto.getCommunityPic());
+					communityToCreate.setCommunityHeader(profileCommunityDto.getCommunityHeader());
 
 					communityOwner.get().getMemberOf().add(communityToCreate);
 					communityToCreate.getCommunityMembers().add(communityOwner.get());

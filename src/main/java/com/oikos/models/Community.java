@@ -33,14 +33,16 @@ public class Community {
 	private String communityPic;
 
 	private String communityBio;
+	
+	private String communityHeader;
 
 	@ManyToOne
-	@JsonIgnoreProperties({"communitiesOwned ", "memberOf", "messagesSent", "messagesReceived"})
+	@JsonIgnoreProperties({"communitiesOwned ", "memberOf", "messagesSent", "messagesReceived", "profileEmail", "profilePassword", "profileBio", "businessOwned", "communitiesOwned", "commentsMade", "threadsCreated"})
 	private Profile communityOwner;
 
 	@ManyToMany
 	@JoinTable(name = "Community_Profile", joinColumns = @JoinColumn(name = "communityId"), inverseJoinColumns = @JoinColumn(name = "profileId"))
-	@JsonIgnoreProperties({"communitiesOwned ", "memberOf", "messagesSent", "messagesReceived"})
+	@JsonIgnoreProperties({"communitiesOwned ", "memberOf", "messagesSent", "messagesReceived", "profileEmail", "profilePassword", "profileBio", "numberOfFollowers", "businessOwned", "communitiesOwned", "commentsMade", "threadsCreated"})
 	private List<Profile> communityMembers = new ArrayList<>();
 
 	/*
@@ -50,6 +52,10 @@ public class Community {
 	@OneToMany(mappedBy = "communityOn")
 	@JsonIgnoreProperties({"communityOn", "profileOn"})
 	private List<Message> messages = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "communityOn")
+	@JsonIgnoreProperties({"communityOn", "profileEmail", "profilePassword", "profileBio", "numberOfFollowers", "businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "commentsMade"})
+	private List<Thread> threadList = new ArrayList<>();
 
 	public Community() {
 		
@@ -95,6 +101,14 @@ public class Community {
 		this.communityBio = communityBio;
 	}
 	
+	public String getCommunityHeader() {
+		return communityHeader;
+	}
+
+	public void setCommunityHeader(String communityHeader) {
+		this.communityHeader = communityHeader;
+	}
+	
 	public long getCommunityNumberOfMembers() {
 		return communityNumberOfMembers;
 	}
@@ -117,6 +131,14 @@ public class Community {
 
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
+	}
+
+	public List<Thread> getThreadList() {
+		return threadList;
+	}
+
+	public void setThreadList(List<Thread> threadList) {
+		this.threadList = threadList;
 	}
 
 	@Override
