@@ -52,9 +52,16 @@ public class ProfileController {
 		profileRepository.deleteById(id);
 	}
 	
-	@PutMapping("/edit-profile")
-	public ResponseEntity<Object> editProfile(@Valid @RequestBody ProfileDTO profileDto) {
+	@PutMapping("/edit-bio")
+	public ResponseEntity<Object> editBio(@Valid @RequestBody ProfileDTO profileDto) {
 		return profileService.editBio(profileDto).map(profile -> {
+			return ResponseEntity.status(200).build();
+		}).orElse(ResponseEntity.status(400).build());
+	}
+
+	@PutMapping("/edit-header")
+	public ResponseEntity<Object> editHeader(@Valid @RequestBody ProfileDTO profileDto) {
+		return profileService.editHeader(profileDto).map(profile -> {
 			return ResponseEntity.status(200).build();
 		}).orElse(ResponseEntity.status(400).build());
 	}

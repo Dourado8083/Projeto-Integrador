@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -33,9 +34,12 @@ public class Profile {
 	@NotNull
 	private String profilePassword;
 
+	@Lob
 	private String profileBio;
 
 	private String profilePic;
+	
+	private String profileHeader;
 
 	private int numberOfFollowers;
 
@@ -122,6 +126,14 @@ public class Profile {
 
 	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
+	}
+
+	public String getProfileHeader() {
+		return profileHeader;
+	}
+
+	public void setProfileHeader(String profileHeader) {
+		this.profileHeader = profileHeader;
 	}
 
 	public int getNumberOfFollowers() {

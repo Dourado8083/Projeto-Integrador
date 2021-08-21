@@ -8,6 +8,7 @@ public class ProfileDTO {
 	private String profilePassword;
 	private String profilePic;
 	private String profileBio;
+	private String profileHeader;
 
 	public long getProfileId() {
 		return profileId;
@@ -55,6 +56,14 @@ public class ProfileDTO {
 
 	public void setProfileBio(String profileBio) {
 		this.profileBio = profileBio;
+	}
+
+	public String getProfileHeader() {
+		return profileHeader;
+	}
+
+	public void setProfileHeader(String profileHeader) {
+		this.profileHeader = profileHeader;
 	}
 
 
