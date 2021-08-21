@@ -39,3 +39,11 @@ a {
     max-height: 500px;
     width: auto;
 }
+
+
+.header {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'src/app/model/Message';
 import { MessageProfileDTO } from 'src/app/model/MessageProfileDTO';
 import { Profile } from 'src/app/model/Profile';
+import { ProfileDTO } from 'src/app/model/ProfileDTO';
 import { MessageService } from 'src/app/service/message.service';
 import { ProfileService } from 'src/app/service/profile.service';
 import { environment } from 'src/environments/environment.prod';
@@ -20,6 +21,8 @@ export class ProfilePageComponent implements OnInit {
   visitingProfileId: number = this.activatedRoute.snapshot.params["id"];
 
   messageProfileDto: MessageProfileDTO = new MessageProfileDTO();
+
+  profDTO: ProfileDTO = new ProfileDTO();
 
   message: Message = new Message();
   messageList: Message[];
@@ -65,5 +68,24 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
+  updateBio(){
+    this.profDTO.profileId = this.visitingProfileId
+
+    this.profileService.editBio(this.profDTO).subscribe((resp: Profile)=>{
+      this.visitingProfile = resp
+      this.getVisitingProfileById()
+      alert('Biografia atualizada')
+    })
+  }
+
+  updateHeader(){
+    this.profDTO.profileId = this.visitingProfileId
+
+    this.profileService.editHeader(this.profDTO).subscribe((resp: Profile)=>{
+      this.visitingProfile = resp
+      this.getVisitingProfileById()
+      alert('Header atualizada')
+    })
+  }
 
 }

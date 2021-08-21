@@ -12,6 +12,7 @@ export class Profile {
     public profilePassword: string;
     public profileBio: string;
     public profilePic: string;
+    public profileHeader: string;
     public memberOf: Community[];
     public communitiesOwned: Community[];
     public messagesSent: Message[];

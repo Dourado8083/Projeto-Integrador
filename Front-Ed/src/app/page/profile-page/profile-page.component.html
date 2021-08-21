@@ -1,50 +1,58 @@
-<div class="container-fluid">
-    <div class="row d-flex justify-content-center mt-3 p-3">
+<div class="container-fluid main">
 
-        <!-- Perfil -->
-        <div class="col-md-8 d-flex justify-content-center bg-light p-3 oikos-border me-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 m-auto mt-2 mb-2 d-flex justify-content-between align-items-end oikos-border header"
+                style="background-image:url({{visitingProfile.profileHeader}})">
+            </div>
+        </div>
 
-            <!-- Perfil e Informações -->
-            <div class="d-flex justify-content-center">
-                <div>
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center mt-3 p-3">
 
-                    <!-- Foto -->
-                    <div class="text-center">
-                        <img src="{{visitingProfile.profilePic}}" class="img-thumbnail rounded-circle"
-                            style="width: 200px; height: 200px;">
-                    </div>
+                <!-- Perfil -->
+                <div class="col-md-8 d-flex flex-column justify-content-center bg-light p-3 oikos-border me-2">
 
-                    <!-- Nome -->
-                    <div class="row justify-content-center text-center">
-                        <div class="col-md-3">
-                            <h5 class="bg-sla oikos-border mt-2 p-1">{{visitingProfile.profileName}}</h5>
+                    <!-- Perfil e Informações -->
+                    <div>
+
+                        <!-- Foto -->
+                        <div class="text-center">
+                            <img src="{{visitingProfile.profilePic}}" class="img-thumbnail rounded-circle"
+                                style="width: 200px; height: 200px;">
+                        </div>
+
+                        <!-- Nome -->
+                        <div class="row justify-content-center text-center">
+                            <div class="col-md-3">
+                                <h5 class="bg-sla oikos-border mt-2 p-1">{{visitingProfile.profileName}}</h5>
+                            </div>
+                        </div>
+
+                        <!-- Usuário -->
+                        <div class="row justify-content-center text-center">
+                            <div class="col-md-2">
+                                <p class="bg-sla oikos-border p-1">@{{visitingProfile.profileAlias}}</p>
+                            </div>
+                        </div>
+
+                        <!-- Seguidores -->
+                        <div class="row justify-content-center text-center">
+                            <div class="col-md-3">
+                                <p class="bg-sla oikos-border p-1">58857 seguidores</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="bg-sla oikos-border p-1">58857 seguindo</p>
+                            </div>
+                        </div>
+
+                        <!-- Biogragia -->
+                        <div class="row justify-content-center text-center">
+                            <div class="col-md-8">
+                                <p class="bg-sla oikos-border p-1">{{visitingProfile.profileBio}}</p>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Usuário -->
-                    <div class="row justify-content-center text-center">
-                        <div class="col-md-2">
-                            <p class="bg-sla oikos-border p-1">@{{visitingProfile.profileAlias}}</p>
-                        </div>
-                    </div>
-
-                    <!-- Seguidores -->
-                    <div class="row justify-content-center text-center">
-                        <div class="col-md-3">
-                            <p class="bg-sla oikos-border p-1">58857 seguidores</p>
-                        </div>
-                        <div class="col-md-3">
-                            <p class="bg-sla oikos-border p-1">58857 seguindo</p>
-                        </div>
-                    </div>
-
-                    <!-- Biogragia -->
-                    <div class="row justify-content-center text-center">
-                        <div class="col-md-8">
-                            <p class="bg-sla oikos-border p-1">{{visitingProfile.profileBio}}</p>
-                        </div>
-                    </div>
-
                     <!-- Feed -->
                     <div class="mt-5">
 
@@ -140,61 +148,118 @@
                     </div>
 
                 </div>
+
+                <!-- Lateral -->
+                <div class="col-md-3 bg-light oikos-border">
+
+                    <div *ngIf="myProfileId == visitingProfileId" class="m-3 ps-3 pe-3">
+                        <button class="btn btn-outline-dark me-2" data-bs-toggle="modal"
+                            data-bs-target="#editHead">Editar Capa</button>
+                        <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editBio">Editar
+                            Bio</button>
+                    </div>
+
+                    <!-- Minhas Comunidades -->
+                    <div *ngIf="myProfileId == visitingProfileId">
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-md-9">
+                                <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Minhas Comunidades</h5>
+                                <div *ngFor="let com of visitingProfile.memberOf" class="d-flex justify-content-center">
+                                    <a [routerLink]="['/community-page', com.communityId]">
+                                        <img src="{{com.communityPic}}" class="communityPic mb-2">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minhas Empresas -->
+                    <div *ngIf="myProfileId == visitingProfileId">
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-md-8">
+                                <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Minhas Empresas</h5>
+                                <div *ngFor="let com of visitingProfile.businessOwned"
+                                    class="d-flex justify-content-center">
+                                    <a [routerLink]="['/business-page', com.businessId]">
+                                        <img src="{{com.businessPic}}" class="communityPic mb-2">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comunidades -->
+                    <div *ngIf="myProfileId != visitingProfileId">
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-md-7">
+                                <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Comunidades</h5>
+                                <div *ngFor="let com of visitingProfile.memberOf" class="d-flex justify-content-center">
+                                    <a [routerLink]="['/community-page', com.communityId]">
+                                        <img src="{{com.communityPic}}" class="communityPic mb-2">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empresas -->
+                    <div *ngIf="myProfileId != visitingProfileId">
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-md-7">
+                                <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Empresas</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <!-- Lateral -->
-        <div class="col-md-3 bg-light oikos-border">
+        <!-- Modal Header -->
+        <div id="editHead" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar capa do perfil</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-            <!-- Minhas Comunidades -->
-            <div *ngIf="myProfileId == visitingProfileId">
-                <div class="row justify-content-center mt-3">
-                    <div class="col-md-9">
-                        <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Minhas Comunidades</h5>
-                        <div *ngFor="let com of visitingProfile.memberOf" class="d-flex justify-content-center">
-                            <a [routerLink]="['/community-page', com.communityId]">
-                                <img src="{{com.communityPic}}" class="communityPic mb-2">
-                            </a>
+                        <div class="form-control">
+                            <input [(ngModel)]="profDTO.profileHeader" type="text" class="form-control" id="titulo" placeholder="Digite o título">
                         </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            (click)="updateHeader()">Atualizar</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Minhas Empresas -->
-            <div class="row justify-content-center mt-3">
-                <div class="col-md-8">
-                    <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Minhas Empresas</h5>
-                    <div *ngFor="let com of visitingProfile.businessOwned" class="d-flex justify-content-center">
-                        <a [routerLink]="['/business-page', com.businessId]">
-                            <img src="{{com.businessPic}}" class="communityPic mb-2">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comunidades -->
-            <div *ngIf="myProfileId != visitingProfileId">
-                <div class="row justify-content-center mt-3">
-                    <div class="col-md-7">
-                        <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Comunidades</h5>
-                        <div *ngFor="let com of visitingProfile.memberOf" class="d-flex justify-content-center">
-                            <a [routerLink]="['/community-page', com.communityId]">
-                                <img src="{{com.communityPic}}" class="communityPic mb-2">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Empresas -->
-            <div *ngIf="myProfileId != visitingProfileId">
-                <div class="row justify-content-center mt-3">
-                    <div class="col-md-7">
-                        <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Empresas</h5>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</div>
+
+        <!-- Modal Bio -->
+        <div id="editBio" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Biografia</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-control">
+                            <textarea [(ngModel)]="profDTO.profileBio" class="form-control" name="texto" id="texto"
+                                rows="3" placeholder="{{visitingProfile.profileBio}}"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            (click)="updateBio()">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
