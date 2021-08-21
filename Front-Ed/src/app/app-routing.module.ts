@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
 import { BusinessPageComponent } from './page/business-page/business-page.component';
 import { ProfilePageComponent } from './page/profile-page/profile-page.component';
+import { ThreadPageComponent } from './page/thread-page/thread-page.component';
 
 const routes: Routes = [
 
@@ -22,8 +23,10 @@ const routes: Routes = [
   {path: "community-page/:id", component: CommunityPageComponent},
   {path: "profile-page/:id", component: ProfilePageComponent},
   {path: "business-page/:id", component: BusinessPageComponent},
+  {path: "thread-page/:id", component: ThreadPageComponent},
   {path: "about-us", component: AboutUsComponent},
   {path: "contact", component: ContactComponent}
+  
 ];
 
 @NgModule({

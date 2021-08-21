@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.oikos.models.Message;
 import com.oikos.models.dtos.MessageBusinessDTO;
 import com.oikos.models.dtos.MessageCommunityDTO;
+import com.oikos.models.dtos.MessageDTO;
 import com.oikos.models.dtos.MessageProfileDTO;
 import com.oikos.repositories.MessageRepository;
 import com.oikos.services.MessageService;
@@ -74,6 +75,13 @@ public class MessageController {
 	@PostMapping("/business-post")
 	public ResponseEntity<?> postMessageOnBusiness(@Valid @RequestBody MessageBusinessDTO messageBusinessDto) {
 		return messageService.postMessageOnBusiness(messageBusinessDto).map(message -> {
+			return ResponseEntity.status(200).body(message);
+		}).orElse(ResponseEntity.status(400).build());
+	}
+	
+	@PostMapping("/threads-post")
+	public ResponseEntity<?> postMessageOnThreads(@Valid @RequestBody MessageDTO messageDto) {
+		return messageService.postMessageOnThreads(messageDto).map(message -> {
 			return ResponseEntity.status(200).body(message);
 		}).orElse(ResponseEntity.status(400).build());
 	}

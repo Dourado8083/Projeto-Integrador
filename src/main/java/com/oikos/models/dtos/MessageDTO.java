@@ -1,27 +1,54 @@
 package com.oikos.models.dtos;
 
 public class MessageDTO {
-	
-	private String profileEmail;
-	private String messageTitle;
+
+	private long profileFromId;
+	private long profileToId;
+	private long communityOnId;
+	private long businessOnId;
+	private long threadsOnId;
 	private String messageContent;
-	private String communityName;
+	private String messagePic;
 	private String messageType;
 
-	public String getProfileEmail() {
-		return profileEmail;
+	public long getProfileFromId() {
+		return profileFromId;
 	}
 
-	public void setProfileEmail(String profileEmail) {
-		this.profileEmail = profileEmail;
+	public void setProfileFromId(long profileFromId) {
+		this.profileFromId = profileFromId;
 	}
 
-	public String getMessageTitle() {
-		return messageTitle;
+	public long getProfileToId() {
+		return profileToId;
 	}
 
-	public void setMessageTitle(String messageTitle) {
-		this.messageTitle = messageTitle;
+	public void setProfileToId(long profileToId) {
+		this.profileToId = profileToId;
+	}
+
+	public long getCommunityOnId() {
+		return communityOnId;
+	}
+
+	public void setCommunityOnId(long communityOnId) {
+		this.communityOnId = communityOnId;
+	}
+
+	public long getBusinessOnId() {
+		return businessOnId;
+	}
+
+	public void setBusinessOnId(long businessOnId) {
+		this.businessOnId = businessOnId;
+	}
+
+	public long getThreadsOnId() {
+		return threadsOnId;
+	}
+
+	public void setThreadsOnId(long threadsOnId) {
+		this.threadsOnId = threadsOnId;
 	}
 
 	public String getMessageContent() {
@@ -32,12 +59,12 @@ public class MessageDTO {
 		this.messageContent = messageContent;
 	}
 
-	public String getCommunityName() {
-		return communityName;
+	public String getMessagePic() {
+		return messagePic;
 	}
 
-	public void setCommunityName(String communityName) {
-		this.communityName = communityName;
+	public void setMessagePic(String messagePic) {
+		this.messagePic = messagePic;
 	}
 
 	public String getMessageType() {

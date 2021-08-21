@@ -140,28 +140,6 @@ public class CommunityService {
 		}).orElse(Optional.empty());
 	}
 
-	/**
-	 * Método para postar uma mensagem na comunidade.
-	 * 
-	 * @param profileMessageCommunityDTO
-	 * @return Um Optional contendo a comunidade alterada pelo usuário ou vázio para
-	 *         ser tratado como erro.
-	 */
-	public Optional<?> postMessageOnCommunity(MessageDTO messageDto) {
-		return profileRepository.findByProfileEmail(messageDto.getProfileEmail()).map(profile -> {
-			Optional<Community> community = communityRepository.findByCommunityName(messageDto.getCommunityName());
-			if (community.isEmpty()) {
-				return Optional.empty();
-			}
-
-			Message message = new Message();
-
-			message.setMessageContent(messageDto.getMessageContent());
-			message.setMessageTitle(messageDto.getMessageTitle());
-			return Optional.empty();
-		}).orElse(Optional.empty());
-
-	}
 
 	/**
 	 * Método para editar a foto de uma comunidade caso o usuário seja dono dela.

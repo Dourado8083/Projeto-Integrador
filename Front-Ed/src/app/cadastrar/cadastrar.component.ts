@@ -38,7 +38,7 @@ export class CadastrarComponent implements OnInit {
     }
     else {
       this.profile.profileBio = "Olá, estou usando a rede social Oikos!"
-      this.profile.profileHeader="https://www.publicdomainpictures.net/pictures/200000/velka/plain-white-background-1480544970glP.jpg"
+      this.profile.profileHeader="https://i.pinimg.com/originals/f9/11/d3/f911d38579709636499618b6b3d9b6f6.jpg"
       this.authService.cadastrar(this.profile).subscribe((resp: Profile) => {
         this.profile = resp
         this.router.navigate(['/entrar'])

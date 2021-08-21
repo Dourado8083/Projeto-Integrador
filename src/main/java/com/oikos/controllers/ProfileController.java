@@ -59,13 +59,6 @@ public class ProfileController {
 		}).orElse(ResponseEntity.status(400).build());
 	}
 
-	@PutMapping("/edit-header")
-	public ResponseEntity<Object> editHeader(@Valid @RequestBody ProfileDTO profileDto) {
-		return profileService.editHeader(profileDto).map(profile -> {
-			return ResponseEntity.status(200).build();
-		}).orElse(ResponseEntity.status(400).build());
-	}
-
 	@PostMapping("/signup")
 	public ResponseEntity<Object> cadastrarUsuario(@Valid @RequestBody Profile profile) {
 
@@ -94,6 +87,13 @@ public class ProfileController {
 	public ResponseEntity<?> createCommunity(@Valid @RequestBody ProfileCommunityDTO profileCommunityDto) {
 		return profileService.createCommunity(profileCommunityDto).map(newCommunity -> {
 			return ResponseEntity.status(201).build();
+		}).orElse(ResponseEntity.status(400).build());
+	}
+	
+	@PutMapping("/edit-header")
+	public ResponseEntity<Object> editHeader(@Valid @RequestBody ProfileDTO profileDto) {
+		return profileService.editHeader(profileDto).map(profile -> {
+			return ResponseEntity.status(200).build();
 		}).orElse(ResponseEntity.status(400).build());
 	}
 

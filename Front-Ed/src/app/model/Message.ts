@@ -2,6 +2,7 @@ import { Business } from "./Business";
 import { Comments } from "./Comments";
 import { Community } from "./community"
 import { Profile } from "./Profile"
+import { Threads } from "./Threads";
 
 export class Message{
     
@@ -16,5 +17,6 @@ export class Message{
     public businessOn: Business;
     public commentList: Comments[];
     public data: Date;
+    public threadsOn: Threads;
 
 }

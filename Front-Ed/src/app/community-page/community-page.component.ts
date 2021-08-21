@@ -6,10 +6,12 @@ import { Message } from '../model/Message';
 import { MessageCommunityDTO } from '../model/MessageCommunityDTO';
 import { Profile } from '../model/Profile';
 import { ProfileCommunityDTO } from '../model/ProfileCommunityDTO';
-import { AuthService } from '../service/auth.service';
+import { Threads } from '../model/Threads';
+import { ThreadsDTO } from '../model/ThreadsDTO';
 import { CommunityService } from '../service/community.service';
 import { MessageService } from '../service/message.service';
 import { ProfileService } from '../service/profile.service';
+import { ThreadsService } from '../service/threads.service';
 
 @Component({
   selector: 'app-community-page',
@@ -32,11 +34,15 @@ export class CommunityPageComponent implements OnInit {
 
   profileCommunityDto: ProfileCommunityDTO = new ProfileCommunityDTO();
 
+  threadsDto: ThreadsDTO = new ThreadsDTO();
+  threads: Threads = new Threads();
+
   constructor(
     private communityService: CommunityService,
     private profileService: ProfileService,
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
+    private threadsService: ThreadsService,
     private router: Router
   ) { }
 
@@ -97,10 +103,6 @@ export class CommunityPageComponent implements OnInit {
     this.profileCommunityDto = new ProfileCommunityDTO();
   }
 
-  editCommunityPic() {
-
-  }
-
   deleteCommunity() {
     this.communityService.deleteCommunity(this.communityId).subscribe(() => {
       alert("Comunida de deletada com sucesso!");
@@ -116,6 +118,7 @@ export class CommunityPageComponent implements OnInit {
     this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
       this.message = resp;
       this.getCommunityById();
+      this.message = new Message();
     })
   }
 
@@ -128,5 +131,16 @@ export class CommunityPageComponent implements OnInit {
 
     return false;
   }
+
+  createThreads() {
+    this.threadsDto.threadsCreatorId = this.profileId;
+    this.threadsDto.communityOnId = this.communityId;
+    this.threadsService.createThreads(this.threadsDto).subscribe((resp: Threads) => {
+      this.threads = resp;
+      this.getCommunityById();
+      this.threads = new Threads();
+    })
+  }
+
 
 }

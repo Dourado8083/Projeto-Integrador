@@ -1,5 +1,6 @@
 import { Message } from "./Message";
 import { Profile } from "./Profile"
+import { Threads } from "./Threads";
 
 export class Community{
 
@@ -12,5 +13,6 @@ export class Community{
     public communityOwner: Profile;
     public communityMembers: Profile[];
     public messages: Message[];
+    public threadsList: Threads[];
 
 }

@@ -2,6 +2,7 @@ import { Business } from "./Business";
 import { Comments } from "./Comments";
 import { Community } from "./community";
 import { Message } from "./Message";
+import { Threads } from "./Threads";
 
 export class Profile {
     
@@ -19,5 +20,6 @@ export class Profile {
     public messagesReceived: Message[];
     public businessOwned: Business[];
     public commentsMade: Comments[];
+    public threadsCreated: Threads[];
     
 }

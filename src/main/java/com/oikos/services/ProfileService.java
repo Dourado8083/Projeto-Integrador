@@ -140,14 +140,15 @@ public class ProfileService {
 	
 	public Optional<?> editHeader (ProfileDTO profiledto){
 		return profileRepository.findById(profiledto.getProfileId()).map(profile -> {
-			
+
 		profile.setProfileHeader(profiledto.getProfileHeader());
-		
+
 		return Optional.ofNullable(profileRepository.save(profile));
-			
+
 		}).orElse(Optional.empty());
 	}
-	
+
+
 	public Optional<Object> follow() {
 		return Optional.empty();
 	}

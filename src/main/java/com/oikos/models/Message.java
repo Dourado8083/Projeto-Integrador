@@ -61,7 +61,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileFromId")
-	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned", "commentsMade" })
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned", "commentsMade", "threadsCreated", "profilePassword", "profileBio" })
 	private Profile profileFrom;
 	
 	/*
@@ -69,7 +69,7 @@ public class Message {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "profileOnId")
-	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned", "commentsMade" })
+	@JsonIgnoreProperties({ "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "businessOwned", "commentsMade", "profilePassword", "profileBio"  })
 	private Profile profileOn;
 	
 	
@@ -82,9 +82,9 @@ public class Message {
 
 	
 	@ManyToOne
-	@JoinColumn(name = "threadOnId")
-	@JsonIgnoreProperties({"threadCreator", "communityName", "communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages", "threadList"})
-	private Thread threadOn;
+	@JoinColumn(name = "threadsOnId")
+	@JsonIgnoreProperties({"threadsCreator", "communityName", "communityNumberOfMembers", "communityPic", "communityBio", "communityOwner", "communityMembers", "messages", "threadsList", "messageList"})
+	private Threads threadsOn;
 	
 	public Message() {
 
@@ -178,12 +178,12 @@ public class Message {
 		this.commentList = commentList;
 	}
 
-	public Thread getThreadOn() {
-		return threadOn;
+	public Threads getThreadsOn() {
+		return threadsOn;
 	}
 
-	public void setThreadOn(Thread threadOn) {
-		this.threadOn = threadOn;
+	public void setThreadsOn(Threads threadsOn) {
+		this.threadsOn = threadsOn;
 	}
 
 	@Override

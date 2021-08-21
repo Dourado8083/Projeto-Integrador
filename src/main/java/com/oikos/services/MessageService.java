@@ -10,11 +10,13 @@ import com.oikos.models.Message;
 import com.oikos.models.Profile;
 import com.oikos.models.dtos.MessageBusinessDTO;
 import com.oikos.models.dtos.MessageCommunityDTO;
+import com.oikos.models.dtos.MessageDTO;
 import com.oikos.models.dtos.MessageProfileDTO;
 import com.oikos.repositories.BusinessRepository;
 import com.oikos.repositories.CommunityRepository;
 import com.oikos.repositories.MessageRepository;
 import com.oikos.repositories.ProfileRepository;
+import com.oikos.repositories.ThreadsRepository;
 
 @Service
 public class MessageService {
@@ -30,6 +32,9 @@ public class MessageService {
 	
 	@Autowired
 	private BusinessRepository businessRepository;
+	
+	@Autowired
+	private ThreadsRepository threadsRepository;
 	
 	
 	/**
@@ -118,6 +123,42 @@ public class MessageService {
 			
 			business.getBusinessMessages().add(message);
 			businessRepository.save(business);
+			
+			return Optional.ofNullable(messageRepository.save(message));
+			
+		}).orElse(Optional.empty());
+	}
+	
+	/**
+	 * Método para postar uma mensagem em um tópico
+	 * 
+	 * @param ProfileCommunityDTO
+	 * @return Um Optional contendo a mensagem postada
+	 */
+	public Optional<?> postMessageOnThreads(MessageDTO messageDto) {
+		return threadsRepository.findById(messageDto.getThreadsOnId()).map(threads -> {
+			
+			Optional<Profile> profile = profileRepository.findById(messageDto.getProfileFromId());
+			
+			if(profile.isEmpty()) {
+				return Optional.empty();
+			}
+			
+			Message message = new Message();
+			
+			message.setThreadsOn(threads);
+			message.setMessageContent(messageDto.getMessageContent());
+			message.setMessagePic(messageDto.getMessagePic());
+			message.setMessageType("threads");
+			message.setProfileFrom(profile.get());
+			
+			threads.getMessageList().add(message);
+			threads.setNumberOfMessages(threads.getNumberOfMessages() + 1);
+			
+			profile.get().getMessagesSent().add(message);
+			
+			profileRepository.save(profile.get());
+			threadsRepository.save(threads);
 			
 			return Optional.ofNullable(messageRepository.save(message));
 			

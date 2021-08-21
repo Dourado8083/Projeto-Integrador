@@ -49,28 +49,28 @@ public class Profile {
 	private List<Business> businessOwned = new ArrayList<>();
 
 	@OneToMany(mappedBy = "communityOwner")
-	@JsonIgnoreProperties({ "communityOwner", "communityMembers", "messages", "threadList" })
+	@JsonIgnoreProperties({ "communityOwner", "communityMembers", "messages", "threadsList" })
 	private List<Community> communitiesOwned = new ArrayList<>();
 
 	@ManyToMany(mappedBy = "communityMembers")
-	@JsonIgnoreProperties({ "communityMembers", "messages", "communityOwner", "threadList" })
+	@JsonIgnoreProperties({ "communityMembers", "messages", "communityOwner", "threadsList" })
 	private List<Community> memberOf = new ArrayList<>();
 
 	@OneToMany(mappedBy = "profileFrom")
-	@JsonIgnoreProperties({ "communityOn", "profileFrom", "messagesSent" })
+	@JsonIgnoreProperties({ "communityOn", "profileFrom", "messagesSent", "profileOn", "commentList" })
 	private List<Message> messagesSent = new ArrayList<>();
 
 	@OneToMany(mappedBy = "profileOn")
-	@JsonIgnoreProperties({ "communityOn", "profileOn", "messagesReceived" })
+	@JsonIgnoreProperties({ "communityOn", "profileOn", "messagesReceived", "commentList" })
 	private List<Message> messagesReceived = new ArrayList<>();
 
 	@OneToMany(mappedBy = "profileFrom")
 	@JsonIgnoreProperties({ "profileFrom", "messageOn", "commentContent", "data" })
 	private List<Comment> commentsMade = new ArrayList<>();
 
-	@OneToMany(mappedBy = "threadCreator")
-	@JsonIgnoreProperties({ "threadCreator", "communityOn" })
-	private List<Thread> threadsCreated = new ArrayList<>();
+	@OneToMany(mappedBy = "threadsCreator")
+	@JsonIgnoreProperties({ "threadsCreator", "communityOn" })
+	private List<Threads> threadsCreated = new ArrayList<>();
 
 	public long getProfileId() {
 		return profileId;
@@ -127,7 +127,7 @@ public class Profile {
 	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
 	}
-
+	
 	public String getProfileHeader() {
 		return profileHeader;
 	}
@@ -200,11 +200,11 @@ public class Profile {
 		this.messagesReceived = feed;
 	}
 
-	public List<Thread> getThreadsCreated() {
+	public List<Threads> getThreadsCreated() {
 		return threadsCreated;
 	}
 
-	public void setThreadsCreated(List<Thread> threadsCreated) {
+	public void setThreadsCreated(List<Threads> threadsCreated) {
 		this.threadsCreated = threadsCreated;
 	}
 
@@ -224,5 +224,6 @@ public class Profile {
 		Profile other = (Profile) obj;
 		return profileId == other.profileId;
 	}
+
 
 }

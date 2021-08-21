@@ -57,7 +57,7 @@ public class Community {
 	
 	@OneToMany(mappedBy = "communityOn")
 	@JsonIgnoreProperties({"communityOn", "profileEmail", "profilePassword", "profileBio", "numberOfFollowers", "businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "commentsMade"})
-	private List<Thread> threadList = new ArrayList<>();
+	private List<Threads> threadsList = new ArrayList<>();
 
 	public Community() {
 		
@@ -135,12 +135,12 @@ public class Community {
 		this.messages = messages;
 	}
 
-	public List<Thread> getThreadList() {
-		return threadList;
+	public List<Threads> getThreadsList() {
+		return threadsList;
 	}
 
-	public void setThreadList(List<Thread> threadList) {
-		this.threadList = threadList;
+	public void setThreadsList(List<Threads> threadsList) {
+		this.threadsList = threadsList;
 	}
 
 	@Override
