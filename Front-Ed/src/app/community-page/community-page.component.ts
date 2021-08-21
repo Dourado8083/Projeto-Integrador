@@ -61,7 +61,7 @@ export class CommunityPageComponent implements OnInit {
   getCommunityById() {
     this.communityService.getCommunityById(this.communityId).subscribe((resp: Community) => {
       this.community = resp;
-      console.log(this.community.messages)
+      console.log(this.community)
     })
   }
 
@@ -115,6 +115,7 @@ export class CommunityPageComponent implements OnInit {
     this.messageCommunityDto.messageType = "community";
     this.messageService.postMessageOnCommunity(this.messageCommunityDto).subscribe((resp: Message) => {
       this.message = resp;
+      this.getCommunityById();
     })
   }
 

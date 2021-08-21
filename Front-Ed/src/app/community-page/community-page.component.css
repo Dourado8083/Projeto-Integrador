@@ -19,12 +19,15 @@
 }
 
 .community-pic {
-    height: 250px;
+    height: auto;
     width: 250px;
     border-radius: 5px;
     border-style: solid;
-    border-color: rgba(29, 28, 28, 0.616);
+    border-color: rgba(0, 0, 0, 0.829);
     border-width: 2px;
     display: block;
 }
 
+.pinned {
+    
+}

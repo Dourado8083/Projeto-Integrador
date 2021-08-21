@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,13 +26,14 @@ public class Community {
 	private long communityId;
 
 	@NotNull(message = "Insira um nome para a comunidade!")
-	@Size(min = 5, max = 30)
+	@Size(max = 30)
 	private String communityName; 
 
 	private long communityNumberOfMembers;
 	
 	private String communityPic;
 
+	@Lob
 	private String communityBio;
 	
 	private String communityHeader;

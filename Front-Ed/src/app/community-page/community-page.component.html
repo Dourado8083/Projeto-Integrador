@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-10 m-auto mb-2 oikos-border header"
+        <div class="col-md-9 m-auto mb-2 oikos-border header"
             style="background-image: url({{community.communityHeader}});">
         </div>
     </div>
@@ -9,27 +9,57 @@
     <div class="row d-flex justify-content-center">
         
         <!-- Informações da Comunidade -->
-        <div class="col-md-2 oikos-border bg-white info">
+        <div class="col-md-2 pt-1 pb-1 oikos-border bg-white info">
 
-            <div class="bg-light oikos-border">
-                <img src="{{community.communityPic}}" class="rounded-circle img-fluid m-auto mt-3 community-pic">
+            <div class="container-fluid bg-light oikos-border mt-2 mb-2">
+                <p class="fs-22 fw-bold mt-4 text-center">{{community.communityName}}</p>
+                <img src="{{community.communityPic}}" class="img-fluid m-auto mt-3 mb-4 community-pic">
                 <hr>
+                <p class="fs-18 fw-bold ms-3 text-start"><i class="fas fa-user-friends"></i> Membros: {{community.communityNumberOfMembers}}</p>
+                <hr>
+                <p class="fs-18 fw-bold ms-3 mt-1 text-start"> <i class="fas fa-book"></i> Biografia: </p>
+                <p class="p-3 pt-1">{{community.communityBio}}</p>
+                <hr>
+                <div class="d-flex justify-content-center"> 
+                    <button *ngIf="!isMember(); else elseBlock" (click)="joinCommunity()" type="button" class="btn btn-outline-success btn-lg mb-3" style="display: block">Entrar na comunidade</button>
+                    <ng-template #elseBlock><button (click)="leaveCommunity()" type="button" class="btn btn-outline-danger btn-lg mb-3">Sair da comunidade</button></ng-template>
+                </div>
             </div>
  
 
         </div>
 
         <!-- Coluna Principal -->
-        <div class="col-md-6">
+        <div class="col-md-5">
             
-            <!-- Mensagens Fixadas -->
-            <div class="container-fluid oikos-border mb-2 pinned temp">
-
+            <!-- Tabela de Mensagens Fixadas -->
+            <div class="container-fluid oikos-border mb-2 bg-white pinned">
+                <p class="fs-36 fw-bold text-center mt-3">Mensagens Fixas</p>
+                <hr>
+                <div class="oikos-border mb-3">
+                    <div class="d-flex justify-content-end align-items-center"> 
+                        <button class="btn btn-danger btn-sm m-3 mb-1" data-bs-toggle="modal" data-bs-target="#newPin"><i class="fas fa-thumbtack mb-0 mt-2"></i> </button>
+                    </div>
+                    <hr>
+                    <!-- Mensagens Fixadas-->
+                    <div *ngFor="let item of community.messages">
+                        <div class="row">
+                            <div class="col-md-2 d-flex justify-content-center mt-1">
+                                <img src="{{item.profileFrom.profilePic}}" style="height: 35px; width: 35px;" class="rounded-circle ms-2 me-2">
+                                <p class="mt-1" style="color: rgba(255, 0, 0, 0.753)"><i class="fas fa-bullhorn fs-4"></i></p>
+                            </div>
+                            <div class="col-md-9 bg-light oikos-border d-flex align-items-center">
+                                <p>{{item.messageContent}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
             </div>
 
             <!-- Fórum -->
             <div class="container-fluid oikos-border mb-5 boards temp">
-
+                
             </div>
 
         </div>
@@ -42,4 +72,29 @@
     </div>
 
 
+</div>
+
+
+<!-- Modal para fixar mensagens -->
+<div id="newPin" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered p-3" role="document">
+        <div class="p-3 modal-content modal-bg mod-rad" style="width:1000px;">
+            <div class="modal-header bg-mod mod-radtop mb-3">
+                <h5 class="modal-title me-2 " id="exampleModalLabel">Gostaria de fixar uma nova mensagem?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="ms-2 me-2">
+                <textarea [(ngModel)]="messageCommunityDto.messageContent" type="text" class="form-control p-1 mt-4 mb-4"
+                    id="pinnedMessage" placeholder=" Digite a sua mensagem" rows="4"></textarea>
+            </div>
+
+            <div class="modal-footer mt-3">
+                <button type="button" class="p-2 btn btn-outline-danger"
+                    data-bs-dismiss="modal"><b>Cancelar</b></button>
+                <button (click)="postMessage()" type="button" data-bs-dismiss="modal"
+                    class="p-2 btn btn-outline-success ms-2"><b>Postar</b></button>
+            </div>
+        </div>
+    </div>
 </div>
