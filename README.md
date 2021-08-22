@@ -1,31 +1,33 @@
-                                                          🌳PROJETO OIKOS 🌳
-                                                                2021
-                                                              AUTORES:
-                                                                                
-                                                             Ana Flavia 
-                                                          Edson Hossotani
-                                                          Eduardo Torquato    
-                                                          Gustavo Dourado  
-                                                            Milena Teles
 
-O “Projeto Oikos” se trata de uma rede social voltada à práticas sustentáveis que traz os olhares dos usuários 
-a o que as empresas, e outros usuários estão praticando em relação ao meio ambiente, conforme você realiza boas ações,
- mais visibilidade dentro da rede terá, e quando há o contrário você perde score e ganha uma visibilidade negativa, há uma função de alerta,
- da qual você marca uma empresa ou usuário como uma má ação, e outros usuários terão a oportunidade de debater sobre o assunto.
- Há grupos específicos dentro da rede, e um sistema de mensagens para que possam haver conversas em particular. 
-Esperamos que dentro do escopo do comportamento humano possamos conectar as pessoas e trazer o assunto da sustentabilidade de volta às mesas, 
-de forma intuitiva e amigável. 
 
-🔨 Backlog em produção 🔨
+<h1 align="center">🌳PROJETO OIKOS🌳</h1>
+                                                                   
+<p>O Projeto Oikos se trata de uma rede social voltada à práticas sustentáveis que traz os olhares dos usuários a o que as empresas, e outros usuários estão praticando em relação ao meio ambiente, os usuários terão a oportunidade de debater em comunidades ou mesmo de forma privada com scraps.
+  Há 3 componentes principais dentro do escopo do projeto, são eles recados entre usuários, comunidades com temas específicos, e empresas, cada um dos 3 se conectará de forma orgânica, trazendo os usuários para um ambiente confortável independente da área que esteja acessando.
+  Nossa visão é manter os debates sobre a sustentabilidade na terra ativos, de forma que os usuários sintam o impacto de suas opiniões, e que realmente podem fazer a diferença de alguma forma.</p>
+  
+  <hr>
 
- ⚙️ FUNCIONALIDADES: 
-✔️ Conversas entre usuários.
-✔️ Feed de notícias e publicações.
-✔️ Sistema de alerta.
-✔️ Debates.
-✔️ Divulgação de práticas sustentáveis.
+ <h2 align="center">⚙️ FUNCIONALIDADES:<br></h2>
+✔️ Conversas entre usuários.<br>
+✔️ Feed de notícias e publicações.<br>
+✔️ Debates.<br>
+✔️ Divulgação de práticas sustentáveis.<br>
+✔️ Área de empresas para divulgação.
 
-🖥️ TECNOLOGIAS UTILIZADAS ATÉ O MOMENTO:
-✔️ Java com SpringBoot.
-✔️ Postman.
-✔️ MySql Worbench.
+<hr>
+
+<h2 align="center">🖥️ TECNOLOGIAS UTILIZADAS:<br></h2>
+✔️ Java SpringBoot.<br>
+✔️ Postman.<br>
+✔️ MySql Worbench.<br>
+✔️ Anuglar TS.
+
+<h2>Página home do projeto:</h2>
+
+
+![Screenshot_1](https://user-images.githubusercontent.com/79260294/130360246-5a34479f-13bd-4e54-9271-825ca533e71b.png)
+  
+A partir dessa página, o usuário poderá acessar todos os outros componentes do site, e fazer posts, de forma intuitiva e orgânica, com tudo em um só lugar. 
+
+
