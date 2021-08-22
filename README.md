@@ -23,11 +23,3 @@
 ✔️ MySql Worbench.<br>
 ✔️ Anuglar TS.
 
-<h2>Página home do projeto:</h2>
-
-
-![Screenshot_1](https://user-images.githubusercontent.com/79260294/130360246-5a34479f-13bd-4e54-9271-825ca533e71b.png)
-  
-A partir dessa página, o usuário poderá acessar todos os outros componentes do site, e fazer posts, de forma intuitiva e orgânica, com tudo em um só lugar. 
-
-
