@@ -21,6 +21,7 @@ import { CommunityPageComponent } from './community-page/community-page.componen
 import { ProfilePageComponent } from './page/profile-page/profile-page.component';
 import { BusinessPageComponent } from './page/business-page/business-page.component';
 import { ThreadPageComponent } from './page/thread-page/thread-page.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ThreadPageComponent } from './page/thread-page/thread-page.component';
     ProfilePageComponent,
     BusinessPageComponent,
     ThreadPageComponent,
+    EcommerceComponent,
   ],
   imports: [
     BrowserModule,

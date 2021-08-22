@@ -1,0 +1,63 @@
+.logo
+{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.carous
+{
+    height: 350px;
+}
+
+.box
+{
+    background-color:rgb(236, 234, 234);
+    padding: 0%;
+}
+
+#menu {
+    position: fixed;
+    right: 0;
+    top: 85%;
+    padding: 30px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-color: darkred;
+  }
+
+.icon
+{
+    font-size: 60px;
+    color: white;
+}
+
+.cardgallery
+{
+    background-color:rgb(236, 234, 234);;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 60px;
+    margin-right: 60px;
+
+}
+
+.card-body
+{
+    flex-basis: 20%; 
+}
+
+.card
+{
+    width: 20% !important;
+}
+
+.btt
+{
+    width: 100%;
+    background-color: darkred;
+    color: white;
+    padding: 8px;
+}
