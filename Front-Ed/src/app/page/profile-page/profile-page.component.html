@@ -36,7 +36,7 @@
                             </div>
                         </div>
 
-                        <!-- Seguidores -->
+                        <!-- Seguidores 
                         <div class="row justify-content-center text-center">
                             <div class="col-md-3">
                                 <p class="bg-sla oikos-border p-1">58857 seguidores</p>
@@ -44,7 +44,7 @@
                             <div class="col-md-3">
                                 <p class="bg-sla oikos-border p-1">58857 seguindo</p>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Biogragia -->
                         <div class="row justify-content-center text-center">
@@ -84,7 +84,9 @@
                                                     class="img-fluid rounded-circle" style="width: 30px; height: 30px;">
                                                 <a class="ms-1"
                                                     [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                                    @{{item.profileFrom.profileAlias}}</a> <small class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date: 'dd/MM/yyyy'}}</small>
+                                                    @{{item.profileFrom.profileAlias}}</a> <small
+                                                    class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date:
+                                                    'dd/MM/yyyy'}}</small>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -96,10 +98,13 @@
 
                                             <div *ngIf="visitingProfileId == myProfileId">
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                    class=" m-end  fas fa-edit mt-2 btn"(click)='getMessageById(item.messageId)'></button>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete"
-                                                    class="far fa-trash-alt me-1 mt-2 btn delete"(click)='getMessageById(item.messageId)'></button>
-                                                </div>
+                                                    class=" m-end  fas fa-edit mt-2 btn"
+                                                    (click)='getMessageById(item.messageId)'></button>
+                                                <button type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#modalDelete"
+                                                    class="far fa-trash-alt me-1 mt-2 btn delete"
+                                                    (click)='getMessageById(item.messageId)'></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +143,9 @@
                                                     class="img-fluid rounded-circle" style="width: 30px; height: 30px;">
                                                 <a class="ms-1"
                                                     [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                                    @{{item.profileFrom.profileAlias}}</a> <small class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date: 'dd/MM/yyyy'}}</small>
+                                                    @{{item.profileFrom.profileAlias}}</a> <small
+                                                    class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date:
+                                                    'dd/MM/yyyy'}}</small>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -161,10 +168,22 @@
                 <div class="col-md-3 bg-light oikos-border">
 
                     <div *ngIf="myProfileId == visitingProfileId" class="m-3 ps-3 pe-3">
-                        <button class="btn btn-outline-dark me-2" data-bs-toggle="modal"
-                            data-bs-target="#editHead">Editar Capa</button>
-                        <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editBio">Editar
-                            Bio</button>
+                        <div class="row justify-content-center">
+                            <div class="col-md-9">
+                                <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Edite seu perfil</h5>
+                                <div class="mb-2 text-center">
+                                    <button class="btn btn-outline-dark me-2" data-bs-toggle="modal"
+                                    data-bs-target="#editHead">Editar Capa</button>
+                                </div>
+                               <div class="mb-2 text-center">
+                                <button class="btn btn-outline-dark" data-bs-toggle="modal"
+                                data-bs-target="#editBio">Editar biografia</button>
+                               </div>
+                               
+                            </div>
+                            
+                        </div>
+
                     </div>
 
                     <!-- Minhas Comunidades -->
@@ -215,6 +234,12 @@
                         <div class="row justify-content-center mt-3">
                             <div class="col-md-7">
                                 <h5 class="bg-sla oikos-border mt-2 p-1 text-center">Empresas</h5>
+                                <div *ngFor="let com of visitingProfile.businessOwned"
+                                class="d-flex justify-content-center">
+                                <a [routerLink]="['/business-page', com.businessId]">
+                                    <img src="{{com.businessPic}}" class="communityPic mb-2">
+                                </a>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -234,7 +259,8 @@
                     <div class="modal-body">
 
                         <div class="form-control">
-                            <input [(ngModel)]="profDTO.profileHeader" type="text" class="form-control" id="titulo" placeholder="Digite o título">
+                            <input [(ngModel)]="profDTO.profileHeader" type="text" class="form-control" id="titulo"
+                                placeholder="Digite o título">
                         </div>
 
                     </div>
@@ -273,36 +299,39 @@
         </div>
 
 
-<!--Modal Delete-->
-<div class="modal"  data-bs-toggle="modal" id="modalDelete">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            </div>
-            <div class="modal-body">
-                <p>{{message.messageContent}}</p>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-danger"(click)='delete(message.messageId)' data-bs-dismiss="modal">Deletar</button>
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+        <!--Modal Delete-->
+        <div class="modal" data-bs-toggle="modal" id="modalDelete">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <p>{{message.messageContent}}</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger" (click)='delete(message.messageId)'
+                            data-bs-dismiss="modal">Deletar</button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!--Modal Edit-->
-<div class="modal"  data-bs-toggle="modal" id="modalEdit">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            </div>
-            <div class="modal-body">
-              <input type="text" class="form-control" id="messageContent" [(ngModel)]='message.messageContent'>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='atualizar(message.messageContent)'>Salvar alterações</button>
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+        <!--Modal Edit-->
+        <div class="modal" data-bs-toggle="modal" id="modalEdit">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="messageContent"
+                            [(ngModel)]='message.messageContent'>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            (click)='atualizar(message.messageContent)'>Salvar alterações</button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
