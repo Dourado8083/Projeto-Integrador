@@ -72,6 +72,7 @@ export class ProfilePageComponent implements OnInit {
     this.messageProfileDto.messageType = "profile";
     this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
       this.getVisitingProfileById();
+      this.messageProfileDto = new MessageProfileDTO();
     });
   }
 

@@ -69,8 +69,9 @@ export class HomeComponent implements OnInit {
     this.messageProfileDto.profileFromId = this.profileId;
     this.messageProfileDto.profileToId = this.profileId;
     this.messageProfileDto.messageType = "feed"
-    this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {
+    this.messageService.postMessage(this.messageProfileDto).subscribe((resp: Message) => {      
       this.getAllMessage();
+      this.messageProfileDto = new MessageProfileDTO();
     });
   }
 

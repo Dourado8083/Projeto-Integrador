@@ -84,7 +84,7 @@
                                                     class="img-fluid rounded-circle" style="width: 30px; height: 30px;">
                                                 <a class="ms-1"
                                                     [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                                    @{{item.profileFrom.profileAlias}}</a>
+                                                    @{{item.profileFrom.profileAlias}}</a> <small class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date: 'dd/MM/yyyy'}}</small>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -138,7 +138,7 @@
                                                     class="img-fluid rounded-circle" style="width: 30px; height: 30px;">
                                                 <a class="ms-1"
                                                     [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                                    @{{item.profileFrom.profileAlias}}</a>
+                                                    @{{item.profileFrom.profileAlias}}</a> <small class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date: 'dd/MM/yyyy'}}</small>
                                             </div>
                                         </div>
                                         <div class="card-body">
