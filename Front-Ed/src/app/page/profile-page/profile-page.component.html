@@ -88,10 +88,18 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
+                                            <p class="card-text mt-2">{{item.messageContent}}</p>
+                                            <hr>
                                             <img *ngIf="item.messagePic != null" src="{{item.messagePic}}"
                                                 class="post-img">
                                             <h5 class="card-title fw-bold mb-0">{{item.messageTitle}} </h5>
-                                            <p class="card-text mt-2">{{item.messageContent}}</p>
+
+                                            <div *ngIf="visitingProfileId == myProfileId">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                    class=" m-end  fas fa-edit mt-2 btn"(click)='getMessageById(item.messageId)'></button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete"
+                                                    class="far fa-trash-alt me-1 mt-2 btn delete"(click)='getMessageById(item.messageId)'></button>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -263,3 +271,38 @@
                 </div>
             </div>
         </div>
+
+
+<!--Modal Delete-->
+<div class="modal"  data-bs-toggle="modal" id="modalDelete">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <p>{{message.messageContent}}</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-danger"(click)='delete(message.messageId)' data-bs-dismiss="modal">Deletar</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Edit-->
+<div class="modal"  data-bs-toggle="modal" id="modalEdit">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+              <input type="text" class="form-control" id="messageContent" [(ngModel)]='message.messageContent'>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)='atualizar(message.messageContent)'>Salvar alterações</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

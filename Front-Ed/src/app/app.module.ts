@@ -22,6 +22,8 @@ import { ProfilePageComponent } from './page/profile-page/profile-page.component
 import { BusinessPageComponent } from './page/business-page/business-page.component';
 import { ThreadPageComponent } from './page/thread-page/thread-page.component';
 import { EcommercePageComponent } from './page/ecommerce-page/ecommerce-page.component';
+import { AlertsComponent } from './alerts/alerts.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -40,12 +42,14 @@ import { EcommercePageComponent } from './page/ecommerce-page/ecommerce-page.com
     BusinessPageComponent,
     ThreadPageComponent,
     EcommercePageComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy,

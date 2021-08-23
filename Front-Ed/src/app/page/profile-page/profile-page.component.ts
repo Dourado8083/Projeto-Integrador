@@ -1,5 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertsService } from 'src/app/alerts.service';
 import { Message } from 'src/app/model/Message';
 import { MessageProfileDTO } from 'src/app/model/MessageProfileDTO';
 import { Profile } from 'src/app/model/Profile';
@@ -23,6 +25,7 @@ export class ProfilePageComponent implements OnInit {
   messageProfileDto: MessageProfileDTO = new MessageProfileDTO();
 
   profDTO: ProfileDTO = new ProfileDTO();
+  messageId: number
 
   message: Message = new Message();
   messageList: Message[];
@@ -31,7 +34,8 @@ export class ProfilePageComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private profileService: ProfileService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit() {
@@ -87,5 +91,28 @@ export class ProfilePageComponent implements OnInit {
       alert('Header atualizada')
     })
   }
+
+  delete(messageId: number){
+    this.messageService.deleteMessage(messageId).subscribe(()=>{
+      this.alerts.showAlertSuccess('Mensagem deletada!')
+      this.getVisitingProfileById();
+    })
+  }
+
+  atualizar(message: string){
+    this.messageService.putMessage(this.message).subscribe((resp: Message)=>{
+      this.alerts.showAlertSuccess('Tema atualizado com sucesso!')
+      this.getVisitingProfileById();
+      
+    
+    })
+  }
+
+  getMessageById(messageId: number){
+    this.messageService.getMessageById(messageId).subscribe((resp: Message)=>{
+      this.message = resp
+    })
+  }
+
 
 }
