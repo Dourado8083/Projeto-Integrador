@@ -76,7 +76,7 @@
                             <!-- Seus Posts-->
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-home-tab">
-                                <div *ngFor="let item of visitingProfile.messagesReceived">
+                                <div *ngFor="let item of visitingProfile.messagesReceived | orderBy : key : reverse">
                                     <div *ngIf="item.messageType == 'feed'" class="card mb-3">
                                         <div class="card-header">
                                             <div class="d-flex align-items-center">
@@ -129,7 +129,7 @@
                                 </div>
 
                                 <!-- Posts Scraps -->
-                                <div *ngFor="let item of visitingProfile.messagesReceived">
+                                <div *ngFor="let item of visitingProfile.messagesReceived | orderBy : key : reverse">
 
                                     <div *ngIf="item.messageType == 'profile'" class="card mb-3">
                                         <div class="card-header">

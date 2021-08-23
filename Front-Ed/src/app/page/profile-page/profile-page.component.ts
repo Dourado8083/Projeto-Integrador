@@ -30,6 +30,9 @@ export class ProfilePageComponent implements OnInit {
   message: Message = new Message();
   messageList: Message[];
 
+  key = 'data'
+  reverse = true
+
   constructor(
     private router: Router,
     private messageService: MessageService,

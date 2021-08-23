@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
   messageList: Message[];
   idMessage: number
 
+  key = 'data'
+  reverse = true
+
   constructor(
     private router: Router,
     private messageService: MessageService,

@@ -73,7 +73,7 @@
 
 
                     <!-- Posts -->
-                    <div *ngFor="let item of messageList">
+                    <div *ngFor="let item of messageList | orderBy : key : reverse">
 
                         <div *ngIf="item.messageType == 'feed'" class="card mb-3">
                             <div class="card-header">
@@ -83,7 +83,6 @@
                                         [routerLink]="['/profile-page', item.profileFrom.profileId]">
                                         @{{item.profileFrom.profileAlias}}</a>
 
-                                   
 
                                 </div>
                             </div>

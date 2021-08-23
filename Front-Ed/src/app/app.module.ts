@@ -24,6 +24,7 @@ import { ThreadPageComponent } from './page/thread-page/thread-page.component';
 import { EcommercePageComponent } from './page/ecommerce-page/ecommerce-page.component';
 import { AlertsComponent } from './alerts/alerts.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OrderModule
   ],
   providers: [{
     provide: LocationStrategy,
