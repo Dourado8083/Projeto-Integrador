@@ -1,0 +1,11 @@
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+    background-color: #A0D9D0;
+    margin-bottom: 6px;
+    display: flex;
+   justify-content: center;    
+}
+p{
+margin-top: 25px;
+}
