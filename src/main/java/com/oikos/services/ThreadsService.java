@@ -38,7 +38,8 @@ public class ThreadsService {
 			threads.setThreadsCreator(profile);
 			threads.setCommunityOn(community.get());
 			threads.setThreadsTitle(threadsDto.getThreadsTitle());
-			threads.setNumberOfMessages(0);
+			threads.setNumberOfMessages(1);
+			threads.setThreadsMessage(threadsDto.getThreadsMessage());
 			
 			community.get().getThreadsList().add(threads);
 			profile.getThreadsCreated().add(threads);

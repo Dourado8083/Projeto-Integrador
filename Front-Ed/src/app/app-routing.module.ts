@@ -9,6 +9,7 @@ import { EntrarComponent } from './entrar/entrar.component';
 import { HomeComponent } from './home/home.component';
 import { MessageComponent } from './message/message.component';
 import { BusinessPageComponent } from './page/business-page/business-page.component';
+import { EcommercePageComponent } from './page/ecommerce-page/ecommerce-page.component';
 import { ProfilePageComponent } from './page/profile-page/profile-page.component';
 import { ThreadPageComponent } from './page/thread-page/thread-page.component';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: "profile-page/:id", component: ProfilePageComponent},
   {path: "business-page/:id", component: BusinessPageComponent},
   {path: "thread-page/:id", component: ThreadPageComponent},
+  {path: "ecommerce-page/:id", component: EcommercePageComponent},
   {path: "about-us", component: AboutUsComponent},
   {path: "contact", component: ContactComponent}
   

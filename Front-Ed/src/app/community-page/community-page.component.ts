@@ -37,6 +37,8 @@ export class CommunityPageComponent implements OnInit {
   threadsDto: ThreadsDTO = new ThreadsDTO();
   threads: Threads = new Threads();
 
+  isMember: boolean;
+
   constructor(
     private communityService: CommunityService,
     private profileService: ProfileService,
@@ -47,7 +49,7 @@ export class CommunityPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
     /*
     if(environment.token == "") {
       alert("Sua seção expirou, faça login novamente.");
@@ -56,6 +58,7 @@ export class CommunityPageComponent implements OnInit {
 
     this.getCommunityById();
     this.getUserById();
+    this.isMember = this.checkMembership();
   }
 
   getUserById() {
@@ -88,7 +91,7 @@ export class CommunityPageComponent implements OnInit {
       this.community = resp;
       this.getCommunityById();
       this.getUserById();
-    }); 
+    });
     this.profileCommunityDto = new ProfileCommunityDTO();
   }
 
@@ -99,7 +102,7 @@ export class CommunityPageComponent implements OnInit {
       this.community = resp;
       this.getCommunityById();
       this.getUserById();
-    }); 
+    });
     this.profileCommunityDto = new ProfileCommunityDTO();
   }
 
@@ -122,9 +125,9 @@ export class CommunityPageComponent implements OnInit {
     })
   }
 
-  isMember(): boolean {
-    for(let i = 0; i < this.profile.memberOf.length; i++) {
-      if(this.profile.memberOf[i].communityId == this.communityId) {
+  checkMembership(): boolean {
+    for (let i = 0; i < this.profile.memberOf.length; i++) {
+      if (this.profile.memberOf[i].communityId == this.communityId) {
         return true;
       }
     }

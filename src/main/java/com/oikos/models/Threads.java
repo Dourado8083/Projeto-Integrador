@@ -21,6 +21,7 @@ public class Threads {
 	private long threadsId;
 	
 	private String threadsTitle;
+	private String threadsMessage;
 	private long numberOfMessages;
 	
 
@@ -56,6 +57,14 @@ public class Threads {
 	public void setThreadsTitle(String threadsTitle) {
 		this.threadsTitle = threadsTitle;
 	}
+	
+	public String getThreadsMessage() {
+		return threadsMessage;
+	}
+
+	public void setThreadsMessage(String threadsMessage) {
+		this.threadsMessage = threadsMessage;
+	}
 
 	public long getNumberOfMessages() {
 		return numberOfMessages;
@@ -88,5 +97,6 @@ public class Threads {
 	public void setMessageList(List<Message> messageList) {
 		this.messageList = messageList;
 	}
+
 	
 }

@@ -7,7 +7,7 @@
     </div>
 
     <div class="row d-flex justify-content-center">
-        
+
         <!-- Informações da Comunidade -->
         <div class="col-md-2 pt-1 pb-1 oikos-border bg-white info">
 
@@ -15,59 +15,91 @@
                 <p class="fs-22 fw-bold mt-4 text-center">{{community.communityName}}</p>
                 <img src="{{community.communityPic}}" class="img-fluid m-auto mt-3 mb-4 community-pic">
                 <hr>
-                <p class="fs-18 fw-bold ms-3 text-start"><i class="fas fa-user-friends"></i> Membros: {{community.communityNumberOfMembers}}</p>
+                <p class="fs-18 fw-bold ms-3 text-start"><i class="fas fa-user-friends"></i> Membros:
+                    {{community.communityNumberOfMembers}}</p>
                 <hr>
                 <p class="fs-18 fw-bold ms-3 mt-1 text-start"> <i class="fas fa-book"></i> Biografia: </p>
                 <p class="p-3 pt-1">{{community.communityBio}}</p>
                 <hr>
-                <div class="d-flex justify-content-center"> 
-                    <button *ngIf="!isMember(); else elseBlock" (click)="joinCommunity()" type="button" class="btn btn-outline-success btn-lg mb-3" style="display: block">Entrar na comunidade</button>
-                    <ng-template #elseBlock><button (click)="leaveCommunity()" type="button" class="btn btn-outline-danger btn-lg mb-3">Sair da comunidade</button></ng-template>
+                <div class="d-flex justify-content-center">
+                    <button *ngIf="!isMember; else elseBlock" (click)="joinCommunity()" type="button"
+                        class="btn btn-outline-success btn-lg mb-3" style="display: block">Entrar na comunidade</button>
+                    <ng-template #elseBlock><button (click)="leaveCommunity()" type="button"
+                            class="btn btn-outline-danger btn-lg mb-3">Sair da comunidade</button></ng-template>
                 </div>
             </div>
- 
+
 
         </div>
 
         <!-- Coluna Principal -->
         <div class="col-md-5">
-            
+
             <!-- Tabela de Mensagens Fixadas -->
             <div class="container-fluid oikos-border mb-2 bg-white pinned">
-                <p class="fs-36 fw-bold text-center mt-3">Mensagens Fixas</p>
-                <hr>
+                <p class="fs-36  text-center mt-3 mb-2 p-2 oikos-border bg-box">Mensagens Fixas </p>
                 <div class="oikos-border mb-3">
-                    <div class="d-flex justify-content-end align-items-center"> 
-                        <button class="btn btn-danger btn-sm m-3 mb-1" data-bs-toggle="modal" data-bs-target="#newPin"><i class="fas fa-thumbtack mb-0 mt-2"></i> </button>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <button class="btn btn-danger btn-sm m-3 mb-1" data-bs-toggle="modal"
+                            data-bs-target="#newPin"><i class="fas fa-thumbtack mb-0 mt-2"></i> </button>
                     </div>
                     <hr>
                     <!-- Mensagens Fixadas-->
-                    <div *ngFor="let item of community.messages">
-                        <div class="row">
-                            <div class="col-md-2 d-flex justify-content-center mt-1">
-                                <img src="{{item.profileFrom.profilePic}}" style="height: 35px; width: 35px;" class="rounded-circle ms-2 me-2">
-                                <p class="mt-1" style="color: rgba(255, 0, 0, 0.753)"><i class="fas fa-bullhorn fs-4"></i></p>
+                    <div *ngFor="let item of community.messages; let i = index;" class="container-fluid p-0">
+                        <div class="row d-flex justify-content-center align-items-start flex-wrap">
+                            <div class="col-md-2 d-flex justify-content-center flex-wrap mt-1">
+                                <img src="{{item.profileFrom.profilePic}}" style="height: 35px; width: 35px;"
+                                    class="rounded-circle me-2 ms-2">
+                                <p style="color: rgba(255, 0, 0, 0.712)"><i class="mt-1 fas fa-bullhorn fs-3"></i></p>
                             </div>
-                            <div class="col-md-9 bg-light oikos-border d-flex align-items-center">
-                                <p>{{item.messageContent}}</p>
+                            <div class="col-10 col-sm-10 col-md-9 bg-light oikos-border">
+                                <p class="fw-bold text-start mt-2">{{item.messageContent}}</p>
                             </div>
                         </div>
                         <hr>
                     </div>
+
+
                 </div>
+
+
             </div>
 
             <!-- Fórum -->
-            <div class="container-fluid oikos-border mb-5 boards bg-white">
-                <p class="fs-36 fw-bold text-center mt-3 bg-white">Fórum</p>
-                <hr>
-                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#newThreads">CLICA AQUI</button>
-                <div *ngFor="let item of community.threadsList">
-                    {{item.threadsTitle}}
+            <div class="container-fluid oikos-border mb-5 bg-white">
+                <p class="fs-36 text-center mt-3 mb-2 p-2 oikos-border bg-box"> Fórum <i class="fas fa-keyboard fs-2"></i> </p>
+                <div class="oikos-border mb-3">
+                    <div class="d-flex justify-content-end align-items-center mb-3">
+                        <button class="btn btn-primary btn-sm m-3 mb-1" data-bs-toggle="modal"
+                            data-bs-target="#newThreads"><i class="fas fa-plus-circle"></i> </button>
+                    </div>
+                    <hr class="mb-0">
+
+                    <!-- Tópicos -->
+                    <table class="table table-light table-striped table-hover mt-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Postagens</th>
+                                <th scope="col">Criador</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of community.threadsList">
+                                <td class="ms-2"><a [routerLink]="['/thread-page', item.threadsId]">{{item.threadsTitle}}</a></td>
+                                <td>{{item.numberOfMessages}}</td>
+                                <td> <a [routerLink]="['/profile-page', item.threadsCreator.profileId]"><img src="{{item.threadsCreator.profilePic}}" style="height: 35px; width: 35px;"
+                                        class="rounded-circle"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
                 </div>
             </div>
 
         </div>
+
 
         <!-- Membros da Comunidade -->
         <div class="col-md-1 oikos-border members temp">
@@ -80,29 +112,36 @@
 </div>
 
 
+
+
 <!-- Modal para fixar mensagens -->
 <div id="newPin" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered p-3" role="document">
-        <div class="p-3 modal-content modal-bg mod-rad" style="width:1000px;">
-            <div class="modal-header bg-mod mod-radtop mb-3">
-                <h5 class="modal-title me-2 " id="exampleModalLabel">Gostaria de fixar uma nova mensagem?</h5>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-bg mod-rad">
+            <div class="modal-header bg-mod mod-radtop">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Gostaria de fixar uma nova mensagem?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="">
 
-            <div class="ms-2 me-2">
-                <textarea [(ngModel)]="messageCommunityDto.messageContent" type="text" class="form-control p-1 mt-4 mb-4"
-                    id="pinnedMessage" placeholder=" Digite a sua mensagem" rows="4"></textarea>
+                <div class="form-control p-4">
+
+                    <label for="pinnedMessage" class="mt-3 mb-1">Mensagem fixa</label>
+                    <textarea [(ngModel)]="messageCommunityDto.messageContent" type="text" class="form-control p-1 mb-4"
+                        id="pinnedMessage" placeholder=" Digite a sua mensagem" rows="4"></textarea>
+
+                </div>
+
             </div>
-
-            <div class="modal-footer mt-3">
-                <button type="button" class="p-2 btn btn-outline-danger"
-                    data-bs-dismiss="modal"><b>Cancelar</b></button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary butt2" data-bs-dismiss="modal">Cancelar</button>
                 <button (click)="postMessage()" type="button" data-bs-dismiss="modal"
-                    class="p-2 btn btn-outline-success ms-2"><b>Postar</b></button>
+                    class="btn bg-mod butt">Criar</button>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!-- Modal para criar tópicos -->
@@ -110,7 +149,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-bg mod-rad">
             <div class="modal-header bg-mod mod-radtop">
-                <h5 class="modal-title fw-bold" id="exampleModalLabel">Criar Comunidade</h5>
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Gostaria de criar um novo tópico?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="">
@@ -118,9 +157,12 @@
                 <div class="form-control p-4">
 
                     <label for="threadsTitle" class="mt-3 mb-1">Título do tópico</label>
-                    <input [(ngModel)]="threadsDto.threadsTitle" type="text" class="form-control"
-                        id="threadsTitle" placeholder="Insira o nome para a comunidade">
+                    <input [(ngModel)]="threadsDto.threadsTitle" type="text" class="form-control" id="threadsTitle"
+                        placeholder="Insira o nome para a comunidade">
 
+                    <label for="threadsMessage" class="mt-3 mb-1">Postagem inicial</label>
+                    <textarea [(ngModel)]="threadsDto.threadsMessage" type="text" class="form-control p-1 mb-4"
+                        id="threadsMessage" placeholder=" Digite a sua postagem inicial" rows="4"></textarea>
 
                 </div>
 

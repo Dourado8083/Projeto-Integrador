@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
@@ -48,6 +50,10 @@ public class Business {
 	@OneToMany(mappedBy = "businessOn")
 	@JsonIgnoreProperties({ "communityOn", "profileOn", "ProfileFrom", "businessOn" })
 	private List<Message> businessMessages = new ArrayList<>();
+	
+	@OneToOne
+	@JoinColumn(name = "businessOnId")
+	private Ecommerce ecommerce;
 
 	public Business() {
 
@@ -147,6 +153,14 @@ public class Business {
 
 	public void setBusinessMessages(List<Message> businessMessages) {
 		this.businessMessages = businessMessages;
+	}
+
+	public Ecommerce getEcommerce() {
+		return ecommerce;
+	}
+
+	public void setEcommerce(Ecommerce ecommerce) {
+		this.ecommerce = ecommerce;
 	}
 
 
