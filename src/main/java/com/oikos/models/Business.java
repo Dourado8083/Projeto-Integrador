@@ -44,7 +44,7 @@ public class Business {
 	private String businessBackground;
 
 	@ManyToOne
-	@JsonIgnoreProperties({ "communitiesOwned", "businessOwned", "memberOf", "messagesSent", "messagesReceived" })
+	@JsonIgnoreProperties({ "communitiesOwned", "businessOwned", "memberOf", "messagesSent", "messagesReceived", "commentsMade", "threadsCreated", "profileHeader", "profileBio", "profilePassword" })
 	private Profile businessOwner;
 
 	@OneToMany(mappedBy = "businessOn")
@@ -53,6 +53,7 @@ public class Business {
 	
 	@OneToOne
 	@JoinColumn(name = "businessOnId")
+	@JsonIgnoreProperties({"businessOn"})
 	private Ecommerce ecommerce;
 
 	public Business() {
@@ -162,7 +163,5 @@ public class Business {
 	public void setEcommerce(Ecommerce ecommerce) {
 		this.ecommerce = ecommerce;
 	}
-
-
 
 }

@@ -37,8 +37,6 @@ export class CommunityPageComponent implements OnInit {
   threadsDto: ThreadsDTO = new ThreadsDTO();
   threads: Threads = new Threads();
 
-  isMember: boolean;
-
   constructor(
     private communityService: CommunityService,
     private profileService: ProfileService,
@@ -58,7 +56,6 @@ export class CommunityPageComponent implements OnInit {
 
     this.getCommunityById();
     this.getUserById();
-    this.isMember = this.checkMembership();
   }
 
   getUserById() {

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Product {
 
@@ -24,6 +26,7 @@ public class Product {
 
 	@ManyToOne
 	@JoinColumn(name = "ecommerceOnId")
+	@JsonIgnoreProperties({"productList"})
 	private Ecommerce ecommerceOn;
 
 	public long getProductId() {

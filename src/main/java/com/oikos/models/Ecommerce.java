@@ -10,14 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Ecommerce {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ecommerceId;
-
+	
+	private String ecommercePic;
+	
 	@OneToOne(mappedBy = "ecommerce")
+	@JsonIgnoreProperties({"businessMessages", "ecommerce"})
 	private Business businessOn;
 
 	@OneToMany(mappedBy = "ecommerceOn")
@@ -46,5 +51,14 @@ public class Ecommerce {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
+
+	public String getEcommercePic() {
+		return ecommercePic;
+	}
+
+	public void setEcommercePic(String ecommercePic) {
+		this.ecommercePic = ecommercePic;
+	}
+
 
 }

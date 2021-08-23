@@ -25,7 +25,7 @@ public class BusinessService {
 	/**
 	 * Método para criar uma página de negócios.
 	 * 
-	 * @param ProfileCommunityDTO
+	 * @param ProfileBusinessDTO
 	 * @return Um Optional contendo o negócio criado ou vázio para ser tratado como
 	 *         erro.
 	 */

@@ -22,7 +22,7 @@
                 <p class="p-3 pt-1">{{community.communityBio}}</p>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <button *ngIf="!isMember; else elseBlock" (click)="joinCommunity()" type="button"
+                    <button *ngIf="!checkMembership(); else elseBlock" (click)="joinCommunity()" type="button"
                         class="btn btn-outline-success btn-lg mb-3" style="display: block">Entrar na comunidade</button>
                     <ng-template #elseBlock><button (click)="leaveCommunity()" type="button"
                             class="btn btn-outline-danger btn-lg mb-3">Sair da comunidade</button></ng-template>

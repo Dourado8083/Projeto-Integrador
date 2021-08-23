@@ -4,12 +4,13 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.oikos.models.Comment;
+import com.oikos.models.Business;
+import com.oikos.models.Ecommerce;
 
 
 @Repository
-public interface CommentRepository extends JpaRepository<Comment, Long>{
+public interface EcommerceRepository extends JpaRepository<Ecommerce, Long>{
 	
-	Optional<Comment> findById(long id);
+	Optional<Ecommerce> findById(long id);
 	
 }

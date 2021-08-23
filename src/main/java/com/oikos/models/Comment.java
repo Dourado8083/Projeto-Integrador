@@ -29,7 +29,7 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name = "profileFromId")
-	@JsonIgnoreProperties({"businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "commentsMade"})
+	@JsonIgnoreProperties({"businessOwned", "communitiesOwned", "memberOf", "messagesSent", "messagesReceived", "commentsMade", "threadsCreated"})
 	private Profile profileFrom;
 	
 	@ManyToOne

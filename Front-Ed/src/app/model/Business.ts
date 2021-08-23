@@ -1,3 +1,4 @@
+import { Ecommerce } from "./Ecommerce";
 import { Message } from "./Message";
 import { Profile } from "./Profile";
 
@@ -16,5 +17,6 @@ export class Business {
     public businessMessages: Message[];
     public businessHeader: string;
     public businessBackground: string;
+    public ecommerce: Ecommerce;
 
 }

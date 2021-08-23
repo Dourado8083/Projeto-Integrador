@@ -1,4 +1,4 @@
-* {
+ * {
     padding: 0;
     margin:0;
 }
@@ -54,7 +54,7 @@
 
 .more-info {
     background-color: white;
-    height: 500px;
+    height: 100%;
 }
 
 .feed {
@@ -115,3 +115,6 @@ a {
     font-size: 15px;
 }
 
+.shop {
+    cursor: pointer;
+}

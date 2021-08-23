@@ -21,8 +21,35 @@
         <div class="col-md-3 m-auto me-1 mt-2 bg">
 
             <!-- Informações -->
-            <div class="bg-light oikos-border more-info">
-                <p><b>Sobre</b></p>
+            <div class="bg-light oikos-border more-info mb-5">
+                <p class="fw-bold fs-36 text-center mt-3 mb-2">Informações</p>
+                <hr>
+
+                <p class="fs-24 fw-bold text-start mt-4 ms-4 me-4">Sobre:</p>
+                <p class="fs-18 mb-3 ms-4 me-4">Esta é uma página de empresa cadastrada na rede social Oikos. Você
+                    também pode cadastrar a sua e começar a usar!</p>
+                <button (click)="createEcommerce()" *ngIf="business.ecommerce == null" class="btn btn-primary">Abrir loja</button>
+                <p class="mt-4 ms-4 me-4 text-muted"><b><i class="fas fa-phone"></i> Tel:</b> {{business.businessPhone}}
+                </p>
+                <p class="ms-4 me-4 mt-2 text-muted"><b><i class="fas fa-map-marker-alt"></i> Endereço: </b>
+                    {{business.businessAddress}}</p>
+                <p class="ms-4 me-4 mb-4 mt-2 text-muted"><b><i class="fas fa-clock"></i> Funcionamento: </b> Segunda a
+                    Sábado de xx:xx às
+                    yy:yy</p>
+                <div *ngIf="business.ecommerce != null" class="d-flex justify-content-start mb-3 ms-3 shop">
+                    <div [routerLink]="['/ecommerce-page', business.ecommerce.ecommerceId]" class="d-flex flex-column justify-content-center align-items-center mt-3 mb-3">
+                        <i class="fas fa-store-alt fs-72"></i>
+                        <p class="fs-24 fw-bold">Acessar loja</p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="d-flex justify-content-center m-4">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7443.284407686294!2d-56.49378195236558!3d-21.12682618578999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x947c5f23a04391a1%3A0xc513dcca6953708b!2sJuanita%20Restaurante!5e0!3m2!1spt-BR!2sbr!4v1629726349254!5m2!1spt-BR!2sbr"
+                        style="border:0;" width="400" height="400" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
             </div>
 
             <!-- Reviews -->
@@ -63,7 +90,7 @@
             <div class="container-fluid pb-3 mb-5 oikos-border feed">
                 <p class="text-center mt-4 mb-2 fs-54"><b>Publicações</b></p>
                 <hr class="mb-3">
-                <div *ngFor="let item of business.businessMessages" class="d-flex justify-content-center">
+                <div *ngFor="let item of business.businessMessages" class="d-flex justify-content-center mb-5">
                     <div class="card mt-5 post">
                         <div class="card-header post-header p-2">
 
@@ -110,13 +137,15 @@
                                     id="comment" placeholder=" Deixe aqui um comentário" rows="1"></textarea>
                                 <div>
                                     <button (click)="postComment(item.messageId)" type="button"
-                                        class="btn btn-primary btn-sm rounded-circle p-1 mt-2 mb-1 ms-2" style="width:30px; height:30px;"><i class="fas fa-paper-plane"></i></button>
+                                        class="btn btn-primary btn-sm rounded-circle p-1 mt-2 mb-1 ms-2"
+                                        style="width:30px; height:30px;"><i class="fas fa-paper-plane"></i></button>
                                 </div>
                             </div>
 
                             <!-- Comentários -->
                             <div *ngFor="let comment of item.commentList" class="p-2 mt-1 mb-1">
-                                <div class="d-flex align-items-center bg-light oikos-border p-1 d-flex justify-content-between comment">
+                                <div
+                                    class="d-flex align-items-center bg-light oikos-border p-1 d-flex justify-content-between comment">
                                     <div class="d-flex align-items-center">
                                         <a [routerLink]="['/profile-page', comment.profileFrom.profileId]">
                                             <img src={{comment.profileFrom.profilePic}} class="rounded-circle ms-2"
@@ -125,7 +154,7 @@
                                         <p class="mt-3 ms-2">{{comment.commentContent}}</p>
                                     </div>
                                     <p class=""><small class="text-muted me-2">{{comment.data | date:
-                                        "dd/MM/yyyy"}} às {{comment.data | date: 'HH:mm'}}</small></p>
+                                            "dd/MM/yyyy"}} às {{comment.data | date: 'HH:mm'}}</small></p>
                                 </div>
                             </div>
                         </div>
