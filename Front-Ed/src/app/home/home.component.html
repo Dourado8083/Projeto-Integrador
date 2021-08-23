@@ -16,9 +16,9 @@
             <div>
 
                 <div *ngIf="profile.businessOwned.length > 0" class="container">
-                    <div class="d-flex justify-content-center mb-2">
-                        <img src="https://image.flaticon.com/icons/png/512/85/85849.png" height=25px width=25px>
-                        <p class="fs-user text-center mt-1 ms-1">Minhas empresas: </p>
+                    <div class="d-flex justify-content-center align-items-center mb-2 bg-sla oikos-border">
+                        <img src="https://image.flaticon.com/icons/png/512/85/85849.png" height=20px width=20px>
+                        <p class="fs-min text-center mt-1 ms-1 mb-0">Minhas empresas: </p>
                     </div>
 
                     <div class="row mt-2">
@@ -28,16 +28,23 @@
                             </a>
                         </div>
                     </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button class="nav-link btn btn-light mt-3 fs-min" data-bs-toggle="modal"
+                        data-bs-target="#newBusiness"><img
+                            src="https://image.flaticon.com/icons/png/512/2830/2830596.png" alt=""
+                            style="height: 25px; width: 25px;"> Crie sua empresa</button>
+                    </div>
                 </div>
 
             </div>
 
-            <hr class="ms-5 me-5 mb-3 mt-5">
+            <hr class="ms-5 me-5 mb-3">
 
             <div *ngIf="profile.memberOf.length > 0" class="container">
-                <div class="d-flex justify-content-center mb-2">
-                    <img src="https://image.flaticon.com/icons/png/512/4800/4800666.png" height=25px width=25px>
-                    <p class="fs-user text-center mt-1 ms-1">Comunidades: </p>
+                <div class="d-flex justify-content-center align-items-center mb-2 bg-sla oikos-border">
+                    <img src="https://image.flaticon.com/icons/png/512/4800/4800666.png" height=20px width=20px>
+                    <p class="fs-min text-center mt-1 ms-1 mb-0">Comunidades: </p>
                 </div>
 
                 <div class="row mt-2 mb-5">
@@ -52,11 +59,11 @@
         </div>
 
         <!-- Feed -->
-        <div class="col-md-8 bg-light me-0 mt-3 rounded-p bg- mb-3 oikos-border">
+        <div class="col-md-7 bg-light me-0 mt-3 rounded-p- mb-3 oikos-border">
             <div class="row d-flex justify-content-center">
 
                 <!-- Feed Principal -->
-                <div class="col-md-8  me-3 mt-3">
+                <div class="col-md-12 p-4 mt-3">
                     <!-- Postar -->
                     <div class="mb-3 mt-1 bg-sla p-3 oikos-border">
                         <label for="exampleFormControlTextarea1" class="form-label">Expresse aqui seus
@@ -81,7 +88,7 @@
                                     <img src="{{item.profileFrom.profilePic}}" alt="" class="img-fluid rounded-circle"
                                         style="width: 30px; height: 30px;"> <a class="ms-1"
                                         [routerLink]="['/profile-page', item.profileFrom.profileId]">
-                                        @{{item.profileFrom.profileAlias}}</a> <small class="ms-2">{{item.data | date: 'HH:mm'}} · {{item.data | date: 'dd/MM/yyyy'}}</small>
+                                        @{{item.profileFrom.profileAlias}}</a> <small class="ms-2 text-end">{{item.data | date: 'HH:mm'}} · {{item.data | date: 'dd/MM/yyyy'}}</small>
 
 
                                 </div>
@@ -97,7 +104,7 @@
                     </div>
                 </div>
 
-                <!--Barra Lateral -->
+                <!--Barra Lateral 
                 <div class="col-md-3 mt-3">
 
                     <button [routerLink]="['/profile-page', profileId]"
@@ -113,12 +120,8 @@
                             src="https://image.flaticon.com/icons/png/512/561/561127.png" alt=""
                             style="height: 30px; width: 30px;"> Mensagens</button>
 
-                    <button class="nav-link btn btn-light mt-3" data-bs-toggle="modal"
-                        data-bs-target="#newBusiness"><img
-                            src="https://image.flaticon.com/icons/png/512/2830/2830596.png" alt=""
-                            style="height: 30px; width: 30px;"> Empresas</button>
+                </div> -->
 
-                </div>
             </div>
         </div>
     </div>
@@ -145,7 +148,7 @@
 <div id="newBusiness" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-bg">
-            <div class="modal-header">
+            <div class="modal-header bg-sla">
                 <h5 class="modal-title" id="exampleModalLabel">Cadastrar seu negócio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
