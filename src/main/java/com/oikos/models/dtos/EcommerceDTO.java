@@ -4,7 +4,9 @@ public class EcommerceDTO {
 
 	private long businessOwnerId;
 	private long businessOnId;
+	private String ecommerceName;
 	private String ecommercePic;
+	private String ecommerceHeader;
 
 	public long getBusinessOnId() {
 		return businessOnId;
@@ -28,6 +30,22 @@ public class EcommerceDTO {
 
 	public void setEcommercePic(String ecommercePic) {
 		this.ecommercePic = ecommercePic;
+	}
+
+	public String getEcommerceName() {
+		return ecommerceName;
+	}
+
+	public void setEcommerceName(String ecommerceName) {
+		this.ecommerceName = ecommerceName;
+	}
+
+	public String getEcommerceHeader() {
+		return ecommerceHeader;
+	}
+
+	public void setEcommerceHeader(String ecommerceHeader) {
+		this.ecommerceHeader = ecommerceHeader;
 	}
 	
 }

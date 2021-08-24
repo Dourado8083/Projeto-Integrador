@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,12 @@ public class EcommerceController {
 	@GetMapping("/all")
 	public ResponseEntity<List<Ecommerce>> GetAll() {
 		return ResponseEntity.ok(ecommerceRepository.findAll());
+	}
+	
+	@GetMapping("/{ecommerceId}")
+	public ResponseEntity<Ecommerce> GetEcommercetById(@PathVariable long ecommerceId) {
+		return ecommerceRepository.findById(ecommerceId).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping("/create-ecommerce")

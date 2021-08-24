@@ -1,13 +1,11 @@
 package com.oikos.models.dtos;
 
-import javax.persistence.Lob;
-
 public class ProductDTO {
 
 	private long ecommerceOnId;
 	private String productName;
-	@Lob
 	private String productDescription;
+	private String productPic;
 	private double productPrice;
 	private long productAmount;
 
@@ -34,6 +32,14 @@ public class ProductDTO {
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
+	
+	public String getProductPic() {
+		return productPic;
+	}
+
+	public void setProductPic(String productPic) {
+		this.productPic = productPic;
+	}
 
 	public double getProductPrice() {
 		return productPrice;
@@ -50,5 +56,7 @@ public class ProductDTO {
 	public void setProductAmount(long productAmount) {
 		this.productAmount = productAmount;
 	}
+
+
 
 }

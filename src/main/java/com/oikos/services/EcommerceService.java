@@ -43,6 +43,8 @@ public class EcommerceService {
 			
 			Ecommerce ecommerce = new Ecommerce();
 			ecommerce.setEcommercePic(ecommerceDto.getEcommercePic());
+			ecommerce.setEcommerceName(ecommerceDto.getEcommerceName());
+			ecommerce.setEcommerceHeader(ecommerceDto.getEcommerceHeader());
 			ecommerce.setBusinessOn(business.get());
 			
 			business.get().setEcommerce(ecommerce);

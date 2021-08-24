@@ -85,9 +85,13 @@ export class BusinessPageComponent implements OnInit {
   createEcommerce() {
     this.ecommerceDto.businessOwnerId = this.profileId;
     this.ecommerceDto.businessOnId = this.businessId;
+    this.ecommerceDto.ecommerceName = this.business.businessName;
+    this.ecommerceDto.ecommercePic = this.business.businessPic;
+    this.ecommerceDto.ecommerceHeader = this.business.businessHeader;
     this.ecommerceService.createEcommerce(this.ecommerceDto).subscribe((resp: Ecommerce) => {
       this.ecommerce = resp;
-    })
+      this.getBusinessById();
+    });
   }
 
 }

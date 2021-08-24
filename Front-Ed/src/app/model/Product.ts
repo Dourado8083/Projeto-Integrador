@@ -7,6 +7,7 @@ export class Product {
     public productDescription: string;
     public productPrice: number;
     public productAmount: number;
+    public productPic: string;
     public ecommerceOn: Ecommerce;
 
 }

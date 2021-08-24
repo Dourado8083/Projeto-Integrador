@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -18,7 +19,10 @@ public class Product {
 
 	private String productName;
 
+	@Lob
 	private String productDescription;
+	
+	private String productPic;
 
 	private double productPrice;
 
@@ -75,6 +79,14 @@ public class Product {
 
 	public void setProductAmount(long productAmount) {
 		this.productAmount = productAmount;
+	}
+
+	public String getProductPic() {
+		return productPic;
+	}
+
+	public void setProductPic(String productPic) {
+		this.productPic = productPic;
 	}
 
 }

@@ -39,6 +39,12 @@ public class ProductController {
 		return ResponseEntity.ok(productRepository.findAll());
 	}
 	
+	@GetMapping("/{productId}")
+	public ResponseEntity<Product> GetProductById(@PathVariable long productId) {
+		return productRepository.findById(productId).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
 	@PostMapping("/register-product")
 	public ResponseEntity<?> registerProduct(@Valid @RequestBody ProductDTO productDto) {
 		return productService.registerProduct(productDto).map(newProduct -> {

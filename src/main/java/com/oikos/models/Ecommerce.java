@@ -18,11 +18,15 @@ public class Ecommerce {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ecommerceId;
-	
+
+	private String ecommerceName;
+
 	private String ecommercePic;
 	
+	private String ecommerceHeader;
+
 	@OneToOne(mappedBy = "ecommerce")
-	@JsonIgnoreProperties({"businessMessages", "ecommerce"})
+	@JsonIgnoreProperties({ "businessMessages", "ecommerce" })
 	private Business businessOn;
 
 	@OneToMany(mappedBy = "ecommerceOn")
@@ -60,5 +64,20 @@ public class Ecommerce {
 		this.ecommercePic = ecommercePic;
 	}
 
+	public String getEcommerceName() {
+		return ecommerceName;
+	}
+
+	public void setEcommerceName(String ecommerceName) {
+		this.ecommerceName = ecommerceName;
+	}
+
+	public String getEcommerceHeader() {
+		return ecommerceHeader;
+	}
+
+	public void setEcommerceHeader(String ecommerceHeader) {
+		this.ecommerceHeader = ecommerceHeader;
+	}
 
 }
