@@ -6,6 +6,7 @@ import { Business } from '../model/Business';
 import { Message } from '../model/Message';
 import { MessageBusinessDTO } from '../model/MessageBusinessDTO';
 import { MessageCommunityDTO } from '../model/MessageCommunityDTO';
+import { MessageDTO } from '../model/MessageDTO';
 import { MessageProfileDTO } from '../model/MessageProfileDTO';
 import { ProfileBusinessDTO } from '../model/ProfileBusinessDTO';
 
@@ -48,6 +49,10 @@ export class MessageService {
 
   postMessageOnBusiness(messageBusinessDto: MessageBusinessDTO): Observable<Message>{
     return this.http.post<Message>('http://localhost:8080/message/business-post', messageBusinessDto, this.token)
+  }
+
+  postMessageOnThreads(messageDto: MessageDTO): Observable<Message>{
+    return this.http.post<Message>('http://localhost:8080/message/threads-post', messageDto, this.token)
   }
 
 }

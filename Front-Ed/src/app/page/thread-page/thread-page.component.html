@@ -1,57 +1,96 @@
-<div class="container">
- <i class="fas fa-arrow-left"></i>
-  <table class="table table-striped">
-    <h4 style="text-align: center; margin-top: 25px; font-size: 35px;">Fórum</h4>
-      <tbody>
-        <div class="container">
-       <tr>
-        <td>Dourado Corps<br/></td>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta atque tenetur ullam non deserunt numquam esse animi expedita recusandae quis optio labore mollitia totam ad at inventore, voluptates eveniet iure.</p>
-        <td>Agosto de 2021</td>
-      </tr>
-      <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/1840618-imagem-perfil-icone-masculino-icone-humano-ou-pessoa-sinal-e-simbolo-gr%C3%A1tis-vetor.jpg" width="200px" height="200" style="margin-bottom: 25px;">
+<div class="container m-auto mt-5 d-flex justify-content-start">
+  <p class="fs-36 fw-bold mb-0 text-primary"><b>Tópico:</b></p>
+  <p class="fs-36 mb-0 ms-3">{{thread.threadsTitle}}</p>
+</div>
+<div class="container mb-5 mt-0 m-auto oikos-border bg-white">
+  <div class="d-flex justify-content-end m-3">
+    <i [routerLink]="['/community-page', thread.communityOn.communityId]" class="fas fa-sign-out-alt fs-36 return"></i>
+  </div>
+
+  <!-- Postagem inicial-->
+  <div class="container d-flex">
+    <div class="d-flex flex-column align-items-center">
+      <img src="{{thread.threadsCreator.profilePic}}" class="img-thumbnail mb-0 avatar">
+      <p class="fw-bold fs-22 mb-2 mt-0">{{thread.threadsCreator.profileName}}</p>
+    </div>
+    <p class="ms-2 mt-0 p-3 oikos-border" style="height: 100%;">{{thread.threadsMessage}}</p>
+  </div>
+
+  <div *ngFor="let item of thread.messageList; index as i">
+
+    <div *ngIf="i%2==0; else elseBlock" class="container d-flex justify-content-end"> 
+      <p class="me-2 mt-0 p-3 oikos-border" style="height: 100%;">{{item.messageContent}}</p>
+      <div class="d-flex flex-column align-items-center">
+        <img src="{{item.profileFrom.profilePic}}" class="img-thumbnail mb-0 avatar">
+        <p class="fw-bold fs-22 mb-2 mt-0">{{item.profileFrom.profileName}}</p>
       </div>
-      <div class="container">
-        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/1840618-imagem-perfil-icone-masculino-icone-humano-ou-pessoa-sinal-e-simbolo-gr%C3%A1tis-vetor.jpg" width="200px" height="200">
-        <tr>
-         <td>Dourado Corps<br/></td>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta atque tenetur ullam non deserunt numquam esse animi expedita recusandae quis optio labore mollitia totam ad at inventore, voluptates eveniet iure.</p>
-         <td>Agosto de 2021</td>
-       </tr>
-       </div>
-       <div class="container">
-        <tr>
-         <td>Dourado Corps<br/></td>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta atque tenetur ullam non deserunt numquam esse animi expedita recusandae quis optio labore mollitia totam ad at inventore, voluptates eveniet iure.</p>
-         <td>Agosto de 2021</td>
-       </tr>
-       <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/1840618-imagem-perfil-icone-masculino-icone-humano-ou-pessoa-sinal-e-simbolo-gr%C3%A1tis-vetor.jpg" width="200px" height="200">
-       </div>
-       <div class="container">
-        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/1840618-imagem-perfil-icone-masculino-icone-humano-ou-pessoa-sinal-e-simbolo-gr%C3%A1tis-vetor.jpg" width="200px" height="200">
-        <tr>
-         <td>Dourado Corps<br/></td>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta atque tenetur ullam non deserunt numquam esse animi expedita recusandae quis optio labore mollitia totam ad at inventore, voluptates eveniet iure.</p>
-         <td>Agosto de 2021</td>
-       </tr>
-       </div>
-       <div class="container">
-        <tr>
-         <td style="color:red;">Dourado Corps<br/></td>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta atque tenetur ullam non deserunt numquam esse animi expedita recusandae quis optio labore mollitia totam ad at inventore, voluptates eveniet iure.</p>
-         <td>Agosto de 2021</td>
-       </tr>
-       <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/1840618-imagem-perfil-icone-masculino-icone-humano-ou-pessoa-sinal-e-simbolo-gr%C3%A1tis-vetor.jpg" width="200px" height="200">
-       </div>
-       <div class="container">
-        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/1840618-imagem-perfil-icone-masculino-icone-humano-ou-pessoa-sinal-e-simbolo-gr%C3%A1tis-vetor.jpg" width="200px" height="200">
-        <tr>
-         <td>Dourado Corps<br/></td>
-         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta atque tenetur ullam non deserunt numquam esse animi expedita recusandae quis optio labore mollitia totam ad at inventore, voluptates eveniet iure.</p>
-         <td>Agosto de 2021</td>
-       </tr>
-       
-       </div>
-    </tbody>
-  </table>
+    </div>
+
+    <ng-template #elseBlock> 
+      <div class="container d-flex">
+        <div class="d-flex flex-column align-items-center">
+          <img src="{{item.profileFrom.profilePic}}" class="img-thumbnail mb-0 avatar">
+          <p class="fw-bold fs-22 mb-2 mt-0">{{item.profileFrom.profileName}}</p>
+        </div>
+        <p class="ms-2 mt-0 p-3 oikos-border" style="height: 100%;">{{item.messageContent}}</p>
+      </div>
+    </ng-template>
+
+  </div>
+
+
+
+  <!-- Fazer postagem -->
+  <div class="m-auto mb-3 mt-1 p-3 bg-light oikos-border newpost" style="max-width: 600px;">
+    <label for="exampleFormControlTextarea1" class="form-label">
+      <p>Gostaria de fazer uma nova
+        publicação?</p>
+    </label>
+    <textarea [(ngModel)]="messageDto.messageContent" type="text" class="form-control" id="descricao"
+      placeholder=" Digite a sua mensagem" rows="3"></textarea>
+    <!--
+    <div class="form-group mt-4">
+      <label for="pic" class="mb">Gostaria de inserir uma imagem?</label>
+      <input [(ngModel)]="messageDto.messagePic" class="form-control form-st" type="text" name="pic" id="pic"
+        placeholder=" Link da imagem">
+    </div>
+    -->
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-outline-info p-2 mb-1 mt-4" data-bs-toggle="modal"
+        data-bs-target="#newPost">Postar</button>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- Modal de prévia da postagem -->
+<div id="newPost" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="p-3 modal-content modal-bg mod-rad" style="width:1000px;">
+      <div class="modal-header bg-mod mod-radtop">
+        <h5 class="modal-title text-center me-2" id="exampleModalLabel">O seu post ficará assim. Gostaria
+          de prosseguir?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modelo da postagem -->
+      <div class="container d-flex">
+        <div class="d-flex flex-column align-items-center">
+          <img src="{{profile.profilePic}}" class="img-thumbnail mb-0 avatar">
+          <p class="fw-bold fs-22 mb-2 mt-0">{{profile.profileName}}</p>
+        </div>
+        <p class="ms-2 mt-0 p-3 oikos-border" style="height: 100%;">{{messageDto.messageContent}}</p>
+      </div>
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="p-2 btn btn-outline-danger" data-bs-dismiss="modal"><b>Cancelar</b></button>
+        <button (click)="postMessage()" type="button" data-bs-dismiss="modal"
+          class="p-2 btn btn-outline-info ms-2"><b>Publicar</b></button>
+      </div>
+    </div>
+  </div>
 </div>
