@@ -3,18 +3,21 @@
     <!-- Perfil -->
     <div class="row d-flex justify-content-center">
 
-        <div class="col-md-12 d-flex justify-content-center box" style="background-image: url({{ecommerce.ecommerceHeader}});">
+        <div class="col-md-12 d-flex justify-content-center box"
+            style="background-image: url({{ecommerce.ecommerceHeader}});">
 
             <div class="text-center mt-4 mb-4">
                 <img src="{{ecommerce.ecommercePic}}" class="logo mb-2">
                 <h4 class="text-white">{{ecommerce.ecommerceName}}</h4>
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#products">Adcionar
+                    produtos</button>
             </div>
         </div>
 
     </div>
     <!-- /Perfil -->
 
-    <!-- Carousel -->
+    <!-- Carousel 
     <div class="row">
 
         <div class="col-md-12 carous p-0 m-0">
@@ -44,7 +47,7 @@
             </div>
 
         </div>
-    </div>
+    </div>-->
 
     <!-- /Carousel -->
 
@@ -53,109 +56,28 @@
 
         <div class="col-md-12 box d-flex justify-content-center">
 
-            <div class="p-4 mb-2 cardgallery d-flex justify-content-center">
+            <div *ngFor="let item of pList">
+                <div class="p-4 mb-2 cardgallery d-flex justify-content-center">
 
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
+                    <div class="card me-4 mt-4">
+                        <img src="{{item.productPic}}" class="card-img-top" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Nome do Produto" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">{{item.productName}}</h5>
+                            <p class="card-text m-0 fs-4">R$ {{item.productPrice}}</p>
+                            <p class="card-text mt-2">{{item.productDescription}}.</p>
+                            <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
-                </div>
 
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
                 </div>
-
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
-                </div>
-
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
-                </div>
-
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
-                </div>
-
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
-                </div>
-
-                <div class="card me-4 mt-4">
-                    <img src="../../assets/img/ico-ex.jpg" class="card-img-top" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Nome do Produto" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold">Nome do Produto</h5>
-                        <p class="card-text m-0 fs-4">R$ 00,00</p>
-                        <p class="card-text mt-2">Descrição: Some quick example text to build on the card title and make
-                            up the bulk of the card's content.</p>
-                        <a href="#" class="btn btt fw-bold">Adicionar ao carrinho</a>
-                    </div>
-                </div>
-
             </div>
         </div>
 
     </div>
     <!-- /Products -->
+
 
     <!-- Carrinho -->
 
@@ -164,7 +86,6 @@
         <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <i class="fas fa-shopping-cart icon"></i>
         </a>
-
     </div>
 
     <!-- Modal -->
@@ -180,7 +101,7 @@
                     ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btt">Finalizar compra</button>
+                    <button type="button" class="btn btt" data-bs-dismiss="modal">Finalizar compra</button>
                 </div>
             </div>
         </div>
@@ -190,4 +111,49 @@
 
 
 
+
+</div>
+
+<!-- Adicionar Produtos -->
+<div id="products" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content modal-bg">
+            <div class="modal-header bg-sla">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar seu produto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="text-center">
+                    <img src="./../../../assets/img/Login-rafiki.png" width="300px" height="300px">
+                </div>
+
+                <div class="form-control">
+
+
+                    <label for="name" class="mt-1 mb-1">Nome do produto</label>
+                    <input [(ngModel)]="productDto.productName" type="text" class="form-control" id="businessName"
+                        placeholder="Insira o nome do produto">
+
+                    <label for="descricao" class="mt-1 mb-1">Descrição do produto</label>
+                    <textarea [(ngModel)]="productDto.productDescription" name="descricao" class="form-control" rows="3"
+                        placeholder="Insira a descrição do produto"></textarea>
+
+                    <label for="pic" class="mt-1 mb-1">Link da foto do produto</label>
+                    <input [(ngModel)]="productDto.productPic" type="text" class="form-control" id="businessName"
+                        placeholder="Insira o link da foto do produto">
+
+                    <label [(ngModel)]="productDto.productPrice" for="preco" class="mt-1 mb-1">Preço</label>
+                    <input type="text" class="form-control" id="preco" placeholder="Insira o preço do produto">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button (click)="cadastrar()" type="button" data-bs-dismiss="modal"
+                    class="btn btn-success">Cadastrar</button>
+            </div>
+        </div>
+    </div>
 </div>
